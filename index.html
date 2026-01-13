@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICCS 2026 - International Cruise Conference & Symposium</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0a2342', // Deep Ocean
+                            800: '#153359',
+                        },
+                        gold: {
+                            400: '#d4af37',
+                            500: '#c5a059', // Luxury Gold
+                            600: '#b08d55',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        .hero-overlay {
+            background: linear-gradient(rgba(10, 35, 66, 0.6), rgba(10, 35, 66, 0.8));
+        }
+        /* Hide sections by default */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        /* Show active section */
+        .page-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-link.active {
+            color: #c5a059; /* gold-500 */
+            border-bottom-color: #c5a059;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Top Utility Bar -->
+    <div class="bg-black text-gray-400 text-xs py-2 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 flex justify-end space-x-4">
+            <a href="#" class="hover:text-white transition">Login</a>
+            <span class="text-gray-700">|</span>
+            <a href="#" class="hover:text-white transition">Sign Up</a>
+            <span class="text-gray-700">|</span>
+            <a href="#" class="hover:text-white transition">Contact</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('home')">
+                    <div class="bg-navy-900 text-gold-500 p-2 rounded-lg">
+                        <i data-lucide="ship" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-serif text-2xl font-bold text-navy-900 leading-none">ICCS 2026</h1>
+                        <p class="text-[10px] tracking-wider text-gray-500 font-medium uppercase">Intl. Cruise Conference & Symposium</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 font-medium text-sm text-navy-900">
+                    <button onclick="showSection('home')" class="nav-link active hover:text-gold-500 transition border-b-2 border-transparent hover:border-gold-500 py-1">Home</button>
+                    <button onclick="showSection('about')" class="nav-link hover:text-gold-500 transition border-b-2 border-transparent hover:border-gold-500 py-1">About</button>
+                    <button onclick="showSection('program')" class="nav-link hover:text-gold-500 transition border-b-2 border-transparent hover:border-gold-500 py-1">Program</button>
+                    <button onclick="showSection('submission')" class="nav-link hover:text-gold-500 transition border-b-2 border-transparent hover:border-gold-500 py-1">Submission</button>
+                    <button onclick="showSection('registration')" class="nav-link hover:text-gold-500 transition border-b-2 border-transparent hover:border-gold-500 py-1">Registration</button>
+                    <button onclick="showSection('venue')" class="text-gold-600 font-bold hover:text-navy-900 transition">Venue (The Ship)</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-navy-900" onclick="alert('Mobile menu toggled')">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================= HOME SECTION ======================= -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="relative h-[500px] flex items-center justify-center text-center text-white">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Cruise Ship" class="w-full h-full object-cover">
+                <div class="absolute inset-0 hero-overlay"></div>
+            </div>
+            <div class="relative z-10 px-4 max-w-4xl mx-auto">
+                <span class="inline-block py-1 px-3 border border-gold-500 text-gold-500 text-xs font-bold tracking-widest uppercase mb-4 rounded-full bg-navy-900/50 backdrop-blur">
+                    Nov 6 - 9, 2026
+                </span>
+                <h2 class="font-serif text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
+                    The Future of <br> <span class="text-gold-500 italic">Smart Cruising</span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-2xl mx-auto">
+                    Join us onboard the <strong>'Ocean Dream'</strong> sailing from Jeju to Fukuoka. 
+                    <br>Exploring sustainable maritime tourism and AI technology.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showSection('submission')" class="px-8 py-3 bg-gold-500 hover:bg-white hover:text-gold-500 text-white font-bold rounded shadow-lg transition duration-300 transform hover:-translate-y-1">
+                        Call for Papers
+                    </button>
+                    <button onclick="showSection('program')" class="px-8 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-navy-900 text-white font-bold rounded shadow-lg transition duration-300">
+                        Program Overview
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <main class="max-w-7xl mx-auto px-4 py-12 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Left Column (Content) -->
+                <div class="lg:col-span-2 space-y-12">
+                    <section>
+                        <div class="flex items-center gap-3 mb-6 border-b-2 border-navy-900 pb-2">
+                            <i data-lucide="calendar" class="text-gold-500"></i>
+                            <h3 class="text-2xl font-serif font-bold text-navy-900">Important Dates</h3>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+                            <table class="w-full text-left border-collapse">
+                                <thead class="bg-navy-900 text-white">
+                                    <tr><th class="p-4 font-medium w-2/3">Event</th><th class="p-4 font-medium">Date</th></tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 text-sm md:text-base">
+                                    <tr class="hover:bg-blue-50 transition"><td class="p-4 text-gray-700">Submission of Organized Sessions</td><td class="p-4 font-medium text-navy-900">August 30, 2026</td></tr>
+                                    <tr class="bg-gold-50/30 hover:bg-gold-50 transition border-l-4 border-gold-500"><td class="p-4 font-bold text-red-600">Paper Submission Deadline</td><td class="p-4 font-bold text-red-600">August 31, 2026</td></tr>
+                                    <tr class="hover:bg-blue-50 transition"><td class="p-4 text-gray-700">Acceptance Notification</td><td class="p-4 font-medium text-navy-900">September 29, 2026</td></tr>
+                                    <tr class="hover:bg-blue-50 transition"><td class="p-4 text-gray-700">Early Bird Registration</td><td class="p-4 font-medium text-navy-900">October 10, 2026</td></tr>
+                                    <tr class="bg-navy-50 font-bold"><td class="p-4 text-navy-900">Conference Dates</td><td class="p-4 text-navy-900">Nov 6 - 9, 2026</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="flex items-center gap-3 mb-6 border-b-2 border-navy-900 pb-2">
+                            <i data-lucide="mic-2" class="text-gold-500"></i>
+                            <h3 class="text-2xl font-serif font-bold text-navy-900">Plenary Speakers</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex gap-4 hover:shadow-md transition">
+                                <div class="w-20 h-20 bg-gray-200 rounded-full flex-shrink-0 overflow-hidden"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Speaker" class="w-full h-full object-cover"></div>
+                                <div><h4 class="font-bold text-lg text-navy-900">Prof. James T. Kirk</h4><p class="text-xs text-gold-600 font-bold uppercase mb-1">Starfleet Academy</p><p class="text-sm text-gray-600">AI Navigation in Deep Sea</p></div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex gap-4 hover:shadow-md transition">
+                                <div class="w-20 h-20 bg-gray-200 rounded-full flex-shrink-0 overflow-hidden"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Speaker" class="w-full h-full object-cover"></div>
+                                <div><h4 class="font-bold text-lg text-navy-900">Dr. Sarah Connor</h4><p class="text-xs text-gold-600 font-bold uppercase mb-1">Ocean Tech Institute</p><p class="text-sm text-gray-600">Marine Pollution Resistance</p></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3 class="text-xl font-bold text-navy-900 mb-4">Welcome Message</h3>
+                        <div class="prose prose-blue text-gray-600 max-w-none text-justify">
+                            <p>We are delighted to invite you to the <strong>ICCS 2026</strong>. This year, we take a bold step by hosting our conference on the open sea. The conference will provide a unique platform for researchers to discuss advanced intelligent systems while experiencing the future of smart maritime travel.</p>
+                        </div>
+                    </section>
+                </div>
+                <!-- Right Column (Sidebar) -->
+                <aside class="space-y-8">
+                    <div class="bg-white rounded-lg shadow-md border-t-4 border-gold-500 overflow-hidden">
+                        <div class="p-4 bg-gray-50 border-b border-gray-100 flex justify-between items-center"><h4 class="font-bold text-navy-900">What's New</h4><i data-lucide="bell" class="w-4 h-4 text-gold-500"></i></div>
+                        <ul class="divide-y divide-gray-100">
+                            <li class="p-4 hover:bg-gray-50 transition cursor-pointer"><span class="inline-block text-[10px] font-bold text-white bg-navy-900 px-2 py-0.5 rounded mb-1">Nov 17</span><p class="text-sm font-medium text-gray-800">Proceedings for ICCS 2026 uploaded.</p></li>
+                            <li class="p-4 hover:bg-gray-50 transition cursor-pointer"><span class="inline-block text-[10px] font-bold text-white bg-navy-900 px-2 py-0.5 rounded mb-1">Nov 08</span><p class="text-sm font-medium text-gray-800">[Urgent] Shuttle Bus Schedule Change.</p></li>
+                            <li class="p-4 hover:bg-gray-50 transition cursor-pointer"><span class="inline-block text-[10px] font-bold text-white bg-gray-400 px-2 py-0.5 rounded mb-1">Oct 20</span><p class="text-sm font-medium text-gray-800">Final Program Book available.</p></li>
+                        </ul>
+                        <div class="p-3 bg-gray-50 text-center"><a href="#" class="text-xs font-bold text-navy-900 hover:text-gold-600">View All News &rarr;</a></div>
+                    </div>
+                    <div class="bg-navy-900 rounded-lg shadow-md p-6 text-white">
+                        <h4 class="font-serif font-bold text-lg mb-4 text-gold-500">Downloads</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li><a href="#" class="flex items-center gap-2 hover:text-gold-400 transition"><i data-lucide="file-text" class="w-4 h-4"></i> Call for Papers (PDF)</a></li>
+                            <li><a href="#" class="flex items-center gap-2 hover:text-gold-400 transition"><i data-lucide="layout-template" class="w-4 h-4"></i> Paper Template (Word)</a></li>
+                        </ul>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md relative group cursor-pointer" onclick="showSection('venue')">
+                        <img src="https://images.unsplash.com/photo-1599640845513-53443c65eeb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Venue" class="w-full h-48 object-cover group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex flex-col items-center justify-center text-center p-4">
+                            <h4 class="text-white font-serif font-bold text-xl mb-2">The Venue</h4>
+                            <span class="bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded">Explore Ship</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <!-- ======================= ABOUT SECTION ======================= -->
+    <div id="about" class="page-section">
+        <div class="bg-navy-900 text-white py-16 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">About ICCS 2026</h2>
+            <p class="mt-4 text-gray-300 max-w-2xl mx-auto">Learn about our mission, history, and the team behind the scenes.</p>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+            <section>
+                <h3 class="text-2xl font-bold text-navy-900 border-l-4 border-gold-500 pl-4 mb-6">Welcome Message</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    The International Cruise Conference & Symposium (ICCS) is the premier forum for the presentation of new advances and research results in the fields of maritime engineering and intelligent systems.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    This year, we are proud to host the event on the 'Ocean Dream', fostering a unique environment for networking and collaboration amidst the serene backdrop of the East Sea.
+                </p>
+            </section>
+            <section>
+                <h3 class="text-2xl font-bold text-navy-900 border-l-4 border-gold-500 pl-4 mb-6">Organizing Committee</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">General Chair</h4>
+                        <p class="text-gray-600">Prof. Gil-Dong Hong (Korea Univ.)</p>
+                        <p class="text-gray-600">Prof. John Smith (Stanford Univ.)</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">Program Chair</h4>
+                        <p class="text-gray-600">Dr. Young-Hee Kim (KAIST)</p>
+                        <p class="text-gray-600">Dr. Alice Wonder (MIT)</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">Local Arrangement</h4>
+                        <p class="text-gray-600">Jeju National University Team</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-lg text-navy-900 mb-2">Finance Chair</h4>
+                        <p class="text-gray-600">Mr. Chul-Soo Park (Samsung Heavy Ind.)</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ======================= PROGRAM SECTION ======================= -->
+    <div id="program" class="page-section">
+        <div class="bg-navy-900 text-white py-16 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">Program Schedule</h2>
+            <p class="mt-4 text-gray-300">A tentative schedule for our journey.</p>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="flex flex-wrap gap-4 justify-center mb-8">
+                <button class="px-6 py-2 bg-gold-500 text-white font-bold rounded-full">Day 1 (Nov 6)</button>
+                <button class="px-6 py-2 bg-white border border-gray-300 text-gray-600 hover:bg-gray-50 rounded-full transition">Day 2 (Nov 7)</button>
+                <button class="px-6 py-2 bg-white border border-gray-300 text-gray-600 hover:bg-gray-50 rounded-full transition">Day 3 (Nov 8)</button>
+                <button class="px-6 py-2 bg-white border border-gray-300 text-gray-600 hover:bg-gray-50 rounded-full transition">Day 4 (Nov 9)</button>
+            </div>
+            
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <div class="bg-navy-50 p-4 border-b border-gray-200">
+                    <h3 class="font-bold text-navy-900 text-lg">Day 1: Embarkation & Opening (Jeju Port)</h3>
+                </div>
+                <div class="divide-y divide-gray-100">
+                    <div class="flex flex-col md:flex-row p-6 hover:bg-gray-50">
+                        <div class="w-full md:w-32 font-bold text-gold-600 mb-2 md:mb-0">13:00 - 15:00</div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-gray-800">Registration & Boarding</h4>
+                            <p class="text-sm text-gray-500">Jeju International Cruise Terminal. Please bring your passport.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row p-6 hover:bg-gray-50">
+                        <div class="w-full md:w-32 font-bold text-gold-600 mb-2 md:mb-0">16:00 - 17:30</div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-gray-800">Opening Ceremony & Plenary Talk I</h4>
+                            <p class="text-sm text-gray-500">Grand Theater (Deck 7). Speaker: Prof. James T. Kirk</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row p-6 hover:bg-gray-50">
+                        <div class="w-full md:w-32 font-bold text-gold-600 mb-2 md:mb-0">18:00 - 20:00</div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-gray-800">Welcome Reception (Captain's Dinner)</h4>
+                            <p class="text-sm text-gray-500">Main Dining Room. Formal attire requested.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                 <a href="#" class="inline-flex items-center text-navy-900 font-bold hover:text-gold-500"><i data-lucide="download" class="w-4 h-4 mr-2"></i> Download Full Program PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= SUBMISSION SECTION ======================= -->
+    <div id="submission" class="page-section">
+        <div class="bg-navy-900 text-white py-16 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">Paper Submission</h2>
+            <p class="mt-4 text-gray-300">Share your research with the global community.</p>
+        </div>
+        <div class="max-w-5xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 space-y-8">
+                    <section>
+                        <h3 class="text-2xl font-bold text-navy-900 mb-4">Topics of Interest</h3>
+                        <p class="mb-4 text-gray-600">We invite submissions on a wide range of topics, including but not limited to:</p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mr-2"></i> Smart Ship Technology</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mr-2"></i> Marine AI & Big Data</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mr-2"></i> Autonomous Navigation</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mr-2"></i> Sustainable Ocean Tourism</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mr-2"></i> Port Logistics</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mr-2"></i> Human-Robot Interaction</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3 class="text-2xl font-bold text-navy-900 mb-4">Submission Guidelines</h3>
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-sm space-y-3 text-gray-700">
+                            <p><strong>1. Format:</strong> Papers must be written in English and formatted according to the IEEE standard template.</p>
+                            <p><strong>2. Length:</strong> Regular papers should be 4-6 pages. Short papers 2-4 pages.</p>
+                            <p><strong>3. Review:</strong> All submissions will be peer-reviewed by at least two independent reviewers.</p>
+                        </div>
+                    </section>
+                </div>
+                <div class="md:col-span-1">
+                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-gold-500 sticky top-24">
+                        <h4 class="font-bold text-xl text-navy-900 mb-4">Ready to Submit?</h4>
+                        <p class="text-gray-600 text-sm mb-6">The submission system is now open. Please ensure you have an account.</p>
+                        <button class="w-full bg-navy-900 text-white font-bold py-3 rounded hover:bg-navy-800 transition mb-3">Go to Submission System</button>
+                        <button class="w-full bg-white border border-navy-900 text-navy-900 font-bold py-3 rounded hover:bg-gray-50 transition">Download Template</button>
+                        <div class="mt-6 pt-6 border-t border-gray-100">
+                            <p class="text-xs text-gray-500"><strong>Deadline:</strong> August 31, 2026 (KST)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= REGISTRATION SECTION ======================= -->
+    <div id="registration" class="page-section">
+        <div class="bg-navy-900 text-white py-16 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">Registration & Booking</h2>
+            <p class="mt-4 text-gray-300">Secure your spot and cabin on the Ocean Dream.</p>
+        </div>
+        <div class="max-w-5xl mx-auto px-4 py-12">
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="alert-triangle" class="h-5 w-5 text-yellow-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700">
+                            Registration fee includes conference access and standard meals. <strong>Cabin booking is separate</strong> and must be done through our partner travel agency link below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-navy-900 mb-6">Conference Registration Fees</h3>
+            <div class="overflow-x-auto mb-12">
+                <table class="w-full text-left border-collapse border border-gray-200">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="p-4 border border-gray-200">Category</th>
+                            <th class="p-4 border border-gray-200">Early Bird <br><span class="text-xs font-normal text-gray-500">(Before Oct 10)</span></th>
+                            <th class="p-4 border border-gray-200">Regular <br><span class="text-xs font-normal text-gray-500">(After Oct 10)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-4 border border-gray-200 font-bold text-navy-900">Regular Member</td>
+                            <td class="p-4 border border-gray-200">$500</td>
+                            <td class="p-4 border border-gray-200">$600</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-gray-200 font-bold text-navy-900">Student</td>
+                            <td class="p-4 border border-gray-200">$300</td>
+                            <td class="p-4 border border-gray-200">$400</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border border-gray-200 font-bold text-navy-900">Accompanying Person</td>
+                            <td class="p-4 border border-gray-200">$200</td>
+                            <td class="p-4 border border-gray-200">$250</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-navy-900 rounded-xl p-8 text-center text-white">
+                <h3 class="text-2xl font-serif font-bold mb-4">Cabin Booking</h3>
+                <p class="mb-6 opacity-80">Special rates available for conference attendees. Choose from Inside, Oceanview, or Balcony staterooms.</p>
+                <button class="bg-gold-500 text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-gold-500 transition">Book Cabin Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================= VENUE SECTION ======================= -->
+    <div id="venue" class="page-section">
+        <div class="bg-navy-900 text-white py-16 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">The Venue: Ocean Dream</h2>
+            <p class="mt-4 text-gray-300">Experience a conference like no other on the open sea.</p>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1599640845513-53443c65eeb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Cruise Interior" class="rounded-lg shadow-xl">
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-navy-900">Ship Specifications</h3>
+                    <p class="text-gray-600">The <strong>Ocean Dream</strong> is a 70,000-ton class luxury cruise ship equipped with state-of-the-art conference facilities, diverse dining options, and entertainment venues.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-700"><i data-lucide="anchor" class="w-5 h-5 text-gold-500 mr-3"></i> <strong>Gross Tonnage:</strong> 72,000 GT</li>
+                        <li class="flex items-center text-gray-700"><i data-lucide="users" class="w-5 h-5 text-gold-500 mr-3"></i> <strong>Passenger Capacity:</strong> 2,050 Guests</li>
+                        <li class="flex items-center text-gray-700"><i data-lucide="monitor" class="w-5 h-5 text-gold-500 mr-3"></i> <strong>Conference Halls:</strong> 1 Grand Theater (800 seats), 5 Meeting Rooms</li>
+                        <li class="flex items-center text-gray-700"><i data-lucide="wifi" class="w-5 h-5 text-gold-500 mr-3"></i> <strong>Connectivity:</strong> Starlink Maritime Wi-Fi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 rounded-xl p-8">
+                <h3 class="text-xl font-bold text-navy-900 mb-6 text-center">Route Information</h3>
+                <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+                    <div class="flex-1 bg-white p-6 rounded shadow-sm">
+                        <span class="text-gold-500 font-bold uppercase text-xs">Departure</span>
+                        <h4 class="text-lg font-bold text-navy-900">Jeju Port, Korea</h4>
+                        <p class="text-sm text-gray-500">Nov 6, 17:00</p>
+                    </div>
+                    <div class="flex-shrink-0 text-navy-300">
+                        <i data-lucide="arrow-right" class="w-8 h-8 hidden md:block"></i>
+                        <i data-lucide="arrow-down" class="w-8 h-8 md:hidden"></i>
+                    </div>
+                    <div class="flex-1 bg-white p-6 rounded shadow-sm">
+                        <span class="text-gold-500 font-bold uppercase text-xs">Port of Call</span>
+                        <h4 class="text-lg font-bold text-navy-900">Fukuoka, Japan</h4>
+                        <p class="text-sm text-gray-500">Nov 7, 08:00 - 18:00</p>
+                    </div>
+                    <div class="flex-shrink-0 text-navy-300">
+                        <i data-lucide="arrow-right" class="w-8 h-8 hidden md:block"></i>
+                        <i data-lucide="arrow-down" class="w-8 h-8 md:hidden"></i>
+                    </div>
+                    <div class="flex-1 bg-white p-6 rounded shadow-sm">
+                        <span class="text-gold-500 font-bold uppercase text-xs">Arrival</span>
+                        <h4 class="text-lg font-bold text-navy-900">Jeju Port, Korea</h4>
+                        <p class="text-sm text-gray-500">Nov 9, 09:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t-4 border-gold-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+            <div>
+                <h5 class="text-white font-bold text-lg mb-4">ICCS 2026 Secretariat</h5>
+                <p class="mb-2">Korean Institute of Intelligent Systems (KIIS)</p>
+                <p>Rosedale Bldg. Rm# 1613, Gangnam-gu, Seoul, Korea</p>
+                <div class="mt-4 space-y-1">
+                    <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> +82-2-554-3155</p>
+                    <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> info@iccs-kiis.org</p>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-white font-bold text-lg mb-4">Quick Links</h5>
+                <ul class="space-y-2">
+                    <li><button onclick="showSection('about')" class="hover:text-gold-500 transition">Organizing Committee</button></li>
+                    <li><button onclick="showSection('program')" class="hover:text-gold-500 transition">Program Overview</button></li>
+                    <li><button onclick="showSection('registration')" class="hover:text-gold-500 transition">Registration Guidelines</button></li>
+                    <li><button onclick="showSection('venue')" class="hover:text-gold-500 transition">Venue Info</button></li>
+                </ul>
+            </div>
+            <div class="text-center md:text-right">
+                <div class="flex items-center justify-center md:justify-end gap-2 mb-4 text-gold-500">
+                    <i data-lucide="ship" class="w-6 h-6"></i>
+                    <span class="font-serif font-bold text-xl">ICCS 2026</span>
+                </div>
+                <p>&copy; 2026 ICCS. All rights reserved.</p>
+                <p class="mt-2 text-xs text-gray-600">Built for the future of maritime conferences.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navigation Logic
+        function showSection(sectionId) {
+            // 1. Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Show target section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // 3. Update Nav Links Style
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                // If the button onclick text contains the sectionId
+                if (link.getAttribute('onclick').includes(sectionId)) {
+                    link.classList.add('active');
+                    link.classList.remove('border-transparent');
+                } else {
+                    link.classList.remove('active');
+                    link.classList.add('border-transparent');
+                }
+            });
+
+            // 4. Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
