@@ -44,7 +44,7 @@
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1548574505-5e239809ee19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -84,7 +84,6 @@
             <span class="hidden sm:inline">The 1st International Cruise Conference on Advanced Intelligent Systems</span>
             <span class="sm:hidden">ICC 2026 - Shanghai to Okinawa</span>
             <div class="flex items-center gap-4" id="auth-menu">
-                <!-- Auth State Injected Here -->
                 <button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button>
                 <span>|</span>
                 <button onclick="openModal('signup-modal')" class="hover:text-white transition">Sign Up</button>
@@ -107,11 +106,11 @@
 
             <nav class="hidden lg:flex gap-8 text-sm font-medium text-slate-600" id="desktop-nav">
                 <button onclick="showSection('home')" class="nav-link active hover:text-brand-blue transition border-b-2 border-transparent">Home</button>
-                <button onclick="showSection('about')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Committee</button>
+                <button onclick="showSection('about')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Overview</button>
                 <button onclick="showSection('program')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Program</button>
                 <button onclick="showSection('submission')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Submission</button>
-                <button onclick="showSection('venue')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Venue & Travel</button>
-                <button onclick="showSection('registration')" class="px-4 py-2 bg-brand-navy text-white rounded hover:bg-brand-blue transition shadow-md">Registration</button>
+                <button onclick="showSection('venue')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Venue</button>
+                <button onclick="showSection('accommodation')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Accommodation</button>
             </nav>
 
             <button class="lg:hidden text-brand-navy hover:text-brand-gold transition" onclick="toggleMobileMenu()">
@@ -122,133 +121,390 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-20">
             <nav class="flex flex-col p-4 space-y-4 text-sm font-medium text-slate-600">
                 <button onclick="showSection('home'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Home</button>
-                <button onclick="showSection('about'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Committee</button>
+                <button onclick="showSection('about'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Overview</button>
                 <button onclick="showSection('program'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Program</button>
                 <button onclick="showSection('submission'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Submission</button>
-                <button onclick="showSection('venue'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Venue & Travel</button>
-                <button onclick="showSection('registration'); toggleMobileMenu()" class="text-left px-4 py-2 bg-brand-navy text-white rounded">Registration</button>
+                <button onclick="showSection('venue'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Venue</button>
+                <button onclick="showSection('accommodation'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Accommodation</button>
             </nav>
         </div>
     </header>
 
-    <!-- ======================= SECTIONS (Home, About, etc. Same as before) ======================= -->
+    <!-- ======================= HOME SECTION ======================= -->
     <div id="home" class="page-section active">
         <section class="hero-bg h-[700px] flex items-center justify-center text-center text-white px-4">
             <div class="max-w-5xl mx-auto space-y-8 animate-[fadeIn_0.8s_ease-out]">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/50 bg-brand-navy/50 backdrop-blur-sm">
                     <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
-                    <span class="text-xs font-medium tracking-wider text-brand-gold uppercase">Call for Papers Open</span>
+                    <span class="text-xs font-medium tracking-wider text-brand-gold uppercase">Aug 27 - 31, 2026</span>
                 </div>
-                <h2 class="text-5xl md:text-7xl font-bold leading-tight">The Wave: <br/> <span class="italic font-serif text-brand-gold">Connecting Knowledge</span></h2>
-                <p class="text-lg md:text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed"><strong>ICC 2026</strong> invites you to a premier convergence of Maritime Engineering and AI.<br>Experience the future of academic networking onboard the <strong>MSC Bellissima</strong>.</p>
+                
+                <h2 class="text-5xl md:text-7xl font-bold leading-tight drop-shadow-2xl">
+                    The Wave: <br/> <span class="italic font-serif text-brand-gold">Connecting Knowledge</span>
+                </h2>
+                
+                <p class="text-lg md:text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
+                    <strong>2026 Cruise Ship Academic Conference</strong><br>
+                    A high-efficiency convention combining Travel, Academics, and Tourism.
+                </p>
+
                 <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                    <button onclick="showSection('submission')" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:bg-white transition duration-300 transform hover:-translate-y-1">Submit Paper</button>
-                    <button onclick="showSection('program')" class="px-8 py-4 border border-white text-white font-medium rounded hover:bg-white hover:text-brand-navy transition duration-300">Detailed Schedule</button>
+                    <button onclick="showSection('submission')" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:bg-white transition duration-300 transform hover:-translate-y-1">
+                        Submit Paper
+                    </button>
+                    <button onclick="showSection('program')" class="px-8 py-4 border border-white text-white font-medium rounded hover:bg-white hover:text-brand-navy transition duration-300">
+                        View Schedule
+                    </button>
                 </div>
             </div>
         </section>
+
         <div class="bg-white border-b border-slate-200 shadow-sm relative z-10 -mt-0">
             <div class="max-w-7xl mx-auto px-6 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                    <div class="flex items-center gap-4 px-4"><i data-lucide="calendar-days" class="w-10 h-10 text-brand-blue"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Date</p><p class="font-bold text-brand-navy text-lg">Aug 27 - 31, 2026</p></div></div>
-                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0"><i data-lucide="map-pin" class="w-10 h-10 text-brand-blue"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Location</p><p class="font-bold text-brand-navy text-lg">Shanghai - Okinawa</p></div></div>
-                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0"><i data-lucide="clock" class="w-10 h-10 text-red-500"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Paper Submission</p><p class="font-bold text-red-600 text-lg">Deadline: June 30, 2026</p></div></div>
+                    <div class="flex items-center gap-4 px-4">
+                        <i data-lucide="calendar-days" class="w-10 h-10 text-brand-blue"></i>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Date</p>
+                            <p class="font-bold text-brand-navy text-lg">Aug 27 - 31, 2026</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0">
+                        <i data-lucide="map-pin" class="w-10 h-10 text-brand-blue"></i>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Route</p>
+                            <p class="font-bold text-brand-navy text-lg">Shanghai - Naha - Shanghai</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0">
+                        <i data-lucide="clock" class="w-10 h-10 text-red-500"></i>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Submission Deadline</p>
+                            <p class="font-bold text-red-600 text-lg">June 30, 2026</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
         <main class="max-w-7xl mx-auto px-6 py-16">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div class="lg:col-span-2 space-y-12">
                     <section>
-                        <h3 class="text-2xl font-bold text-brand-navy border-l-4 border-brand-gold pl-4 mb-4">Welcome Message</h3>
-                        <p class="text-slate-600 leading-relaxed text-lg mb-4 text-justify">On behalf of the Organizing Committee, we are honored to invite you to the <strong>International Cruise Conference 2026 (ICC 2026)</strong>...</p>
+                        <h3 class="text-2xl font-bold text-brand-navy border-l-4 border-brand-gold pl-4 mb-4">Concept: The Wave</h3>
+                        <p class="text-slate-600 leading-relaxed text-lg mb-4 text-justify">
+                            We invite you to the <strong>2026 Cruise Ship Academic Conference</strong>. 
+                            Breaking away from closed spaces, we offer a new form of academic networking combining the cruise experience with shore excursions in China and Japan.
+                            Enjoy high immersion in accommodation, movement, and meetings all in one place.
+                        </p>
                     </section>
                 </div>
                 <div class="space-y-8">
-                    <div class="bg-brand-navy text-white rounded-xl p-6 shadow-lg"><h4 class="font-bold text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-brand-gold"></i> Important Dates</h4><ul class="space-y-4 text-sm"><li class="flex justify-between border-b border-white/10 pb-2"><span class="opacity-80">Organized Session</span><span class="font-bold text-brand-gold">May 30, 2026</span></li><li class="flex justify-between border-b border-white/10 pb-2"><span class="opacity-80">Paper Submission</span><span class="font-bold text-red-400">June 30, 2026</span></li></ul></div>
+                    <div class="bg-brand-navy text-white rounded-xl p-6 shadow-lg">
+                        <h4 class="font-bold text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar" class="w-5 h-5 text-brand-gold"></i> Important Dates</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="opacity-80">Organized Session</span><span class="font-bold text-brand-gold">May 30, 2026</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="opacity-80">Paper Submission</span><span class="font-bold text-red-400">June 30, 2026</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="opacity-80">Notification</span><span class="font-bold">July 15, 2026</span></li>
+                            <li class="flex justify-between"><span class="opacity-80">Registration</span><span class="font-bold">July 30, 2026</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- About Section -->
+    <!-- ======================= ABOUT SECTION ======================= -->
     <div id="about" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Organization</h2><p class="text-slate-300">The team behind ICC 2026.</p></div>
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Conference Overview</h2>
+            <p class="text-slate-300">Innovation, Networking, and Experience</p>
+        </div>
         <div class="max-w-5xl mx-auto px-6 py-16">
-            <div class="mb-12"><h3 class="text-2xl font-bold text-brand-navy border-b-2 border-slate-100 pb-2 mb-6">Organizing Committee</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12 text-sm bg-white p-8 rounded-xl border border-slate-200 shadow-sm"><div class="flex justify-between border-b border-slate-100 pb-2"><span class="font-bold text-slate-700">General Chair</span><span class="text-slate-600">Prof. Gil-Dong Hong</span></div><div class="flex justify-between border-b border-slate-100 pb-2"><span class="font-bold text-slate-700">Program Chair</span><span class="text-slate-600">Dr. Young-Hee Kim</span></div></div></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-brand-navy mb-4">Purpose & Necessity</h3>
+                    <ul class="list-disc list-inside text-slate-600 space-y-2">
+                        <li>High-efficiency, high-value convention combining Travel, Academics, and Tourism.</li>
+                        <li>New academic networking opportunity breaking away from traditional closed venues.</li>
+                        <li>Acquire insights through exchanges with local institutions in China and Japan.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-brand-navy mb-4">Expected Effects</h3>
+                    <ul class="list-disc list-inside text-slate-600 space-y-2">
+                        <li><strong>One-stop Service:</strong> Accommodation, meetings, and dining in one place.</li>
+                        <li><strong>High Engagement:</strong> Minimized movement leads to higher attendance and focus.</li>
+                        <li><strong>Networking:</strong> Enhanced interaction among approx. 200 association members.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Program Section -->
+    <!-- ======================= PROGRAM SECTION (PDF DETAILS) ======================= -->
     <div id="program" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Conference Program</h2></div>
-        <div class="max-w-5xl mx-auto px-6 py-16"><div class="relative border-l-2 border-slate-200 ml-4 space-y-12">
-            <div class="relative pl-8"><span class="absolute -left-[9px] top-0 w-4 h-4 bg-brand-navy rounded-full border-4 border-white"></span><h3 class="text-xl font-bold text-brand-navy">Day 1: Embarkation</h3><p class="text-sm text-brand-gold font-bold mb-4">Aug 27, 2026</p><div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3"><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">17:00</span><p class="font-bold text-brand-blue">Embarkation at Shanghai</p></div></div></div>
-            <div class="relative pl-8"><span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span><h3 class="text-xl font-bold text-brand-navy">Day 3: Okinawa</h3><p class="text-sm text-brand-gold font-bold mb-4">Aug 29, 2026</p><div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3"><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">09:00</span><p>Shore Excursion</p></div></div></div>
-        </div></div>
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Conference Program</h2>
+            <p class="text-slate-300">4 Nights / 5 Days (Shanghai - Okinawa - Shanghai)</p>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-6 py-16">
+            <div class="relative border-l-2 border-slate-200 ml-4 space-y-12">
+                
+                <!-- Day 1 -->
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 bg-brand-navy rounded-full border-4 border-white"></span>
+                    <h3 class="text-xl font-bold text-brand-navy">Day 1: Shanghai & Embarkation</h3>
+                    <p class="text-sm text-brand-gold font-bold mb-4">Aug 27, 2026 (Thu)</p>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">10:00</span><p>Arrival at Shanghai Pudong Int'l Airport</p></div>
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">12:20</span><p>Lunch (Local Hot Pot)</p></div>
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">13:50</span><p>Tour: The Bund & Oriental Pearl Tower Skyline</p></div>
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">15:00</span><p class="font-bold text-brand-blue">Embarkation at Wusongkou Cruise Terminal</p></div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span>
+                    <h3 class="text-xl font-bold text-brand-navy">Day 2: At Sea (Academic Session)</h3>
+                    <p class="text-sm text-brand-gold font-bold mb-4">Aug 28, 2026 (Fri)</p>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">10:00</span><p><strong>Academic Sessions & Keynote Speeches</strong></p></div>
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">18:00</span><p>Captain's Welcome Gala Dinner & Entertainment</p></div>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span>
+                    <h3 class="text-xl font-bold text-brand-navy">Day 3: Naha, Okinawa (Shore Excursion)</h3>
+                    <p class="text-sm text-brand-gold font-bold mb-4">Aug 29, 2026 (Sat)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3">
+                            <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">07:00</span><p>Arrival at Naha Cruise Terminal</p></div>
+                            <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">09:30</span><p><strong>Shuri Castle (Ryukyu Kingdom)</strong></p></div>
+                            <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">11:00</span><p>Fukushuen Garden</p></div>
+                            <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">12:00</span><p>Lunch (Okinawa Traditional Meal)</p></div>
+                            <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">14:00</span><p>Kokusai Street (Shopping & Free Time)</p></div>
+                            <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">17:00</span><p>Departure</p></div>
+                        </div>
+                        <!-- [Image of Okinawa] -->
+                        <img src="https://images.unsplash.com/photo-1619522253689-b6b931925345?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="rounded-lg object-cover h-full shadow-md" alt="Okinawa">
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span>
+                    <h3 class="text-xl font-bold text-brand-navy">Day 4: At Sea (Academic Session)</h3>
+                    <p class="text-sm text-brand-gold font-bold mb-4">Aug 30, 2026 (Sun)</p>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">10:00</span><p><strong>Academic Sessions & Workshops</strong></p></div>
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">19:00</span><p>Farewell Party</p></div>
+                    </div>
+                </div>
+                
+                 <!-- Day 5 -->
+                 <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span>
+                    <h3 class="text-xl font-bold text-brand-navy">Day 5: Disembarkation (Shanghai)</h3>
+                    <p class="text-sm text-brand-gold font-bold mb-4">Aug 31, 2026 (Mon)</p>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">07:00</span><p>Arrival at Wusongkou Port</p></div>
+                        <div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">10:35</span><p>Departure Flight</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Submission Section -->
+    <!-- ======================= SUBMISSION SECTION ======================= -->
     <div id="submission" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Call for Papers</h2></div>
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Call for Papers</h2>
+            <p class="text-slate-300">Submit your research using AI assistance.</p>
+        </div>
         <div class="max-w-4xl mx-auto px-6 py-16">
+            
+            <!-- Lock Screen -->
             <div id="submission-lock" class="text-center py-20 bg-white rounded-xl shadow-lg border border-slate-200">
                 <div class="inline-flex items-center justify-center w-20 h-20 bg-slate-100 rounded-full mb-6"><i data-lucide="lock" class="w-10 h-10 text-slate-400"></i></div>
                 <h3 class="text-2xl font-bold text-brand-navy mb-2">Login Required</h3>
                 <p class="text-slate-500 mb-8 max-w-md mx-auto">You must be a registered member to submit a paper.</p>
                 <div class="flex justify-center gap-4"><button onclick="openModal('login-modal')" class="bg-brand-navy text-white px-8 py-3 rounded-lg font-bold">Login</button></div>
             </div>
+
+            <!-- Form -->
             <div id="submission-content" class="hidden bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
-                <div class="p-8 border-b border-slate-100 bg-slate-50/50"><h3 class="text-2xl font-bold text-brand-navy">Submission Form</h3></div>
+                <div class="p-8 border-b border-slate-100 bg-slate-50/50">
+                    <h3 class="text-2xl font-bold text-brand-navy">Paper Submission</h3>
+                    <p class="text-slate-500 text-sm mt-2">All fields marked with * are required.</p>
+                </div>
                 <div class="p-8">
                     <form id="submission-form" class="space-y-8">
-                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Paper Title</label><input type="text" id="paper-title" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="block text-sm font-semibold text-slate-700 mb-2">Author</label><input type="text" id="author-name" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div>
-                            <div><label class="block text-sm font-semibold text-slate-700 mb-2">Affiliation</label><input type="text" id="author-affil" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Paper Title <span class="text-red-500">*</span></label>
+                            <input type="text" id="paper-title" required class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue outline-none transition" placeholder="Enter paper title">
                         </div>
-                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Abstract</label><textarea id="paper-abstract" rows="6" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></textarea></div>
-                        <button type="submit" class="w-full bg-brand-navy text-white font-bold py-4 rounded-lg">Submit Paper</button>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Corresponding Author <span class="text-red-500">*</span></label>
+                                <input type="text" id="author-name" required class="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Affiliation <span class="text-red-500">*</span></label>
+                                <input type="text" id="author-affil" required class="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none">
+                            </div>
+                        </div>
+                        <!-- Topics -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Topic Category <span class="text-red-500">*</span></label>
+                            <select id="paper-topic" class="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-brand-blue outline-none bg-white">
+                                <option value="">Select a Category...</option>
+                                <option value="smart-ship">1. Smart Ship Technology & Autonomous Navigation</option>
+                                <option value="marine-ai">2. Artificial Intelligence in Maritime Systems</option>
+                                <option value="big-data">3. Maritime Big Data Analysis</option>
+                                <option value="green-ship">4. Green Shipping & Decarbonization</option>
+                                <option value="port-logistics">5. Smart Port & Logistics Optimization</option>
+                                <option value="ocean-tourism">6. Sustainable Ocean Tourism & Service</option>
+                                <option value="safety">7. Maritime Safety & Security Systems</option>
+                            </select>
+                        </div>
+                        <!-- Abstract -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="block text-sm font-semibold text-slate-700">Abstract <span class="text-red-500">*</span></label>
+                                <button type="button" onclick="polishAbstract()" class="text-xs font-medium text-brand-gold flex items-center gap-1 bg-brand-gold/10 px-2 py-1 rounded hover:bg-brand-gold hover:text-white transition"><i data-lucide="wand-2" class="w-3 h-3"></i> AI Polish</button>
+                            </div>
+                            <textarea id="paper-abstract" rows="6" required class="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none transition" placeholder="Enter abstract (max 500 words)..."></textarea>
+                            <p id="polish-msg" class="text-xs text-brand-gold mt-2 hidden"></p>
+                        </div>
+                        <!-- File -->
+                        <div class="p-6 border-2 border-dashed border-slate-300 rounded-lg hover:bg-slate-50 transition text-center cursor-pointer relative group">
+                            <input type="file" id="paper-file" accept=".pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(this)">
+                            <div class="space-y-2">
+                                <i data-lucide="upload" class="w-6 h-6 text-slate-400 mx-auto"></i>
+                                <p class="text-sm text-brand-navy" id="file-name-display">Click to upload PDF (Max 10MB)</p>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-navy text-white font-bold py-4 rounded-lg hover:bg-brand-blue transition flex items-center justify-center gap-2">
+                           <span>Submit Paper</span>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Registration Section -->
-    <div id="registration" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Registration</h2></div>
-        <div class="max-w-5xl mx-auto px-6 py-16">
-            <div class="overflow-hidden border border-slate-200 rounded-lg shadow-sm">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-slate-50 border-b border-slate-200"><tr><th class="p-5 text-sm font-bold text-slate-500 uppercase">Cabin Type</th><th class="p-5 text-sm font-bold text-slate-500 uppercase">Price</th><th class="p-5 text-sm font-bold text-slate-500 uppercase">Action</th></tr></thead>
-                    <tbody class="divide-y divide-slate-100 bg-white">
-                        <tr class="hover:bg-slate-50"><td class="p-5 font-bold text-brand-navy">Suite</td><td class="p-5 font-bold text-brand-gold">$1,109</td><td class="p-5"><button onclick="bookCabin('Suite', 1109)" class="text-xs bg-brand-navy text-white px-3 py-1.5 rounded">Book Now</button></td></tr>
-                        <tr class="hover:bg-slate-50"><td class="p-5 font-bold text-brand-navy">Inside</td><td class="p-5 font-bold text-slate-700">$569</td><td class="p-5"><button onclick="bookCabin('Inside', 569)" class="text-xs bg-brand-navy text-white px-3 py-1.5 rounded">Book Now</button></td></tr>
-                    </tbody>
-                </table>
+    <!-- ======================= VENUE & TRAVEL ======================= -->
+    <div id="venue" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Venue & Travel</h2>
+            <p class="text-slate-300">MSC Bellissima & Logistics</p>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <!-- Ship -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                <!--  Updated to Promenade-like photo -->
+                <img src="https://images.unsplash.com/photo-1559599620-2342233b666a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="MSC Promenade" class="rounded-xl shadow-lg h-80 object-cover">
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-brand-navy">MSC Bellissima</h3>
+                    <p class="text-slate-600 leading-relaxed text-justify">
+                        <strong>MSC Bellissima</strong> ("Most Beautiful") offers a perfect blend of technology and elegance. 
+                        It features the 96m <strong>Galleria Bellissima</strong> with the longest LED dome at sea and exclusive <strong>Cirque du Soleil</strong> shows.
+                    </p>
+                    <ul class="space-y-2 text-slate-700 text-sm">
+                        <li>• <strong>Tonnage:</strong> 171,598 GT</li>
+                        <li>• <strong>Capacity:</strong> 5,686 Passengers</li>
+                        <li>• <strong>Facilities:</strong> Grand Theater, Conference Rooms, Multipurpose Lounges</li>
+                        <li>• <strong>Entertainment:</strong> Musicals, Classical/Modern Music, Dance, Magic Shows</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Travel Info -->
+            <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 mb-12 shadow-sm">
+                <h3 class="text-xl font-bold text-brand-navy mb-4 flex items-center gap-2"><i data-lucide="bus" class="w-6 h-6 text-brand-gold"></i> Travel Information</h3>
+                <div class="space-y-4 text-sm text-slate-700">
+                    <div class="flex flex-col md:flex-row gap-2 md:gap-4">
+                        <span class="font-bold w-32 shrink-0 text-brand-blue">Meeting Point</span>
+                        <p>Shanghai Pudong International Airport (PVG) - Terminal 1, Arrival Hall A</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-2 md:gap-4">
+                        <span class="font-bold w-32 shrink-0 text-brand-blue">Shuttle Service</span>
+                        <p>Complimentary shuttle buses will run from PVG Airport to Wusongkou Cruise Terminal on Aug 27 (10:00 - 14:00).</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-2 md:gap-4">
+                        <span class="font-bold w-32 shrink-0 text-brand-blue">Port Address</span>
+                        <p>Shanghai Wusongkou International Cruise Terminal (No. 1 Baoyang Road, Baoshan District, Shanghai)</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Venue Section -->
-    <div id="venue" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Venue & Travel</h2></div>
-        <div class="max-w-6xl mx-auto px-6 py-16 text-center"><h3 class="text-3xl font-bold text-brand-navy">MSC Bellissima</h3><p>171,598 Tons</p></div>
+    <!-- ======================= ACCOMMODATION (INFO ONLY) ======================= -->
+    <div id="accommodation" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Accommodation</h2>
+            <p class="text-slate-300">Room Types & Pricing (Informational)</p>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 py-16">
+             <div class="mb-8 text-center bg-blue-50 p-4 rounded-lg">
+                <p class="text-brand-blue font-semibold">
+                    Registration includes: 4-night accommodation, All meals (Dining & Buffet), Conference Access, Gala Dinner.
+                </p>
+            </div>
+            <!-- Pricing Table -->
+            <div class="overflow-hidden border border-slate-200 rounded-lg shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-slate-50 border-b border-slate-200">
+                        <tr>
+                            <th class="p-5 text-sm font-bold text-slate-500 uppercase">Cabin Type</th>
+                            <th class="p-5 text-sm font-bold text-slate-500 uppercase">Price (Per Person)</th>
+                            <th class="p-5 text-sm font-bold text-slate-500 uppercase">Features</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 bg-white">
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-bold text-brand-navy">Suite</td>
+                            <td class="p-5 font-bold text-brand-gold">US $1,109.00</td>
+                            <td class="p-5 text-sm text-slate-600">Private balcony, living area, 24h butler service.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-bold text-brand-navy">Balcony</td>
+                            <td class="p-5 font-bold text-brand-navy">US $799.00</td>
+                            <td class="p-5 text-sm text-slate-600">Private balcony with ocean view.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-medium text-slate-700">Oceanview</td>
+                            <td class="p-5 font-bold text-slate-700">US $729.00</td>
+                            <td class="p-5 text-sm text-slate-600">Porthole window with sea view.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-medium text-slate-700">Inside</td>
+                            <td class="p-5 font-bold text-slate-700">US $569.00</td>
+                            <td class="p-5 text-sm text-slate-600">Practical interior room without window.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-slate-400 mt-4 text-center">* Rates are based on double occupancy (2 persons per room).</p>
+        </div>
     </div>
 
-    <!-- My Page Section -->
+    <!-- ======================= MY PAGE SECTION ======================= -->
     <div id="mypage" class="page-section">
         <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">My Status</h2></div>
-        <div class="max-w-6xl mx-auto px-6 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
-                    <div class="p-6 border-b border-slate-100 bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">My Submissions</h3></div>
-                    <div class="p-6"><ul id="my-papers-list" class="space-y-4"><li class="text-slate-500 text-sm italic">Loading...</li></ul></div>
+        <div class="max-w-4xl mx-auto px-6 py-16">
+            <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="p-6 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-brand-navy">My Submissions</h3>
+                    <i data-lucide="file-text" class="w-5 h-5 text-brand-blue"></i>
                 </div>
-                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
-                    <div class="p-6 border-b border-slate-100 bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">My Registration</h3></div>
-                    <div class="p-6"><div id="my-registration-info"><p class="text-slate-500 text-sm italic">Loading...</p></div></div>
+                <div class="p-6">
+                    <ul id="my-papers-list" class="space-y-4"><li class="text-slate-500 text-sm italic">Loading...</li></ul>
                 </div>
             </div>
         </div>
@@ -259,7 +515,7 @@
         <div class="max-w-7xl mx-auto px-6 text-center"><p class="mb-2">&copy; 2026 International Cruise Conference</p></div>
     </footer>
 
-    <!-- LOGIN MODAL (Updated) -->
+    <!-- LOGIN MODAL -->
     <div id="login-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
         <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 overflow-hidden animate-[fadeIn_0.2s_ease-out]">
             <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
@@ -267,51 +523,23 @@
                 <button onclick="closeModal('login-modal')"><i data-lucide="x" class="w-5 h-5 text-slate-400 hover:text-slate-600"></i></button>
             </div>
             <div class="p-6 space-y-4">
-                <!-- Google Login Button -->
                 <button id="btn-google-login" class="w-full border border-slate-300 bg-white text-slate-700 font-bold py-2.5 rounded hover:bg-slate-50 transition flex justify-center items-center gap-2">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                    Sign in with Google
+                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Sign in with Google
                 </button>
-                
-                <div class="relative flex py-2 items-center">
-                    <div class="flex-grow border-t border-slate-300"></div>
-                    <span class="flex-shrink-0 mx-4 text-slate-400 text-xs">OR</span>
-                    <div class="flex-grow border-t border-slate-300"></div>
-                </div>
-
+                <div class="relative flex py-2 items-center"><div class="flex-grow border-t border-slate-300"></div><span class="flex-shrink-0 mx-4 text-slate-400 text-xs">OR</span><div class="flex-grow border-t border-slate-300"></div></div>
                 <div id="login-form-view">
                     <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                            <input type="email" id="login-email" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="name@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
-                            <input type="password" id="login-password" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="••••••••">
-                            <div class="text-right mt-1">
-                                <button onclick="toggleResetView()" class="text-xs text-brand-blue hover:underline">Forgot password?</button>
-                            </div>
-                        </div>
+                        <div><label class="block text-sm font-medium text-slate-700 mb-1">Email</label><input type="email" id="login-email" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="name@example.com"></div>
+                        <div><label class="block text-sm font-medium text-slate-700 mb-1">Password</label><input type="password" id="login-password" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="••••••••"></div>
                         <p id="login-error" class="text-red-500 text-sm hidden"></p>
-                        <button id="btn-login" class="w-full bg-brand-navy text-white font-bold py-2.5 rounded hover:bg-brand-blue transition flex justify-center items-center">
-                            <span id="login-text">Sign In</span>
-                            <span id="login-spinner" class="spinner ml-2 hidden"></span>
-                        </button>
+                        <button id="btn-login" class="w-full bg-brand-navy text-white font-bold py-2.5 rounded hover:bg-brand-blue transition flex justify-center items-center"><span id="login-text">Sign In</span><span id="login-spinner" class="spinner ml-2 hidden"></span></button>
                     </div>
-                </div>
-
-                <!-- Password Reset View (Hidden by default) -->
-                <div id="reset-form-view" class="hidden space-y-4">
-                    <p class="text-sm text-slate-600">Enter your email to receive a password reset link.</p>
-                    <input type="email" id="reset-email" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="name@example.com">
-                    <button id="btn-reset" class="w-full bg-brand-gold text-white font-bold py-2.5 rounded hover:bg-yellow-600 transition">Send Reset Link</button>
-                    <button onclick="toggleResetView()" class="w-full text-sm text-slate-500 hover:text-brand-navy">Back to Login</button>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- SIGNUP MODAL (Updated) -->
+    <!-- SIGNUP MODAL -->
     <div id="signup-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
         <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 overflow-hidden animate-[fadeIn_0.2s_ease-out]">
             <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
@@ -319,28 +547,12 @@
                 <button onclick="closeModal('signup-modal')"><i data-lucide="x" class="w-5 h-5 text-slate-400 hover:text-slate-600"></i></button>
             </div>
             <div class="p-6 space-y-4">
-                <!-- Name Field -->
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-                    <input type="text" id="signup-name" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="Gil-Dong Hong">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                    <input type="email" id="signup-email" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="name@example.com">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
-                    <input type="password" id="signup-password" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="At least 6 chars">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Confirm Password</label>
-                    <input type="password" id="signup-confirm" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="Confirm password">
-                </div>
+                <div><label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label><input type="text" id="signup-name" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="Gil-Dong Hong"></div>
+                <div><label class="block text-sm font-medium text-slate-700 mb-1">Email</label><input type="email" id="signup-email" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="name@example.com"></div>
+                <div><label class="block text-sm font-medium text-slate-700 mb-1">Password</label><input type="password" id="signup-password" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="At least 6 chars"></div>
+                <div><label class="block text-sm font-medium text-slate-700 mb-1">Confirm Password</label><input type="password" id="signup-confirm" class="w-full border border-slate-300 p-2.5 rounded focus:ring-2 focus:ring-brand-blue outline-none" placeholder="Confirm password"></div>
                 <p id="signup-error" class="text-red-500 text-sm hidden"></p>
-                <button id="btn-signup" class="w-full bg-brand-gold text-white font-bold py-2.5 rounded hover:bg-yellow-600 transition flex justify-center items-center">
-                    <span id="signup-text">Create Account</span>
-                    <span id="signup-spinner" class="spinner ml-2 hidden"></span>
-                </button>
+                <button id="btn-signup" class="w-full bg-brand-gold text-white font-bold py-2.5 rounded hover:bg-yellow-600 transition flex justify-center items-center"><span id="signup-text">Create Account</span><span id="signup-spinner" class="spinner ml-2 hidden"></span></button>
             </div>
         </div>
     </div>
@@ -348,15 +560,10 @@
     <!-- Scripts (Auth/Gemini) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // 👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
-        // 🚨 [필수 설정] 여기를 주목하세요! (LOOK HERE!)
-        // 🚨 아래의 const firebaseConfig = { ... }; 전체 내용을 지우고, 
-        // 🚨 Firebase 콘솔에서 복사한 '본인의 설정 코드'로 덮어쓰기(붙여넣기) 하세요.
-        // 👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
-        
+        // 👇👇👇 PASTE YOUR KEY HERE 👇👇👇
         const firebaseConfig = {
   apiKey: "AIzaSyAENLGgNgnFeGXOYV2-sKI9QI4ElZLyOPE",
   authDomain: "icc-2026.firebaseapp.com",
@@ -365,110 +572,58 @@
   messagingSenderId: "85385162390",
   appId: "1:85385162390:web:af353393092c491a721cb7"
 };
-
-        // 👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆👆
+        // 👆👆👆 PASTE YOUR KEY HERE 👆👆👆
         
-        const GEMINI_API_KEY = ""; // Optional for AI features
+        const GEMINI_API_KEY = "";
 
         // Check for placeholder keys
         if (firebaseConfig.apiKey === "YOUR_API_KEY_HERE") {
-            const warningMsg = "⚠️ CRITICAL ERROR: Firebase Configuration is missing.\n\nPlease update the 'firebaseConfig' variable in the code with your actual project keys from the Firebase Console.\n\nWithout this, Login and Submission features WILL NOT WORK.";
+            const warningMsg = "⚠️ CRITICAL ERROR: Firebase Configuration is missing.\n\nPlease update the 'firebaseConfig' variable in the code with your actual project keys from the Firebase Console.";
             console.error(warningMsg);
             alert(warningMsg);
         }
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // --- AUTH FUNCTIONS ---
-
-        // 1. Google Login
-        document.getElementById('btn-google-login').addEventListener('click', async () => {
+        // --- GEMINI FUNCTIONS ---
+        window.callGeminiAPI = async (prompt) => {
+            if (!GEMINI_API_KEY) { alert("Gemini API Key Missing"); return null; }
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`;
             try {
-                await signInWithPopup(auth, googleProvider);
-                closeModal('login-modal');
-                alert("Successfully signed in with Google!");
-            } catch (error) {
-                console.error(error);
-                alert("Google Sign-In Error: " + error.message);
-            }
-        });
+                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) });
+                const data = await response.json();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text;
+            } catch (e) { console.error(e); return null; }
+        }
 
-        // 2. Email Login
-        document.getElementById('btn-login').addEventListener('click', async () => {
+        window.polishAbstract = async () => {
+            const input = document.getElementById('paper-abstract');
+            const msg = document.getElementById('polish-msg');
+            if(input.value.length < 10) return alert("Enter abstract first.");
+            msg.innerHTML = '<span class="spinner-dark"></span> Polishing...'; msg.classList.remove('hidden');
+            const res = await window.callGeminiAPI(`Rewrite strictly in academic English:\n"${input.value}"`);
+            if(res) { input.value = res; msg.innerText = "Polished!"; }
+        }
+
+        // --- AUTH ---
+        document.getElementById('btn-google-login').addEventListener('click', async () => { try { await signInWithPopup(auth, googleProvider); closeModal('login-modal'); } catch (e) { alert(e.message); } });
+        document.getElementById('btn-login').addEventListener('click', async () => { 
             const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const errBox = document.getElementById('login-error');
-            
-            // UI Update
-            document.getElementById('login-text').classList.add('hidden');
-            document.getElementById('login-spinner').classList.remove('hidden');
-            errBox.classList.add('hidden');
-
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-                closeModal('login-modal');
-            } catch (error) {
-                let msg = "Login failed.";
-                if (error.code === 'auth/wrong-password') msg = "Incorrect password.";
-                if (error.code === 'auth/user-not-found') msg = "User not found.";
-                errBox.innerText = msg;
-                errBox.classList.remove('hidden');
-            } finally {
-                document.getElementById('login-text').classList.remove('hidden');
-                document.getElementById('login-spinner').classList.add('hidden');
-            }
+            try { await signInWithEmailAndPassword(auth, email, document.getElementById('login-password').value); closeModal('login-modal'); } catch (e) { document.getElementById('login-error').innerText = e.message; document.getElementById('login-error').classList.remove('hidden'); } 
         });
-
-        // 3. Email Signup with Name
-        document.getElementById('btn-signup').addEventListener('click', async () => {
+        document.getElementById('btn-signup').addEventListener('click', async () => { 
             const name = document.getElementById('signup-name').value;
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            const confirm = document.getElementById('signup-confirm').value;
-            const errBox = document.getElementById('signup-error');
-
-            if (!name) { errBox.innerText = "Please enter your name."; errBox.classList.remove('hidden'); return; }
-            if (password !== confirm) { errBox.innerText = "Passwords do not match."; errBox.classList.remove('hidden'); return; }
-
-            document.getElementById('signup-text').classList.add('hidden');
-            document.getElementById('signup-spinner').classList.remove('hidden');
-            errBox.classList.add('hidden');
-
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                // Update profile with name
-                await updateProfile(userCredential.user, { displayName: name });
-                
-                closeModal('signup-modal');
-                alert(`Welcome, ${name}! Account created successfully.`);
-            } catch (error) {
-                errBox.innerText = error.message.replace('Firebase: ', '');
-                errBox.classList.remove('hidden');
-            } finally {
-                document.getElementById('signup-text').classList.remove('hidden');
-                document.getElementById('signup-spinner').classList.add('hidden');
-            }
+            try { 
+                const cred = await createUserWithEmailAndPassword(auth, document.getElementById('signup-email').value, document.getElementById('signup-password').value); 
+                await updateProfile(cred.user, { displayName: name });
+                closeModal('signup-modal'); 
+            } catch (e) { document.getElementById('signup-error').innerText = e.message; document.getElementById('signup-error').classList.remove('hidden'); } 
         });
 
-        // 4. Password Reset
-        document.getElementById('btn-reset').addEventListener('click', async () => {
-            const email = document.getElementById('reset-email').value;
-            if(!email) return alert("Please enter your email.");
-            try {
-                await sendPasswordResetEmail(auth, email);
-                alert("Password reset email sent! Check your inbox.");
-                toggleResetView(); // Go back to login
-            } catch (error) {
-                alert("Error: " + error.message);
-            }
-        });
-
-        // --- SUBMISSION & BOOKING (Same as before but linked to Auth) ---
-        // Submission Logic
+        // --- SUBMISSION ---
         document.getElementById('submission-form').addEventListener('submit', async(e) => {
             e.preventDefault();
             if(!auth.currentUser) return alert("Please login first.");
@@ -496,85 +651,36 @@
             finally { btn.innerText = originalText; }
         });
 
-        // Booking Logic (Global)
-        window.bookCabin = async (type, price) => {
-            if(!auth.currentUser) return alert("Please login to book a cabin.");
-            if(!confirm(`Book ${type} Cabin ($${price})?`)) return;
-            try {
-                await addDoc(collection(db, "registrations"), {
-                    userId: auth.currentUser.uid,
-                    email: auth.currentUser.email,
-                    cabinType: type,
-                    price: price,
-                    status: 'Confirmed',
-                    timestamp: serverTimestamp()
-                });
-                alert("Booking Confirmed! Check My Page.");
-                showSection('mypage');
-            } catch(e) { alert("Error: " + e.message); }
-        }
-
-        // --- AUTH STATE MONITOR ---
+        // --- MY PAGE ---
         onAuthStateChanged(auth, (user) => {
             const menu = document.getElementById('auth-menu');
             const subLock = document.getElementById('submission-lock');
             const subContent = document.getElementById('submission-content');
 
             if(user) {
-                // Use Display Name if available, else Email
                 const displayName = user.displayName || user.email.split('@')[0];
-                menu.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <span class="text-xs sm:text-sm text-slate-500 hidden sm:inline">Welcome, <b>${displayName}</b></span>
-                        <button onclick="showSection('mypage')" class="font-bold text-brand-gold text-xs sm:text-sm hover:underline">My Page</button>
-                        <span class="text-slate-600">|</span>
-                        <button onclick="signOut(auth)" class="hover:text-white transition text-xs sm:text-sm">Logout</button>
-                    </div>
-                `;
+                menu.innerHTML = `<div class="flex items-center gap-3"><span class="text-xs sm:text-sm text-slate-500 hidden sm:inline">Welcome, <b>${displayName}</b></span><button onclick="showSection('mypage')" class="font-bold text-brand-gold text-xs sm:text-sm hover:underline">My Page</button><span class="text-slate-600">|</span><button onclick="signOut(auth)" class="hover:text-white transition text-xs sm:text-sm">Logout</button></div>`;
                 if(subLock) subLock.classList.add('hidden');
                 if(subContent) subContent.classList.remove('hidden');
-                loadMyData(user.uid);
+                
+                // Load My Data
+                const pList = document.getElementById('my-papers-list');
+                const qP = query(collection(db, "submissions"), where("userId", "==", user.uid));
+                onSnapshot(qP, (snap) => {
+                    pList.innerHTML = snap.empty ? '<li class="text-slate-500 text-sm">No submissions.</li>' : '';
+                    snap.forEach(doc => {
+                        const d = doc.data();
+                        pList.innerHTML += `<li class="border-b border-slate-100 pb-3"><b>${d.title}</b><span class="status-badge status-review float-right">${d.status}</span></li>`;
+                    });
+                });
             } else {
                 menu.innerHTML = `<button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button><span>|</span><button onclick="openModal('signup-modal')" class="hover:text-white transition">Sign Up</button>`;
                 if(subLock) subLock.classList.remove('hidden');
                 if(subContent) subContent.classList.add('hidden');
-                document.getElementById('my-papers-list').innerHTML = '';
-                document.getElementById('my-registration-info').innerHTML = '';
             }
         });
-
-        // --- MY PAGE LOADER ---
-        function loadMyData(userId) {
-            const pList = document.getElementById('my-papers-list');
-            const rList = document.getElementById('my-registration-info');
-            
-            const qP = query(collection(db, "submissions"), where("userId", "==", userId));
-            onSnapshot(qP, (snap) => {
-                pList.innerHTML = snap.empty ? '<li class="text-slate-500 text-sm">No submissions.</li>' : '';
-                snap.forEach(doc => {
-                    const d = doc.data();
-                    const li = document.createElement('li');
-                    li.className = "border-b border-slate-100 pb-3";
-                    li.innerHTML = `<div class="flex justify-between"><div><p class="font-bold text-brand-navy">${d.title}</p><p class="text-xs text-slate-500">${d.topic}</p></div><span class="status-badge status-review">${d.status}</span></div>`;
-                    pList.appendChild(li);
-                });
-            });
-
-            const qR = query(collection(db, "registrations"), where("userId", "==", userId));
-            onSnapshot(qR, (snap) => {
-                rList.innerHTML = snap.empty ? '<p class="text-slate-500 text-sm">No bookings.</p>' : '';
-                snap.forEach(doc => {
-                    const d = doc.data();
-                    const div = document.createElement('div');
-                    div.className = "bg-slate-50 p-4 rounded border border-slate-200 mb-2";
-                    div.innerHTML = `<div class="flex justify-between"><span class="font-bold text-brand-navy">${d.cabinType}</span><span class="status-badge status-accepted">${d.status}</span></div><p class="text-sm">$${d.price}</p>`;
-                    rList.appendChild(div);
-                });
-            });
-        }
-
-        window.signOut = signOut;
-        window.auth = auth;
+        
+        window.signOut = signOut; window.auth = auth;
     </script>
 
     <!-- UI Logic -->
@@ -585,7 +691,7 @@
             document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
             setTimeout(() => document.getElementById(id).classList.add('active'), 100);
             document.querySelectorAll('.nav-link').forEach(link => {
-                if(link.getAttribute('onclick').includes(`'${id}'`)) { link.classList.add('active', 'border-brand-blue'); link.classList.remove('border-transparent'); }
+                if(link.getAttribute('onclick')?.includes(`'${id}'`)) { link.classList.add('active', 'border-brand-blue'); link.classList.remove('border-transparent'); }
                 else { link.classList.remove('active', 'border-brand-blue'); link.classList.add('border-transparent'); }
             });
         }
@@ -593,10 +699,6 @@
         function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.getElementById(id).classList.remove('flex'); }
         function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
         function updateFileName(input) { document.getElementById('file-name-display').innerText = input.files[0] ? "Selected: " + input.files[0].name : "Click to upload PDF"; }
-        function toggleResetView() {
-            document.getElementById('login-form-view').classList.toggle('hidden');
-            document.getElementById('reset-form-view').classList.toggle('hidden');
-        }
         window.onclick = function(e) { if (e.target.classList.contains('modal-backdrop')) { e.target.classList.add('hidden'); e.target.classList.remove('flex'); }}
     </script>
 </body>
