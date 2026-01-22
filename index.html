@@ -373,18 +373,19 @@
         import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnapshot, getDocs, updateDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // 👇👇👇 PASTE YOUR KEY HERE 👇👇👇
-       const firebaseConfig = {
+        const firebaseConfig = {
   apiKey: "AIzaSyAENLGgNgnFeGXOYV2-sKI9QI4ElZLyOPE",
   authDomain: "icc-2026.firebaseapp.com",
   projectId: "icc-2026",
   storageBucket: "icc-2026.firebasestorage.app",
   messagingSenderId: "85385162390",
   appId: "1:85385162390:web:af353393092c491a721cb7"
-}; 
+};
+        };
         // 👆👆👆 PASTE YOUR KEY HERE 👆👆👆
         
         const GEMINI_API_KEY = "";
-        const ADMIN_EMAILS = ['admin@icc2026.org']; // Add admin emails here
+        const ADMIN_EMAILS = ['admin@icc2026.org', 'your-email@gmail.com']; // Add admin emails here
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -531,7 +532,7 @@
 
             if(user) {
                 // Check if admin
-                 isAdmin = true;
+                const isAdmin = true;
                 if(isAdmin) {
                     navAdmin.classList.remove('hidden');
                     mobAdmin.classList.remove('hidden');
