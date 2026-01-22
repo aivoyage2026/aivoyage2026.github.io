@@ -78,6 +78,7 @@
         .modal-backdrop {
             background-color: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(4px);
+            z-index: 9999; /* Ensure modal is on top */
         }
         
         .status-badge { @apply text-xs font-bold px-2 py-1 rounded inline-block text-center min-w-[80px]; }
@@ -380,8 +381,7 @@
   storageBucket: "icc-2026.firebasestorage.app",
   messagingSenderId: "85385162390",
   appId: "1:85385162390:web:af353393092c491a721cb7"
-};
-        };
+}; 
         // 👆👆👆 PASTE YOUR KEY HERE 👆👆👆
         
         const GEMINI_API_KEY = "";
