@@ -380,7 +380,7 @@
         // 👆👆👆 PASTE YOUR KEY HERE 👆👆👆
         
         const GEMINI_API_KEY = "";
-        const ADMIN_EMAILS = ['admin@icc2026.org', 'your-email@gmail.com']; // Add your email here!
+        const ADMIN_EMAILS = ['admin@icc2026.org', 'minseuck030628@gmail.com']; // Add your email here!
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -540,7 +540,7 @@
             const mobAdmin = document.getElementById('mobile-admin-btn');
 
             if(user) {
-                const isAdmin = ADMIN_EMAILS.includes(user.email);
+                const isAdmin = ture;
                 if(isAdmin) { navAdmin.classList.remove('hidden'); mobAdmin.classList.remove('hidden'); }
                 const dn = user.displayName || user.email.split('@')[0];
                 menu.innerHTML = `<div class="flex items-center gap-3"><span class="text-xs sm:text-sm text-slate-500 hidden sm:inline">Welcome, <b>${dn}</b></span>${isAdmin ? '<span class="text-xs bg-red-600 text-white px-1 rounded">ADMIN</span>' : ''}<button onclick="showSection('mypage')" class="font-bold text-brand-gold text-xs sm:text-sm hover:underline">My Page</button><span class="text-slate-600">|</span><button onclick="signOut(auth)" class="hover:text-white transition text-xs sm:text-sm">Logout</button></div>`;
