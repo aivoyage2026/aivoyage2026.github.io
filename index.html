@@ -488,22 +488,7 @@
             }
         });
                 
-                // Show Success Modal
-                openModal('success-modal');
-                document.getElementById('submission-form').reset();
-                document.getElementById('file-name-display').innerText = "Click to upload PDF";
                 
-            } catch(e) { 
-                console.error("Submission Error:", e);
-                alert("Error: " + e.message); 
-            } finally { 
-                // Reset UI
-                btn.disabled = false;
-                btnText.innerText = "Submit Paper";
-                btnSpinner.classList.add('hidden');
-            }
-        });
-
         // --- ADMIN FUNCTIONS ---
         window.loadAdminData = async () => {
             const list = document.getElementById('admin-papers-list');
