@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Voyage 2026 - Conference</title>
+    <title>AI Voyage 2026 - International Conference</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -224,7 +224,7 @@
                         <div class="p-6 border-2 border-dashed border-slate-300 rounded-lg hover:bg-slate-50 transition text-center cursor-pointer relative group"><input type="file" id="paper-file" accept=".pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(this)"><div class="space-y-2"><i data-lucide="upload" class="w-6 h-6 text-slate-400 mx-auto"></i><p class="text-sm text-brand-navy" id="file-name-display">Click to upload PDF</p></div></div>
                         
                         <!-- NEW SUBMIT BUTTON -->
-                        <button type="submit" id="submit-btn" class="w-full bg-brand-navy text-white font-bold py-4 rounded-lg hover:bg-brand-blue transition flex items-center justify-center gap-2">
+                        <button type="button" id="submit-btn" class="w-full bg-brand-navy text-white font-bold py-4 rounded-lg hover:bg-brand-blue transition flex items-center justify-center gap-2">
                            <span id="submit-text">Submit Paper</span>
                            <span id="submit-spinner" class="spinner ml-2 hidden"></span>
                         </button>
@@ -381,7 +381,7 @@
   storageBucket: "icc-2026.firebasestorage.app",
   messagingSenderId: "85385162390",
   appId: "1:85385162390:web:af353393092c491a721cb7"
-}; 
+};
         // 👆👆👆 PASTE YOUR KEY HERE 👆👆👆
         
         const GEMINI_API_KEY = "";
@@ -550,9 +550,13 @@
             if(user) {
                 // Check if admin
                 const isAdmin = ADMIN_EMAILS.includes(user.email);
+                
                 if(isAdmin) {
                     navAdmin.classList.remove('hidden');
                     mobAdmin.classList.remove('hidden');
+                } else {
+                    navAdmin.classList.add('hidden');
+                    mobAdmin.classList.add('hidden');
                 }
 
                 const displayName = user.displayName || user.email.split('@')[0];
