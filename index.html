@@ -430,32 +430,63 @@
         // --- SUBMISSION ---
         // Changed to 'click' event on button to prevent form submission issues
         document.getElementById('submit-btn').addEventListener('click', async(e) => {
-            e.preventDefault(); // Prevent any default form action
+            e.preventDefault(); 
             
-            if(!auth.currentUser) return alert("Please login first.");
+            // 1. 로그인 했는지 확인
+            if(!auth.currentUser) return alert("로그인이 필요합니다.");
+            
+            // 2. 빈 칸이 있는지 확인 (⭐ 여기가 추가되었습니다!)
+            const title = document.getElementById('paper-title').value;
+            const author = document.getElementById('author-name').value;
+            const affil = document.getElementById('author-affil').value;
+            const abstract = document.getElementById('paper-abstract').value;
+
+            // 만약 하나라도 비어있으면 경고창을 띄우고 멈춤
+            if(!title || !author || !affil || !abstract) {
+                return alert("모든 필수 항목(*)을 입력해주세요.");
+            }
             
             const btn = document.getElementById('submit-btn');
             const btnText = document.getElementById('submit-text');
             const btnSpinner = document.getElementById('submit-spinner');
             
-            // UI Loading State
+            // 3. 로딩 시작 (이제 빈 칸이 없을 때만 로딩이 돕니다)
             btn.disabled = true;
-            btnText.innerText = "Sending...";
+            btnText.innerText = "제출 중...";
             btnSpinner.classList.remove('hidden');
             
             try {
+                // 데이터베이스에 저장
                 await addDoc(collection(db, "submissions"), {
-                    title: document.getElementById('paper-title').value,
-                    author: document.getElementById('author-name').value,
-                    affiliation: document.getElementById('author-affil').value,
+                    title: title,
+                    author: author,
+                    affiliation: affil,
                     topic: document.getElementById('paper-topic').value,
-                    abstract: document.getElementById('paper-abstract').value,
-                    fileName: document.getElementById('paper-file').files[0]?.name || "No file",
+                    abstract: abstract,
+                    fileName: document.getElementById('paper-file').files[0]?.name || "파일 없음",
                     timestamp: serverTimestamp(),
                     userId: auth.currentUser.uid,
                     email: auth.currentUser.email,
-                    status: 'Under Review'
+                    status: 'Under Review' // 검토 중 상태로 저장
                 });
+                
+                // 성공하면 성공 모달창 띄우기
+                openModal('success-modal');
+                
+                // 입력폼 초기화
+                document.getElementById('submission-form').reset();
+                document.getElementById('file-name-display').innerText = "Click to upload PDF";
+                
+            } catch(e) { 
+                console.error("Submission Error:", e);
+                alert("오류 발생: " + e.message); 
+            } finally { 
+                // 4. 로딩 종료 (성공하든 실패하든 버튼 원래대로)
+                btn.disabled = false;
+                btnText.innerText = "Submit Paper";
+                btnSpinner.classList.add('hidden');
+            }
+        });
                 
                 // Show Success Modal
                 openModal('success-modal');
