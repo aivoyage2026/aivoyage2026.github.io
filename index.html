@@ -34,7 +34,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: #0f172a; 
+            background-color: #0f172a; /* 이미지가 없을 때를 대비한 기본색 */
         }
 
         .page-section { display: none; opacity: 0; transform: translateY(10px); transition: all 0.4s ease-out; }
@@ -58,7 +58,6 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <span class="hidden sm:inline">The 1st International Conference on AI Convergence & Future Maritime</span>
             <span class="sm:hidden">AI Voyage 2026</span>
-            
             <div class="flex items-center gap-4" id="auth-menu">
                 <button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button>
                 <span>|</span>
@@ -356,124 +355,4 @@
             if(res) { input.value = res; msg.innerText = "Polished!"; }
         }
 
-        // --- GLOBAL ACTIONS ---
-        window.signOutAction = async () => {
-            await signOut(auth);
-            // 🚀 Force redirect to home & Refresh UI
-            showSection('home');
-            alert("Logged out successfully.");
-        }; 
-        
-        window.deletePaper = async (docId) => {
-            if(!confirm("Delete this paper?")) return;
-            try { await deleteDoc(doc(db, "submissions", docId)); alert("Deleted."); } catch(e) { alert("Error: " + e.message); }
-        }
-
-        // 🔥 Safe Edit Modal Opener
-        window.openEditModalSafe = (id) => {
-            const d = window.paperDataStore[id];
-            if (!d) return alert("Error loading data. Try refreshing.");
-            document.getElementById('edit-doc-id').value = id;
-            document.getElementById('edit-title').value = d.title || "";
-            document.getElementById('edit-author').value = d.author || "";
-            document.getElementById('edit-affil').value = d.affiliation || "";
-            document.getElementById('edit-abstract').value = d.abstract || "";
-            openModal('edit-modal');
-        }
-
-        // --- EVENT LISTENERS ---
-        document.getElementById('btn-google-login').addEventListener('click', async () => { try { await signInWithPopup(auth, googleProvider); closeModal('login-modal'); } catch (e) { alert(e.message); } });
-        document.getElementById('btn-login').addEventListener('click', async () => { try { await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); closeModal('login-modal'); } catch (e) { alert(e.message); } });
-        document.getElementById('btn-signup').addEventListener('click', async () => { try { const cred = await createUserWithEmailAndPassword(auth, document.getElementById('signup-email').value, document.getElementById('signup-password').value); await updateProfile(cred.user, { displayName: document.getElementById('signup-name').value }); closeModal('signup-modal'); } catch (e) { alert(e.message); } });
-
-        document.getElementById('submit-btn').addEventListener('click', async(e) => {
-            e.preventDefault(); 
-            if(!auth.currentUser) return alert("Please login.");
-            const btn = document.getElementById('submit-btn');
-            btn.disabled = true; 
-            try {
-                await addDoc(collection(db, "submissions"), {
-                    title: document.getElementById('paper-title').value,
-                    author: document.getElementById('author-name').value,
-                    affiliation: document.getElementById('author-affil').value,
-                    topic: document.getElementById('paper-topic').value,
-                    abstract: document.getElementById('paper-abstract').value,
-                    fileName: document.getElementById('paper-file').files[0]?.name || "No File",
-                    timestamp: serverTimestamp(),
-                    userId: auth.currentUser.uid,
-                    email: auth.currentUser.email,
-                    status: 'Under Review'
-                });
-                openModal('success-modal');
-                document.getElementById('submission-form').reset();
-            } catch(e) { alert("Error: " + e.message); } 
-            finally { btn.disabled = false; }
-        });
-
-        document.getElementById('btn-update-paper').addEventListener('click', async () => {
-            try {
-                await updateDoc(doc(db, "submissions", document.getElementById('edit-doc-id').value), {
-                    title: document.getElementById('edit-title').value,
-                    author: document.getElementById('edit-author').value,
-                    affiliation: document.getElementById('edit-affil').value,
-                    abstract: document.getElementById('edit-abstract').value
-                });
-                alert("Updated!"); closeModal('edit-modal');
-            } catch(e) { alert("Error: " + e.message); }
-        });
-
-        // --- AUTH STATE & LOADING DATA ---
-        window.loadAdminData = async () => {
-            const list = document.getElementById('admin-papers-list');
-            list.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
-            const snap = await getDocs(collection(db, "submissions"));
-            list.innerHTML = '';
-            snap.forEach(docSnap => {
-                const d = docSnap.data();
-                window.paperDataStore[docSnap.id] = d; 
-                list.innerHTML += `<tr class="border-b"><td class="p-3">${d.title}</td><td class="p-3">${d.author}</td><td class="p-3">${d.status}</td><td class="p-3"><button onclick="deletePaper('${docSnap.id}')" class="text-red-500">Del</button></td></tr>`;
-            });
-        }
-
-        onAuthStateChanged(auth, (user) => {
-            const menu = document.getElementById('auth-menu');
-            if(user) {
-                const isAdmin = ADMIN_EMAILS.includes(user.email);
-                if(isAdmin) { document.getElementById('nav-admin-btn').classList.remove('hidden'); document.getElementById('mobile-admin-btn').classList.remove('hidden'); }
-                
-                // User Name Greeting
-                const displayName = user.displayName || user.email.split('@')[0];
-
-                menu.innerHTML = `<span class="text-slate-300 text-xs mr-2 hidden sm:inline">Welcome, <b>${displayName}</b></span> <button onclick="showSection('mypage')" class="font-bold hover:text-white transition">My Page</button> <span class="mx-2">|</span> <button onclick="signOutAction()" class="hover:text-white transition">Logout</button>`;
-                
-                document.getElementById('submission-lock').classList.add('hidden');
-                document.getElementById('submission-content').classList.remove('hidden');
-
-                const q = query(collection(db, "submissions"), where("userId", "==", user.uid));
-                onSnapshot(q, (snap) => {
-                    const list = document.getElementById('my-papers-list');
-                    list.innerHTML = snap.empty ? '<li>No papers.</li>' : '';
-                    snap.forEach(docSnap => {
-                        const d = docSnap.data();
-                        window.paperDataStore[docSnap.id] = d; 
-                        // 🔥 SAFE CALL
-                        list.innerHTML += `<li class="border-b pb-2 flex justify-between"><div><b>${d.title}</b><br><span class="text-xs">${d.status}</span></div><div><button onclick="openEditModalSafe('${docSnap.id}')" class="text-blue-500 mr-2">Edit</button><button onclick="deletePaper('${docSnap.id}')" class="text-red-500">Del</button></div></li>`;
-                    });
-                });
-            } else {
-                menu.innerHTML = `<button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button> <span>|</span> <button onclick="openModal('signup-modal')" class="hover:text-white transition">Sign Up</button>`;
-                document.getElementById('submission-lock').classList.remove('hidden');
-                document.getElementById('submission-content').classList.add('hidden');
-                document.getElementById('nav-admin-btn').classList.add('hidden');
-                document.getElementById('mobile-admin-btn').classList.add('hidden');
-
-                // 🚨 SECURITY REDIRECT: If on protected page, go home
-                const currentSec = document.querySelector('.page-section.active');
-                if(currentSec && (currentSec.id === 'mypage' || currentSec.id === 'admin')) {
-                    showSection('home');
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+        // ---
