@@ -597,10 +597,10 @@
                         if(d.status === 'Rejected') statusClass = "status-rejected";
 
                         // Escape quotes for onclick params
-                        const safeTitle = d.title.replace(/'/g, "\\'");
-                        const safeAuthor = d.author.replace(/'/g, "\\'");
-                        const safeAffil = d.affiliation.replace(/'/g, "\\'");
-                        const safeAbs = d.abstract.replace(/'/g, "\\'").replace(/\n/g, "\\n");
+                        const safeTitle = (d.title || "").replace(/'/g, "\\'");
+const safeAuthor = (d.author || "").replace(/'/g, "\\'");
+const safeAffil = (d.affiliation || "").replace(/'/g, "\\'");
+const safeAbs = (d.abstract || "").replace(/'/g, "\\'").replace(/\n/g, "\\n");
 
                         pList.innerHTML += `
                             <li class="border-b border-slate-100 pb-3 flex justify-between items-start">
