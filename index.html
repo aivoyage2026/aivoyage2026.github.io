@@ -235,10 +235,7 @@
         function showSection(id) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
-            setTimeout(() => { 
-                const el = document.getElementById(id);
-                if(el) el.classList.add('active');
-            }, 100);
+            setTimeout(() => { const el = document.getElementById(id); if(el) el.classList.add('active'); }, 100);
             document.querySelectorAll('.nav-link').forEach(link => {
                 if(link.getAttribute('onclick')?.includes(`'${id}'`)) { link.classList.add('active', 'border-brand-blue'); link.classList.remove('border-transparent'); } 
                 else { link.classList.remove('active', 'border-brand-blue'); link.classList.add('border-transparent'); }
@@ -276,8 +273,7 @@
         const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // 🔥 CRITICAL: Data Store for Safe Edit (Prevents HTML breakage)
-        window.paperDataStore = {};
+        window.paperDataStore = {}; // Data store for safe editing
 
         // --- GEMINI FUNCTIONS ---
         window.callGeminiAPI = async (prompt) => {
@@ -300,7 +296,12 @@
         }
 
         // --- GLOBAL ACTIONS ---
-        window.signOut = signOut; 
+        window.signOut = async () => {
+            await signOut(auth);
+            // 🚀 Force redirect to home on logout
+            showSection('home');
+            alert("Signed out successfully.");
+        }; 
         window.auth = auth;
         
         window.deletePaper = async (docId) => {
@@ -308,10 +309,10 @@
             try { await deleteDoc(doc(db, "submissions", docId)); alert("Deleted."); } catch(e) { alert("Error: " + e.message); }
         }
 
-        // 🔥 Safe Edit Modal Opener
+        // 🔥 Safe Edit Modal Opener (Reads from memory, not HTML)
         window.openEditModalSafe = (id) => {
             const d = window.paperDataStore[id];
-            if (!d) return alert("Error loading data.");
+            if (!d) return alert("Error loading data. Try refreshing.");
             document.getElementById('edit-doc-id').value = id;
             document.getElementById('edit-title').value = d.title || "";
             document.getElementById('edit-author').value = d.author || "";
@@ -380,7 +381,8 @@
                 const isAdmin = ADMIN_EMAILS.includes(user.email);
                 if(isAdmin) { document.getElementById('nav-admin-btn').classList.remove('hidden'); document.getElementById('mobile-admin-btn').classList.remove('hidden'); }
                 
-                menu.innerHTML = `<button onclick="showSection('mypage')" class="font-bold">My Page</button> | <button onclick="signOut(auth)">Logout</button>`;
+                // 🚀 Logout button now calls the global window.signOut
+                menu.innerHTML = `<button onclick="showSection('mypage')" class="font-bold">My Page</button> | <button onclick="signOut()">Logout</button>`;
                 document.getElementById('submission-lock').classList.add('hidden');
                 document.getElementById('submission-content').classList.remove('hidden');
 
@@ -390,7 +392,7 @@
                     list.innerHTML = snap.empty ? '<li>No papers.</li>' : '';
                     snap.forEach(docSnap => {
                         const d = docSnap.data();
-                        window.paperDataStore[docSnap.id] = d; // Store for safety
+                        window.paperDataStore[docSnap.id] = d; 
                         // 🔥 SAFE CALL: Using ID only
                         list.innerHTML += `<li class="border-b pb-2 flex justify-between"><div><b>${d.title}</b><br><span class="text-xs">${d.status}</span></div><div><button onclick="openEditModalSafe('${docSnap.id}')" class="text-blue-500 mr-2">Edit</button><button onclick="deletePaper('${docSnap.id}')" class="text-red-500">Del</button></div></li>`;
                     });
@@ -399,6 +401,7 @@
                 menu.innerHTML = `<button onclick="openModal('login-modal')">Login</button> | <button onclick="openModal('signup-modal')">Sign Up</button>`;
                 document.getElementById('submission-lock').classList.remove('hidden');
                 document.getElementById('submission-content').classList.add('hidden');
+                document.getElementById('nav-admin-btn').classList.add('hidden'); 
             }
         });
     </script>
