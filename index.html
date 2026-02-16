@@ -374,7 +374,7 @@
             const doc = window.paperDataStore[docId];
             if(!doc || !doc.fileData) return alert("No file found.");
             
-            // Create a temporary window to show PDF
+            // Open Base64 PDF
             const win = window.open();
             if(win) {
                 win.document.write(
@@ -451,7 +451,13 @@
         
         window.deletePaper = async (docId) => {
             if(!confirm("Delete this paper?")) return;
-            try { await deleteDoc(doc(db, "submissions", docId)); alert("Deleted."); } catch(e) { alert("Error: " + e.message); }
+            try { 
+                await deleteDoc(doc(db, "submissions", docId)); 
+                // Auto reload if on admin page
+                if(document.getElementById('admin').classList.contains('active')) {
+                    loadAdminData();
+                }
+            } catch(e) { alert("Error: " + e.message); }
         }
 
         window.openEditModalSafe = (id) => {
