@@ -30,15 +30,13 @@
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         
         .hero-bg {
-            /* 이미지가 없으면 기본 색상이 나오도록 수정 */
             background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('msc.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-color: #0f172a; /* Fallback color */
+            background-color: #0f172a; 
         }
 
-        /* 페이지 섹션 애니메이션 */
         .page-section { display: none; opacity: 0; transform: translateY(10px); transition: all 0.4s ease-out; }
         .page-section.active { display: block; opacity: 1; transform: translateY(0); }
         
@@ -60,6 +58,7 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <span class="hidden sm:inline">The 1st International Conference on AI Convergence & Future Maritime</span>
             <span class="sm:hidden">AI Voyage 2026</span>
+            
             <div class="flex items-center gap-4" id="auth-menu">
                 <button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button>
                 <span>|</span>
@@ -113,4 +112,368 @@
             <div class="max-w-5xl mx-auto space-y-8 animate-[fadeIn_0.8s_ease-out]">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/50 bg-brand-navy/50 backdrop-blur-sm">
                     <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
-                    <span class="text-xs font-medium tracking-wider text-brand-gold
+                    <span class="text-xs font-medium tracking-wider text-brand-gold uppercase">Aug 27 - 31, 2026</span>
+                </div>
+                <h2 class="text-5xl md:text-7xl font-bold leading-tight drop-shadow-2xl">AI Voyage 2026 <br/> <span class="italic font-serif text-brand-gold">Future Maritime</span></h2>
+                <p class="text-lg md:text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-lg">The 1st International Conference on AI Convergence & Future Maritime.<br>A high-efficiency convention combining Travel, Academics, and Tourism.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                    <button onclick="showSection('submission')" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:bg-white transition duration-300 transform hover:-translate-y-1">Submit Paper</button>
+                    <button onclick="showSection('program')" class="px-8 py-4 border border-white text-white font-medium rounded hover:bg-white hover:text-brand-navy transition duration-300">View Schedule</button>
+                </div>
+            </div>
+        </section>
+        
+        <div class="bg-white border-b border-slate-200 shadow-sm relative z-10 -mt-0">
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <div class="flex items-center gap-4 px-4"><i data-lucide="calendar-days" class="w-10 h-10 text-brand-blue"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Date</p><p class="font-bold text-brand-navy text-lg">Aug 27 - 31, 2026</p></div></div>
+                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0"><i data-lucide="map-pin" class="w-10 h-10 text-brand-blue"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Route</p><p class="font-bold text-brand-navy text-lg">Shanghai - Naha - Shanghai</p></div></div>
+                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0"><i data-lucide="clock" class="w-10 h-10 text-red-500"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Submission Deadline</p><p class="font-bold text-red-600 text-lg">June 30, 2026</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Conference Overview</h2><p class="text-slate-300">Innovation, Networking, and Experience</p></div>
+        <div class="max-w-5xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Purpose & Necessity</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li>High-efficiency, high-value convention combining Travel, Academics, and Tourism.</li><li>New academic networking opportunity.</li><li>Acquire insights through exchanges with local institutions.</li></ul></div><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Expected Effects</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li><strong>One-stop Service:</strong> Accommodation, meetings, and dining.</li><li><strong>High Engagement:</strong> Minimized movement leads to higher attendance.</li><li><strong>Networking:</strong> Enhanced interaction among approx. 200 members.</li></ul></div></div></div>
+    </div>
+
+    <div id="program" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Conference Program</h2></div>
+        <div class="max-w-5xl mx-auto px-6 py-16"><div class="relative border-l-2 border-slate-200 ml-4 space-y-12">
+            <div class="relative pl-8"><span class="absolute -left-[9px] top-0 w-4 h-4 bg-brand-navy rounded-full border-4 border-white"></span><h3 class="text-xl font-bold text-brand-navy">Day 1: Shanghai & Embarkation</h3><p class="text-sm text-brand-gold font-bold mb-4">Aug 27, 2026 (Thu)</p><div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3"><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">15:00</span><p class="font-bold text-brand-blue">Embarkation at Wusongkou Cruise Terminal</p></div></div></div>
+            <div class="relative pl-8"><span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span><h3 class="text-xl font-bold text-brand-navy">Day 2: At Sea</h3><p class="text-sm text-brand-gold font-bold mb-4">Aug 28, 2026 (Fri)</p><div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3"><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">10:00</span><p><strong>Academic Sessions & Keynote Speeches</strong></p></div></div></div>
+            <div class="relative pl-8"><span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span><h3 class="text-xl font-bold text-brand-navy">Day 3: Naha, Okinawa</h3><p class="text-sm text-brand-gold font-bold mb-4">Aug 29, 2026 (Sat)</p><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3"><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">09:30</span><p><strong>Shuri Castle (Ryukyu Kingdom)</strong></p></div><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">14:00</span><p>Kokusai Street (Shopping)</p></div></div><img src="https://images.unsplash.com/photo-1619522253689-b6b931925345?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="rounded-lg object-cover h-full shadow-md" alt="Okinawa"></div></div>
+            <div class="relative pl-8"><span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span><h3 class="text-xl font-bold text-brand-navy">Day 4: At Sea</h3><p class="text-sm text-brand-gold font-bold mb-4">Aug 30, 2026 (Sun)</p><div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-3"><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">10:00</span><p><strong>Academic Sessions & Workshops</strong></p></div></div></div>
+            <div class="relative pl-8"><span class="absolute -left-[9px] top-0 w-4 h-4 bg-slate-300 rounded-full border-4 border-white"></span><h3 class="text-xl font-bold text-brand-navy">Day 5: Disembarkation</h3><p class="text-sm text-brand-gold font-bold mb-4">Aug 31, 2026 (Mon)</p><div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm"><div class="flex gap-4 text-sm"><span class="font-mono font-bold text-slate-500 w-24">07:00</span><p>Arrival at Wusongkou Port</p></div></div></div>
+        </div></div>
+    </div>
+
+    <div id="submission" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Call for Papers</h2><p class="text-slate-300">Submit your research using AI assistance.</p></div>
+        <div class="max-w-4xl mx-auto px-6 py-16">
+            <div id="submission-lock" class="text-center py-20 bg-white rounded-xl shadow-lg border border-slate-200"><div class="inline-flex items-center justify-center w-20 h-20 bg-slate-100 rounded-full mb-6"><i data-lucide="lock" class="w-10 h-10 text-slate-400"></i></div><h3 class="text-2xl font-bold text-brand-navy mb-2">Login Required</h3><div class="flex justify-center gap-4"><button onclick="openModal('login-modal')" class="bg-brand-navy text-white px-8 py-3 rounded-lg font-bold">Login</button></div></div>
+            <div id="submission-content" class="hidden bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
+                <div class="p-8 border-b border-slate-100 bg-slate-50/50"><h3 class="text-2xl font-bold text-brand-navy">Paper Submission</h3></div>
+                <div class="p-8">
+                    <form id="submission-form" class="space-y-8">
+                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Paper Title</label><input type="text" id="paper-title" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-semibold text-slate-700 mb-2">Author</label><input type="text" id="author-name" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div><div><label class="block text-sm font-semibold text-slate-700 mb-2">Affiliation</label><input type="text" id="author-affil" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div></div>
+                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Topic</label><select id="paper-topic" class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white"><option value="smart-ship">1. Smart Ship</option><option value="marine-ai">2. Marine AI</option><option value="tourism">3. Tourism</option></select></div>
+                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Abstract</label><div class="flex justify-end mb-1"><button type="button" onclick="polishAbstract()" class="text-xs text-brand-gold font-bold border border-brand-gold px-2 py-1 rounded hover:bg-brand-gold hover:text-white transition"><i data-lucide="wand-2" class="inline w-3 h-3 mr-1"></i> AI Polish</button></div><textarea id="paper-abstract" rows="6" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></textarea><p id="polish-msg" class="text-xs text-brand-gold mt-1 hidden"></p></div>
+                        <div class="p-6 border-2 border-dashed border-slate-300 rounded-lg hover:bg-slate-50 transition text-center cursor-pointer relative group"><input type="file" id="paper-file" accept=".pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(this)"><div class="space-y-2"><i data-lucide="upload" class="w-6 h-6 text-slate-400 mx-auto"></i><p class="text-sm text-brand-navy" id="file-name-display">Click to upload PDF</p></div></div>
+                        <button type="button" id="submit-btn" class="w-full bg-brand-navy text-white font-bold py-4 rounded-lg hover:bg-brand-blue transition flex items-center justify-center gap-2"><span id="submit-text">Submit Paper</span><span id="submit-spinner" class="spinner ml-2 hidden"></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="venue" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Venue & Travel</h2></div>
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                <img src="mscinside.jpg" alt="MSC" class="rounded-xl shadow-lg h-80 object-cover">
+                <div class="space-y-6"><h3 class="text-3xl font-bold text-brand-navy">MSC Bellissima</h3><p class="text-slate-600">The MSC Bellissima features the iconic Galleria Bellissima.</p></div>
+            </div>
+            <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 mb-12 shadow-sm"><h3 class="text-xl font-bold text-brand-navy mb-4 flex items-center gap-2"><i data-lucide="bus" class="w-6 h-6 text-brand-gold"></i> Travel Info</h3><p class="text-sm text-slate-700"><strong>Meeting Point:</strong> Shanghai Pudong Int'l Airport (PVG) - Terminal 1</p></div>
+        </div>
+    </div>
+
+    <div id="accommodation" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Accommodation</h2></div>
+        <div class="max-w-5xl mx-auto px-6 py-16">
+            <div class="mb-8 text-center bg-blue-50 p-4 rounded-lg"><p class="text-brand-blue font-semibold">Includes: 4-night accommodation, All meals, Conference Access.</p></div>
+            <div class="overflow-hidden border border-slate-200 rounded-lg shadow-sm">
+                <table class="w-full text-left border-collapse"><thead class="bg-slate-50 border-b border-slate-200"><tr><th class="p-5 text-sm font-bold text-slate-500 uppercase">Cabin Type</th><th class="p-5 text-sm font-bold text-slate-500 uppercase">Price (Per Person)</th></tr></thead><tbody class="divide-y divide-slate-100 bg-white"><tr class="hover:bg-slate-50"><td class="p-5 font-bold text-brand-navy">Suite</td><td class="p-5 font-bold text-brand-gold">$1,109</td></tr><tr class="hover:bg-slate-50"><td class="p-5 font-bold text-brand-navy">Balcony</td><td class="p-5 font-bold text-brand-navy">$799</td></tr><tr class="hover:bg-slate-50"><td class="p-5 font-medium text-slate-700">Oceanview</td><td class="p-5 font-bold text-slate-700">$729</td></tr><tr class="hover:bg-slate-50"><td class="p-5 font-medium text-slate-700">Inside</td><td class="p-5 font-bold text-slate-700">$569</td></tr></tbody></table>
+            </div>
+            <p class="text-xs text-slate-400 mt-4 text-center">* Rates based on double occupancy.</p>
+        </div>
+    </div>
+
+    <div id="admin" class="page-section">
+        <div class="bg-slate-800 text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Admin Dashboard</h2></div>
+        <div class="max-w-6xl mx-auto px-6 py-16">
+            <div class="bg-white rounded-xl shadow p-6">
+                <div class="flex justify-between items-center mb-6 border-b pb-4"><h3 class="font-bold text-xl text-brand-navy">Submissions</h3><button onclick="loadAdminData()" class="text-sm bg-slate-100 px-3 py-1 rounded">Refresh</button></div>
+                <div class="overflow-x-auto"><table class="w-full text-left text-sm"><thead class="bg-slate-50"><tr><th class="p-3">Title</th><th class="p-3">Author</th><th class="p-3">Status</th><th class="p-3">Action</th></tr></thead><tbody id="admin-papers-list"></tbody></table></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mypage" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">My Status</h2></div>
+        <div class="max-w-4xl mx-auto px-6 py-16">
+            <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="p-6 border-b border-slate-100 bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">My Submissions</h3></div>
+                <div class="p-6"><ul id="my-papers-list" class="space-y-4"></ul></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-brand-navy text-slate-400 py-12 border-t border-slate-800 mt-auto"><div class="max-w-7xl mx-auto px-6 text-center"><p class="mb-2">&copy; 2026 AI Voyage Conference</p></div></footer>
+
+    <div id="success-modal" class="modal fixed inset-0 z-[200] hidden items-center justify-center modal-backdrop">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-8 text-center"><h3 class="text-2xl font-bold text-brand-navy mb-2">Success!</h3><button onclick="closeModal('success-modal'); showSection('mypage')" class="w-full bg-brand-navy text-white font-bold py-3 rounded mt-4">Go to My Page</button></div>
+    </div>
+
+    <div id="login-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6">
+            <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Login</h3><button onclick="closeModal('login-modal')">X</button></div>
+            <div class="space-y-4">
+                <button id="btn-google-login" class="w-full border border-slate-300 py-2 rounded flex justify-center items-center gap-2">
+                    <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Sign in with Google
+                </button>
+                <div class="border-t pt-4"><input type="email" id="login-email" class="w-full border p-2 rounded" placeholder="Email"><input type="password" id="login-password" class="w-full border p-2 rounded mt-2" placeholder="Password"><button id="btn-login" class="w-full bg-brand-navy text-white py-2 rounded mt-2">Sign In</button></div>
+                <p id="login-error" class="text-red-500 text-sm hidden"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6">
+            <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Sign Up</h3><button onclick="closeModal('signup-modal')">X</button></div>
+            <div class="space-y-4">
+                <input type="text" id="signup-name" class="w-full border p-2 rounded" placeholder="Name">
+                <input type="email" id="signup-email" class="w-full border p-2 rounded" placeholder="Email">
+                <input type="password" id="signup-password" class="w-full border p-2 rounded" placeholder="Password">
+                <button id="btn-signup" class="w-full bg-brand-gold text-white py-2 rounded">Create Account</button>
+                <p id="signup-error" class="text-red-500 text-sm hidden"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">Edit Paper</h3><button onclick="closeModal('edit-modal')">X</button></div>
+            <div class="p-6 space-y-4">
+                <input type="hidden" id="edit-doc-id">
+                <div><label class="block text-sm font-bold">Title</label><input type="text" id="edit-title" class="w-full border p-2 rounded"></div>
+                <div><label class="block text-sm font-bold">Author</label><input type="text" id="edit-author" class="w-full border p-2 rounded"></div>
+                <div><label class="block text-sm font-bold">Affiliation</label><input type="text" id="edit-affil" class="w-full border p-2 rounded"></div>
+                <div><label class="block text-sm font-bold">Abstract</label><textarea id="edit-abstract" rows="4" class="w-full border p-2 rounded"></textarea></div>
+                <button id="btn-update-paper" class="w-full bg-brand-navy text-white font-bold py-3 rounded">Update Paper</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(id) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            setTimeout(() => { 
+                const el = document.getElementById(id);
+                if(el) el.classList.add('active');
+            }, 50);
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.getAttribute('onclick')?.includes(`'${id}'`)) { 
+                    link.classList.add('active', 'border-brand-blue'); 
+                    link.classList.remove('border-transparent'); 
+                } else { 
+                    link.classList.remove('active', 'border-brand-blue'); 
+                    link.classList.add('border-transparent'); 
+                }
+            });
+        }
+
+        function openModal(id) { 
+            const m = document.getElementById(id); 
+            if(m) { m.classList.remove('hidden'); m.classList.add('flex'); } 
+        }
+        
+        function closeModal(id) { 
+            const m = document.getElementById(id); 
+            if(m) { m.classList.add('hidden'); m.classList.remove('flex'); } 
+        }
+        
+        function toggleMobileMenu() { 
+            document.getElementById('mobile-menu').classList.toggle('hidden'); 
+        }
+        
+        function updateFileName(input) { 
+            document.getElementById('file-name-display').innerText = input.files[0] ? "Sel: " + input.files[0].name : "Upload PDF"; 
+        }
+        
+        window.onclick = function(e) { 
+            if (e.target.classList.contains('modal-backdrop')) { 
+                e.target.classList.add('hidden'); 
+                e.target.classList.remove('flex'); 
+            } 
+        }
+        
+        // Init Icons safely
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnapshot, getDocs, updateDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyAENLGgNgnFeGXOYV2-sKI9QI4ElZLyOPE",
+            authDomain: "icc-2026.firebaseapp.com",
+            projectId: "icc-2026",
+            storageBucket: "icc-2026.firebasestorage.app",
+            messagingSenderId: "85385162390",
+            appId: "1:85385162390:web:af353393092c491a721cb7"
+        };
+        
+        const GEMINI_API_KEY = "AIzaSyCZQo6ghKe1LaEFdoTHdbDsgKR00JNtWPQ";
+        const ADMIN_EMAILS = ['admin@icc2026.org']; 
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // Global Data Store for Safe Edit
+        window.paperDataStore = {};
+
+        // --- GEMINI ---
+        window.callGeminiAPI = async (prompt) => {
+            if (!GEMINI_API_KEY) return alert("API Key Missing");
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`;
+            try {
+                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) });
+                const data = await response.json();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text;
+            } catch (e) { console.error(e); return null; }
+        }
+
+        window.polishAbstract = async () => {
+            const input = document.getElementById('paper-abstract');
+            const msg = document.getElementById('polish-msg');
+            if(input.value.length < 10) return alert("Enter abstract first.");
+            msg.innerHTML = '<span class="spinner-dark"></span> Polishing...'; msg.classList.remove('hidden');
+            const res = await window.callGeminiAPI(`Rewrite strictly in academic English:\n"${input.value}"`);
+            if(res) { input.value = res; msg.innerText = "Polished!"; }
+        }
+
+        // --- GLOBAL ACTIONS ---
+        window.signOutAction = async () => {
+            await signOut(auth);
+            // 🚀 Force redirect to home & Refresh UI
+            showSection('home');
+            alert("Logged out successfully.");
+        }; 
+        
+        window.deletePaper = async (docId) => {
+            if(!confirm("Delete this paper?")) return;
+            try { await deleteDoc(doc(db, "submissions", docId)); alert("Deleted."); } catch(e) { alert("Error: " + e.message); }
+        }
+
+        // 🔥 Safe Edit Modal Opener
+        window.openEditModalSafe = (id) => {
+            const d = window.paperDataStore[id];
+            if (!d) return alert("Error loading data. Try refreshing.");
+            document.getElementById('edit-doc-id').value = id;
+            document.getElementById('edit-title').value = d.title || "";
+            document.getElementById('edit-author').value = d.author || "";
+            document.getElementById('edit-affil').value = d.affiliation || "";
+            document.getElementById('edit-abstract').value = d.abstract || "";
+            openModal('edit-modal');
+        }
+
+        // --- EVENT LISTENERS ---
+        document.getElementById('btn-google-login').addEventListener('click', async () => { try { await signInWithPopup(auth, googleProvider); closeModal('login-modal'); } catch (e) { alert(e.message); } });
+        document.getElementById('btn-login').addEventListener('click', async () => { try { await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); closeModal('login-modal'); } catch (e) { alert(e.message); } });
+        document.getElementById('btn-signup').addEventListener('click', async () => { try { const cred = await createUserWithEmailAndPassword(auth, document.getElementById('signup-email').value, document.getElementById('signup-password').value); await updateProfile(cred.user, { displayName: document.getElementById('signup-name').value }); closeModal('signup-modal'); } catch (e) { alert(e.message); } });
+
+        document.getElementById('submit-btn').addEventListener('click', async(e) => {
+            e.preventDefault(); 
+            if(!auth.currentUser) return alert("Please login.");
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true; 
+            try {
+                await addDoc(collection(db, "submissions"), {
+                    title: document.getElementById('paper-title').value,
+                    author: document.getElementById('author-name').value,
+                    affiliation: document.getElementById('author-affil').value,
+                    topic: document.getElementById('paper-topic').value,
+                    abstract: document.getElementById('paper-abstract').value,
+                    fileName: document.getElementById('paper-file').files[0]?.name || "No File",
+                    timestamp: serverTimestamp(),
+                    userId: auth.currentUser.uid,
+                    email: auth.currentUser.email,
+                    status: 'Under Review'
+                });
+                openModal('success-modal');
+                document.getElementById('submission-form').reset();
+            } catch(e) { alert("Error: " + e.message); } 
+            finally { btn.disabled = false; }
+        });
+
+        document.getElementById('btn-update-paper').addEventListener('click', async () => {
+            try {
+                await updateDoc(doc(db, "submissions", document.getElementById('edit-doc-id').value), {
+                    title: document.getElementById('edit-title').value,
+                    author: document.getElementById('edit-author').value,
+                    affiliation: document.getElementById('edit-affil').value,
+                    abstract: document.getElementById('edit-abstract').value
+                });
+                alert("Updated!"); closeModal('edit-modal');
+            } catch(e) { alert("Error: " + e.message); }
+        });
+
+        // --- AUTH STATE & LOADING DATA ---
+        window.loadAdminData = async () => {
+            const list = document.getElementById('admin-papers-list');
+            list.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
+            const snap = await getDocs(collection(db, "submissions"));
+            list.innerHTML = '';
+            snap.forEach(docSnap => {
+                const d = docSnap.data();
+                window.paperDataStore[docSnap.id] = d; 
+                list.innerHTML += `<tr class="border-b"><td class="p-3">${d.title}</td><td class="p-3">${d.author}</td><td class="p-3">${d.status}</td><td class="p-3"><button onclick="deletePaper('${docSnap.id}')" class="text-red-500">Del</button></td></tr>`;
+            });
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            const menu = document.getElementById('auth-menu');
+            if(user) {
+                const isAdmin = ADMIN_EMAILS.includes(user.email);
+                if(isAdmin) { document.getElementById('nav-admin-btn').classList.remove('hidden'); document.getElementById('mobile-admin-btn').classList.remove('hidden'); }
+                
+                // User Name Greeting
+                const displayName = user.displayName || user.email.split('@')[0];
+
+                menu.innerHTML = `<span class="text-slate-300 text-xs mr-2 hidden sm:inline">Welcome, <b>${displayName}</b></span> <button onclick="showSection('mypage')" class="font-bold hover:text-white transition">My Page</button> <span class="mx-2">|</span> <button onclick="signOutAction()" class="hover:text-white transition">Logout</button>`;
+                
+                document.getElementById('submission-lock').classList.add('hidden');
+                document.getElementById('submission-content').classList.remove('hidden');
+
+                const q = query(collection(db, "submissions"), where("userId", "==", user.uid));
+                onSnapshot(q, (snap) => {
+                    const list = document.getElementById('my-papers-list');
+                    list.innerHTML = snap.empty ? '<li>No papers.</li>' : '';
+                    snap.forEach(docSnap => {
+                        const d = docSnap.data();
+                        window.paperDataStore[docSnap.id] = d; 
+                        // 🔥 SAFE CALL
+                        list.innerHTML += `<li class="border-b pb-2 flex justify-between"><div><b>${d.title}</b><br><span class="text-xs">${d.status}</span></div><div><button onclick="openEditModalSafe('${docSnap.id}')" class="text-blue-500 mr-2">Edit</button><button onclick="deletePaper('${docSnap.id}')" class="text-red-500">Del</button></div></li>`;
+                    });
+                });
+            } else {
+                menu.innerHTML = `<button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button> <span>|</span> <button onclick="openModal('signup-modal')" class="hover:text-white transition">Sign Up</button>`;
+                document.getElementById('submission-lock').classList.remove('hidden');
+                document.getElementById('submission-content').classList.add('hidden');
+                document.getElementById('nav-admin-btn').classList.add('hidden');
+                document.getElementById('mobile-admin-btn').classList.add('hidden');
+
+                // 🚨 SECURITY REDIRECT: If on protected page, go home
+                const currentSec = document.querySelector('.page-section.active');
+                if(currentSec && (currentSec.id === 'mypage' || currentSec.id === 'admin')) {
+                    showSection('home');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
