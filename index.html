@@ -369,18 +369,20 @@
 
     <!-- Scripts (Auth/Gemini) -->
     <script type="module">
+        // 👇 버전(10.8.0)을 수정하여 안정적으로 불러오도록 변경했습니다.
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnapshot, getDocs, updateDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnapshot, getDocs, updateDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
         // 👇👇👇 PASTE YOUR KEY HERE 👇👇👇
         const firebaseConfig = {
-  apiKey: "AIzaSyAENLGgNgnFeGXOYV2-sKI9QI4ElZLyOPE",
-  authDomain: "icc-2026.firebaseapp.com",
-  projectId: "icc-2026",
-  storageBucket: "icc-2026.firebasestorage.app",
-  messagingSenderId: "85385162390",
-  appId: "1:85385162390:web:af353393092c491a721cb7"
-};
+            apiKey: "AIzaSyAENLGgNgnFeGXOYV2-sKI9QI4ElZLyOPE",
+            authDomain: "icc-2026.firebaseapp.com",
+            projectId: "icc-2026",
+            storageBucket: "icc-2026.firebasestorage.app",
+            messagingSenderId: "85385162390",
+            appId: "1:85385162390:web:af353393092c491a721cb7"
+        };
         // 👆👆👆 PASTE YOUR KEY HERE 👆👆👆
         
         const GEMINI_API_KEY = "AIzaSyCZQo6ghKe1LaEFdoTHdbDsgKR00JNtWPQ";
@@ -481,7 +483,7 @@ import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnap
             document.getElementById('edit-title').value = title;
             document.getElementById('edit-author').value = author;
             document.getElementById('edit-affil').value = affil;
-            document.getElementById('edit-abstract').value = abs; // 줄바꿈 처리는 간단히
+            document.getElementById('edit-abstract').value = abs; 
             openModal('edit-modal');
         }
 
@@ -597,9 +599,9 @@ import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnap
 
                         // Escape quotes for onclick params
                         const safeTitle = (d.title || "").replace(/'/g, "\\'");
-const safeAuthor = (d.author || "").replace(/'/g, "\\'");
-const safeAffil = (d.affiliation || "").replace(/'/g, "\\'");
-const safeAbs = (d.abstract || "").replace(/'/g, "\\'").replace(/\n/g, "\\n");
+                        const safeAuthor = (d.author || "").replace(/'/g, "\\'");
+                        const safeAffil = (d.affiliation || "").replace(/'/g, "\\'");
+                        const safeAbs = (d.abstract || "").replace(/'/g, "\\'").replace(/\n/g, "\\n");
 
                         pList.innerHTML += `
                             <li class="border-b border-slate-100 pb-3 flex justify-between items-start">
