@@ -656,5 +656,62 @@
             </div>
         </div>
     </div>
+    <script>
+        lucide.createIcons(); // 아이콘 생성
+
+        // 화면 전환 함수
+        function showSection(id) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            setTimeout(() => document.getElementById(id).classList.add('active'), 100);
+            
+            // 메뉴 활성화 표시
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.getAttribute('onclick')?.includes(`'${id}'`)) { 
+                    link.classList.add('active', 'border-brand-blue'); 
+                    link.classList.remove('border-transparent'); 
+                } else { 
+                    link.classList.remove('active', 'border-brand-blue'); 
+                    link.classList.add('border-transparent'); 
+                }
+            });
+        }
+
+        // 모달(팝업) 열기
+        function openModal(id) { 
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.remove('hidden'); 
+                modal.classList.add('flex'); 
+            }
+        }
+
+        // 모달 닫기
+        function closeModal(id) { 
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.add('hidden'); 
+                modal.classList.remove('flex'); 
+            }
+        }
+
+        // 모바일 메뉴 토글
+        function toggleMobileMenu() { 
+            document.getElementById('mobile-menu').classList.toggle('hidden'); 
+        }
+
+        // 파일 업로드 시 이름 표시
+        function updateFileName(input) { 
+            document.getElementById('file-name-display').innerText = input.files[0] ? "Selected: " + input.files[0].name : "Click to upload PDF"; 
+        }
+
+        // 배경 클릭 시 모달 닫기
+        window.onclick = function(e) { 
+            if (e.target.classList.contains('modal-backdrop')) { 
+                e.target.classList.add('hidden'); 
+                e.target.classList.remove('flex'); 
+            }
+        }
+    </script>
 </body>
 </html>
