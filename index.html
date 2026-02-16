@@ -58,7 +58,6 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <span class="hidden sm:inline">The 1st International Conference on AI Convergence & Future Maritime</span>
             <span class="sm:hidden">AI Voyage 2026</span>
-            
             <div class="flex items-center gap-4" id="auth-menu">
                 <button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button>
                 <span>|</span>
@@ -449,13 +448,21 @@
             alert("Logged out successfully.");
         }; 
         
-        window.deletePaper = async (docId) => {
+        // 🔥 Updated Delete Logic: Instant UI Removal
+        window.deletePaper = async (docId, btnElement) => {
             if(!confirm("Delete this paper?")) return;
             try { 
                 await deleteDoc(doc(db, "submissions", docId)); 
-                // Auto reload if on admin page
+                
+                // 1. Remove visual row immediately
+                if(btnElement) {
+                    const row = btnElement.closest('tr') || btnElement.closest('li');
+                    if(row) row.remove();
+                }
+
+                // 2. Auto reload stats if on admin page (silent update)
                 if(document.getElementById('admin').classList.contains('active')) {
-                    loadAdminData();
+                    setTimeout(() => loadAdminData(), 500); 
                 }
             } catch(e) { alert("Error: " + e.message); }
         }
@@ -476,19 +483,24 @@
         document.getElementById('btn-login').addEventListener('click', async () => { try { await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); closeModal('login-modal'); } catch (e) { alert(e.message); } });
         document.getElementById('btn-signup').addEventListener('click', async () => { try { const cred = await createUserWithEmailAndPassword(auth, document.getElementById('signup-email').value, document.getElementById('signup-password').value); await updateProfile(cred.user, { displayName: document.getElementById('signup-name').value }); closeModal('signup-modal'); } catch (e) { alert(e.message); } });
 
-        // 🔥 Submit with Base64 Conversion
+        // 🔥 Submit with Base64 Conversion & Size Limit Check
         document.getElementById('submit-btn').addEventListener('click', async(e) => {
             e.preventDefault(); 
             if(!auth.currentUser) return alert("Please login.");
             
             const fileInput = document.getElementById('paper-file');
             const file = fileInput.files[0];
-            
-            // Limit check (Firestore 1MB limit safe guard)
-            if(file && file.size > 800 * 1024) return alert("File is too large! Please upload a PDF smaller than 800KB.");
-
             const btn = document.getElementById('submit-btn');
+            
+            // 🔥 FILE SIZE CHECK (800KB Limit)
+            let useFile = true;
+            if(file && file.size > 800 * 1024) {
+                if(!confirm("File is too large (>800KB) for quick preview.\nSubmit without file preview?")) return;
+                useFile = false; 
+            }
+
             btn.disabled = true; 
+            btn.innerHTML = '<span class="spinner"></span> Uploading...';
             
             const submitData = (base64File) => {
                 addDoc(collection(db, "submissions"), {
@@ -508,13 +520,15 @@
                     document.getElementById('submission-form').reset();
                     document.getElementById('file-name-display').innerText = "Click to upload PDF";
                     btn.disabled = false;
+                    btn.innerHTML = '<span id="submit-text">Submit Paper</span><span id="submit-spinner" class="spinner ml-2 hidden"></span>';
                 }).catch(err => {
                     alert("Error: " + err.message);
                     btn.disabled = false;
+                    btn.innerText = "Submit Paper";
                 });
             };
 
-            if (file) {
+            if (file && useFile) {
                 const reader = new FileReader();
                 reader.onload = (e) => submitData(e.target.result);
                 reader.readAsDataURL(file);
@@ -580,7 +594,7 @@
                         </select>
                     </td>
                     <td class="p-3 text-center align-top">${fileBtns}</td>
-                    <td class="p-3 align-top"><button onclick="deletePaper('${docSnap.id}')" class="text-red-500 hover:bg-red-50 px-2 py-1 rounded text-xs">Delete</button></td>
+                    <td class="p-3 align-top"><button onclick="deletePaper('${docSnap.id}', this)" class="text-red-500 hover:bg-red-50 px-2 py-1 rounded text-xs">Delete</button></td>
                 </tr>`;
             });
 
@@ -634,7 +648,7 @@
                             </div>
                             <div class="flex gap-2">
                                 <button onclick="openEditModalSafe('${docSnap.id}')" class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded hover:bg-blue-100">Edit</button>
-                                <button onclick="deletePaper('${docSnap.id}')" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100">Del</button>
+                                <button onclick="deletePaper('${docSnap.id}', this)" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100">Del</button>
                             </div>
                         </li>`;
                     });
