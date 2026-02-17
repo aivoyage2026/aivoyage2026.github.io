@@ -63,6 +63,7 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <span class="hidden sm:inline">The 1st International Conference on AI Convergence & Future Maritime</span>
             <span class="sm:hidden">AI Voyage 2026</span>
+            
             <div class="flex items-center gap-4" id="auth-menu">
                 <button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button>
                 <span>|</span>
@@ -377,12 +378,32 @@
     <script>
         function showSection(id) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            
+            // 1. 모든 섹션 초기화 (스타일 강제 리셋)
+            document.querySelectorAll('.page-section').forEach(el => {
+                el.classList.remove('active');
+                el.style.display = ''; // 중요: inline style 제거
+            });
+
+            // 2. Program 섹션으로 갈 땐 Detail 뷰 강제 닫기 (백지 현상 방지)
+            if(id === 'program') {
+                const detail = document.getElementById('program-detail');
+                const list = document.getElementById('program');
+                
+                if(detail) { detail.classList.remove('active'); detail.style.display = 'none'; }
+                if(list) { list.style.display = 'block'; }
+            }
+
+            // 3. 타겟 섹션 활성화
             setTimeout(() => { 
                 const el = document.getElementById(id);
-                if(el) el.classList.add('active');
+                if(el) {
+                    el.style.display = 'block';
+                    setTimeout(() => el.classList.add('active'), 10);
+                }
             }, 50);
             
+            // 4. 네비게이션 버튼 스타일
             document.querySelectorAll('.nav-link').forEach(link => {
                 if(link.getAttribute('onclick')?.includes(`'${id}'`)) { 
                     link.classList.add('active', 'border-brand-blue'); 
@@ -541,9 +562,9 @@
                 `;
             });
 
-            // Hide Program, Show Detail
+            // Hide Program List, Show Detail (Using Display Property to avoid conflict)
             document.getElementById('program').classList.remove('active');
-            setTimeout(() => document.getElementById('program').style.display = 'none', 400); 
+            document.getElementById('program').style.display = 'none'; 
             
             const detailSection = document.getElementById('program-detail');
             detailSection.style.display = 'block';
@@ -616,6 +637,7 @@
             alert("Logged out successfully.");
         }; 
         
+        // 🔥 Updated Delete Logic: Instant UI Removal
         window.deletePaper = async (docId, btnElement) => {
             if(!confirm("Delete this paper?")) return;
             try { 
@@ -801,38 +823,4 @@
                     list.innerHTML = snap.empty ? '<li>No papers.</li>' : '';
                     snap.forEach(docSnap => {
                         const d = docSnap.data();
-                        window.paperDataStore[docSnap.id] = d; 
-                        
-                        let statusColor = "text-slate-500";
-                        if(d.status === "Accepted") statusColor = "text-green-600 font-bold";
-                        if(d.status === "Rejected") statusColor = "text-red-500";
-
-                        list.innerHTML += `
-                        <li class="border-b pb-3 flex justify-between items-center">
-                            <div>
-                                <div class="font-bold text-brand-navy">${d.title}</div>
-                                <div class="text-xs ${statusColor} mt-1">${d.status}</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <button onclick="openEditModalSafe('${docSnap.id}')" class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded hover:bg-blue-100">Edit</button>
-                                <button onclick="deletePaper('${docSnap.id}', this)" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100">Del</button>
-                            </div>
-                        </li>`;
-                    });
-                });
-            } else {
-                menu.innerHTML = `<button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button> <span>|</span> <button onclick="openModal('signup-modal')" class="hover:text-white transition">Sign Up</button>`;
-                document.getElementById('submission-lock').classList.remove('hidden');
-                document.getElementById('submission-content').classList.add('hidden');
-                document.getElementById('nav-admin-btn').classList.add('hidden');
-                document.getElementById('mobile-admin-btn').classList.add('hidden');
-
-                const currentSec = document.querySelector('.page-section.active');
-                if(currentSec && (currentSec.id === 'mypage' || currentSec.id === 'admin')) {
-                    showSection('home');
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+                        window.paperDataStore[docSnap.id] = d
