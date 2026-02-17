@@ -47,7 +47,9 @@
         .modal-backdrop { background-color: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); z-index: 9999; }
         
         /* Program Card Hover Effect */
+        .program-card { cursor: pointer; }
         .program-card:hover .card-bg { transform: scale(1.1); }
+        .program-card:hover .card-overlay { opacity: 0.7; }
         
         .status-badge { @apply text-xs font-bold px-2 py-1 rounded inline-block text-center min-w-[80px]; }
         .status-Under_Review { @apply bg-yellow-100 text-yellow-800; }
@@ -144,89 +146,96 @@
     <div id="program" class="page-section">
         <div class="bg-brand-navy text-white py-20 text-center">
             <h2 class="text-4xl font-bold mb-4">Conference Program</h2>
-            <p class="text-slate-300">4 Nights / 5 Days (Shanghai - Okinawa - Shanghai)</p>
+            <p class="text-slate-300">Click on each day to view detailed schedule</p>
         </div>
         
         <div class="max-w-7xl mx-auto px-6 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-default">
+                <div onclick="openProgramDetail(1)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
                     <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?q=80&w=1000&auto=format&fit=crop');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90"></div>
+                    <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 p-8 text-white w-full">
                         <span class="bg-brand-gold text-brand-navy text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 1</span>
                         <h3 class="text-3xl font-bold font-serif mb-1">Shanghai</h3>
                         <p class="text-sm text-slate-300 mb-4 font-mono">Aug 27, 2026 (Thu)</p>
                         <div class="space-y-2 text-sm border-t border-white/20 pt-4">
-                            <div class="flex gap-3"><i data-lucide="anchor" class="w-5 h-5 text-brand-gold"></i><span>Embarkation (Wusongkou)</span></div>
-                            <div class="flex gap-3"><i data-lucide="clock" class="w-5 h-5 text-slate-400"></i><span>15:00 - Check-in</span></div>
-                            <div class="flex gap-3"><i data-lucide="utensils" class="w-5 h-5 text-slate-400"></i><span>Welcome Dinner</span></div>
+                            <div class="flex gap-3"><i data-lucide="anchor" class="w-5 h-5 text-brand-gold"></i><span>Embarkation & Welcome</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-default">
-                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1548270367-27b9c97b8766?q=80&w=1000&auto=format&fit=crop');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90"></div>
+                <div onclick="openProgramDetail(2)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 p-8 text-white w-full">
                         <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded mb-3 inline-block backdrop-blur-sm">Day 2</span>
                         <h3 class="text-3xl font-bold font-serif mb-1">At Sea</h3>
                         <p class="text-sm text-slate-300 mb-4 font-mono">Aug 28, 2026 (Fri)</p>
                         <div class="space-y-2 text-sm border-t border-white/20 pt-4">
-                            <div class="flex gap-3"><i data-lucide="mic" class="w-5 h-5 text-brand-gold"></i><span>Opening Ceremony</span></div>
-                            <div class="flex gap-3"><i data-lucide="presentation" class="w-5 h-5 text-slate-400"></i><span>Keynote Speeches</span></div>
-                            <div class="flex gap-3"><i data-lucide="users" class="w-5 h-5 text-slate-400"></i><span>Academic Sessions</span></div>
+                            <div class="flex gap-3"><i data-lucide="mic" class="w-5 h-5 text-brand-gold"></i><span>Academic Sessions</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-default">
-                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1619522253689-b6b931925345?q=80&w=1000&auto=format&fit=crop');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90"></div>
+                <div onclick="openProgramDetail(3)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 p-8 text-white w-full">
                         <span class="bg-brand-gold text-brand-navy text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 3</span>
                         <h3 class="text-3xl font-bold font-serif mb-1">Okinawa</h3>
                         <p class="text-sm text-slate-300 mb-4 font-mono">Aug 29, 2026 (Sat)</p>
                         <div class="space-y-2 text-sm border-t border-white/20 pt-4">
                             <div class="flex gap-3"><i data-lucide="map" class="w-5 h-5 text-brand-gold"></i><span>Shore Excursion</span></div>
-                            <div class="flex gap-3"><i data-lucide="landmark" class="w-5 h-5 text-slate-400"></i><span>Shuri Castle</span></div>
-                            <div class="flex gap-3"><i data-lucide="shopping-bag" class="w-5 h-5 text-slate-400"></i><span>Kokusai Street</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-default">
-                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1559599101-f09722fb4948?q=80&w=1000&auto=format&fit=crop');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90"></div>
+                <div onclick="openProgramDetail(4)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
+                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 p-8 text-white w-full">
                         <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded mb-3 inline-block backdrop-blur-sm">Day 4</span>
                         <h3 class="text-3xl font-bold font-serif mb-1">At Sea</h3>
                         <p class="text-sm text-slate-300 mb-4 font-mono">Aug 30, 2026 (Sun)</p>
                         <div class="space-y-2 text-sm border-t border-white/20 pt-4">
-                            <div class="flex gap-3"><i data-lucide="book-open" class="w-5 h-5 text-brand-gold"></i><span>Technical Workshops</span></div>
-                            <div class="flex gap-3"><i data-lucide="award" class="w-5 h-5 text-slate-400"></i><span>Best Paper Awards</span></div>
-                            <div class="flex gap-3"><i data-lucide="wine" class="w-5 h-5 text-slate-400"></i><span>Farewell Gala</span></div>
+                            <div class="flex gap-3"><i data-lucide="book-open" class="w-5 h-5 text-brand-gold"></i><span>Workshops & Gala</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl cursor-default lg:col-span-2">
-                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=1000&auto=format&fit=crop');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90"></div>
+                <div onclick="openProgramDetail(5)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl lg:col-span-2">
+                    <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1558231592-36fbdf870428?q=80&w=1000&auto=format&fit=crop');"></div>
+                    <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
                     <div class="absolute bottom-0 left-0 p-8 text-white w-full flex flex-col justify-end">
                         <div>
                             <span class="bg-brand-navy text-white border border-white/20 text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 5</span>
                             <h3 class="text-3xl font-bold font-serif mb-1">Shanghai Return</h3>
                             <p class="text-sm text-slate-300 mb-4 font-mono">Aug 31, 2026 (Mon)</p>
                             <div class="space-y-2 text-sm border-t border-white/20 pt-4 max-w-md">
-                                <div class="flex gap-3"><i data-lucide="log-out" class="w-5 h-5 text-brand-gold"></i><span>Disembarkation at Wusongkou Port</span></div>
-                                <div class="flex gap-3"><i data-lucide="bus" class="w-5 h-5 text-slate-400"></i><span>Transfer to Pudong Int'l Airport</span></div>
+                                <div class="flex gap-3"><i data-lucide="log-out" class="w-5 h-5 text-brand-gold"></i><span>Disembarkation</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <div id="program-detail" class="page-section">
+        <div class="bg-brand-navy text-white py-12 px-6">
+            <div class="max-w-4xl mx-auto">
+                <button onclick="closeProgramDetail()" class="text-slate-400 hover:text-white flex items-center gap-2 mb-6">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back to Program
+                </button>
+                <h2 id="detail-title" class="text-3xl font-bold font-serif"></h2>
+                <p id="detail-date" class="text-brand-gold mt-2"></p>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 py-12">
+            <div id="detail-content" class="space-y-6 relative border-l-2 border-slate-200 ml-3">
+                </div>
         </div>
     </div>
 
@@ -474,6 +483,84 @@
             link.click();
             document.body.removeChild(link);
         }
+
+        // 🚀 Detail View Logic
+        const programData = {
+            1: { title: "Day 1: Shanghai & Embarkation", date: "Aug 27, 2026 (Thu)", events: [
+                { time: "12:00 - 15:00", desc: "Shuttle Service from Pudong Airport to Wusongkou Port" },
+                { time: "15:00 - 17:00", desc: "Check-in & Embarkation" },
+                { time: "18:00 - 19:30", desc: "Welcome Dinner (Main Dining Room)" },
+                { time: "20:00 - 21:00", desc: "Orientation & Safety Drill" }
+            ]},
+            2: { title: "Day 2: At Sea (Academic Sessions)", date: "Aug 28, 2026 (Fri)", events: [
+                { time: "09:00 - 10:00", desc: "Opening Ceremony & Keynote Speech 1" },
+                { time: "10:30 - 12:00", desc: "Session 1: AI in Maritime Logistics" },
+                { time: "12:00 - 13:30", desc: "Networking Lunch" },
+                { time: "13:30 - 15:00", desc: "Session 2: Autonomous Ships Technology" },
+                { time: "15:30 - 17:00", desc: "Poster Session & Coffee Break" }
+            ]},
+            3: { title: "Day 3: Okinawa (Shore Excursion)", date: "Aug 29, 2026 (Sat)", events: [
+                { time: "08:00 - 09:00", desc: "Arrival at Naha Port" },
+                { time: "09:30 - 12:00", desc: "Cultural Tour: Shuri Castle" },
+                { time: "12:00 - 13:30", desc: "Local Lunch (Okinawa Cuisine)" },
+                { time: "14:00 - 16:00", desc: "Free Time at Kokusai Street" },
+                { time: "17:00", desc: "Return to Ship" }
+            ]},
+            4: { title: "Day 4: At Sea (Workshops)", date: "Aug 30, 2026 (Sun)", events: [
+                { time: "09:30 - 11:30", desc: "Workshop: Sustainable Ocean Tourism" },
+                { time: "13:00 - 15:00", desc: "Panel Discussion: Future of AI" },
+                { time: "16:00 - 17:30", desc: "Closing Ceremony & Best Paper Awards" },
+                { time: "19:00 - 22:00", desc: "Farewell Gala Dinner" }
+            ]},
+            5: { title: "Day 5: Shanghai Return", date: "Aug 31, 2026 (Mon)", events: [
+                { time: "07:00", desc: "Arrival at Wusongkou Port" },
+                { time: "08:00 - 10:00", desc: "Disembarkation" },
+                { time: "10:30", desc: "Shuttle to Pudong Airport" }
+            ]}
+        };
+
+        function openProgramDetail(day) {
+            const data = programData[day];
+            if(!data) return;
+
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-date').innerText = data.date;
+            
+            const content = document.getElementById('detail-content');
+            content.innerHTML = ''; // clear previous
+
+            data.events.forEach(ev => {
+                content.innerHTML += `
+                    <div class="relative pl-8">
+                        <span class="absolute -left-[9px] top-2 w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></span>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition">
+                            <span class="font-mono text-sm text-brand-blue font-bold block mb-1">${ev.time}</span>
+                            <span class="text-slate-700 font-medium">${ev.desc}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Hide Program, Show Detail
+            document.getElementById('program').classList.remove('active');
+            setTimeout(() => document.getElementById('program').style.display = 'none', 400); 
+            
+            const detailSection = document.getElementById('program-detail');
+            detailSection.style.display = 'block';
+            setTimeout(() => detailSection.classList.add('active'), 50);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeProgramDetail() {
+            const detailSection = document.getElementById('program-detail');
+            detailSection.classList.remove('active');
+            setTimeout(() => detailSection.style.display = 'none', 400);
+
+            const programSection = document.getElementById('program');
+            programSection.style.display = 'block';
+            setTimeout(() => programSection.classList.add('active'), 50);
+        }
     </script>
 
     <script type="module">
@@ -529,7 +616,6 @@
             alert("Logged out successfully.");
         }; 
         
-        // 🔥 Updated Delete Logic: Instant UI Removal
         window.deletePaper = async (docId, btnElement) => {
             if(!confirm("Delete this paper?")) return;
             try { 
