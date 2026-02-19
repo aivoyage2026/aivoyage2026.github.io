@@ -157,7 +157,6 @@
                         
                         <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
                             <label class="block text-sm font-semibold text-slate-700 mb-4">File Upload</label>
-                            
                             <div class="p-6 border-2 border-dashed border-slate-300 bg-white rounded-lg hover:bg-slate-50 transition text-center cursor-pointer relative group mb-4">
                                 <input type="file" id="paper-file" accept=".pdf,.zip" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(this)">
                                 <div class="space-y-2">
@@ -166,13 +165,11 @@
                                     <p class="text-xs text-slate-500">Max size: 500KB</p>
                                 </div>
                             </div>
-                            
                             <div class="flex items-center gap-2 mb-4">
                                 <div class="h-px bg-slate-300 flex-1"></div>
                                 <span class="text-xs text-slate-400 font-bold uppercase">OR</span>
                                 <div class="h-px bg-slate-300 flex-1"></div>
                             </div>
-
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 mb-2"><i data-lucide="link" class="w-3 h-3 inline"></i> External Link (For files > 500KB)</label>
                                 <input type="url" id="paper-link" placeholder="Paste Google Drive / Dropbox link here..." class="w-full border border-slate-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-brand-blue outline-none">
@@ -198,19 +195,87 @@
     </div>
 
     <div id="accommodation" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Accommodation</h2><p class="text-slate-300">Comfort and Luxury on MSC Bellissima</p></div>
-        <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Accommodation</h2>
+            <p class="text-slate-300">Comfort and Luxury on MSC Bellissima</p>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-6 py-16">
             <div class="mb-12 text-center space-y-4">
-                <div class="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-6 py-3 rounded-full font-semibold border border-blue-100"><i data-lucide="check-circle" class="w-5 h-5"></i><span>All rates include: 4-night stay, All meals, and Conference Access.</span></div>
-                <div class="mt-4"><a href="https://www.msccruises.com/int/our-cruises/ships/msc-bellissima/cabins-suites" target="_blank" class="inline-flex items-center gap-2 text-brand-navy font-bold hover:text-brand-blue underline decoration-2 underline-offset-4 transition">View Detailed Cabin Info (MSC Official) <i data-lucide="external-link" class="w-4 h-4"></i></a></div>
+                <div class="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-6 py-3 rounded-full font-semibold border border-blue-100">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i><span>All rates include: 4-night stay, All meals, and Conference Access.</span>
+                </div>
+                <div class="mt-4">
+                    <a href="https://www.msccruises.com/int/our-cruises/ships/msc-bellissima/cabins-suites" target="_blank" class="inline-flex items-center gap-2 text-brand-navy font-bold hover:text-brand-blue underline decoration-2 underline-offset-4 transition">
+                        View Detailed Cabin Info (MSC Official) <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-56 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1591825729269-caeb344f6df2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-brand-gold text-white text-xs font-bold px-2 py-1 rounded">YACHT CLUB</div></div><div class="p-6"><h3 class="font-bold text-lg text-brand-navy mb-1 leading-tight">Yacht Club Royal Suite</h3><p class="text-xs text-slate-500 mb-4 h-8">Spacious living area & large private balcony</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-xl font-bold text-brand-navy">$2,800</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group border-2 border-brand-gold/30 relative"><div class="absolute top-0 right-0 bg-brand-gold text-white text-[10px] font-bold px-2 py-1 rounded-bl">BEST</div><div class="h-56 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1512918760513-95f6929c3c38?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-brand-gold text-white text-xs font-bold px-2 py-1 rounded">YACHT CLUB</div></div><div class="p-6 bg-yellow-50/30"><h3 class="font-bold text-lg text-brand-navy mb-1 leading-tight">Duplex Suite w/ Whirlpool</h3><p class="text-xs text-slate-500 mb-4 h-8">Two-story suite with private whirlpool bath</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-xl font-bold text-brand-gold">$2,200</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-56 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-brand-gold text-white text-xs font-bold px-2 py-1 rounded">YACHT CLUB</div></div><div class="p-6"><h3 class="font-bold text-lg text-brand-navy mb-1 leading-tight">Yacht Club Deluxe Suite</h3><p class="text-xs text-slate-500 mb-4 h-8">Comfortable suite with luxury amenities</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-xl font-bold text-brand-navy">$1,500</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-56 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-brand-gold text-white text-xs font-bold px-2 py-1 rounded">YACHT CLUB</div></div><div class="p-6"><h3 class="font-bold text-lg text-brand-navy mb-1 leading-tight">Yacht Club Interior Suite</h3><p class="text-xs text-slate-500 mb-4 h-8">Exclusive club access, interior comfort</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-xl font-bold text-brand-navy">$1,100</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-56 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1590490360182-c8729fcd720d?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-brand-navy text-white text-xs font-bold px-2 py-1 rounded">AUREA</div></div><div class="p-6"><h3 class="font-bold text-lg text-brand-navy mb-1 leading-tight">Grand Suite w/ Terrace</h3><p class="text-xs text-slate-500 mb-4 h-8">Large terrace with private whirlpool</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-xl font-bold text-brand-navy">$1,300</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-56 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-brand-navy text-white text-xs font-bold px-2 py-1 rounded">AUREA</div></div><div class="p-6"><h3 class="font-bold text-lg text-brand-navy mb-1 leading-tight">Premium Suite w/ Terrace</h3><p class="text-xs text-slate-500 mb-4 h-8">Premium comfort with sea view terrace</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-xl font-bold text-brand-navy">$1,200</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group border-2 border-brand-gold/30 relative">
+                    <div class="absolute top-0 right-0 bg-brand-gold text-white text-[10px] font-bold px-2 py-1 rounded-bl">VIP</div>
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1000&auto=format&fit=crop" alt="Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3 bg-brand-navy text-white text-xs font-bold px-2 py-1 rounded">Suite</div>
+                    </div>
+                    <div class="p-6 bg-yellow-50/30">
+                        <h3 class="font-bold text-2xl text-brand-navy mb-1">스위트 (Suite)</h3>
+                        <p class="text-sm text-slate-500 mb-4 h-6">Premium suite with exclusive access</p>
+                        <div class="flex justify-between items-end border-t border-slate-200 pt-4">
+                            <span class="text-2xl font-bold text-brand-gold">$1,109+</span>
+                            <span class="text-xs text-slate-400 mb-1">/ person</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group relative">
+                    <div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl">POPULAR</div>
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?q=80&w=1000&auto=format&fit=crop" alt="Balcony" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Balcony</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-2xl text-brand-navy mb-1">발코니 (Balcony)</h3>
+                        <p class="text-sm text-slate-500 mb-4 h-6">Private balcony with sea view</p>
+                        <div class="flex justify-between items-end border-t border-slate-100 pt-4">
+                            <span class="text-2xl font-bold text-brand-blue">$799</span>
+                            <span class="text-xs text-slate-400 mb-1">/ person</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c8729fcd720d?q=80&w=1000&auto=format&fit=crop" alt="Ocean View" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Ocean View</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-2xl text-brand-navy mb-1">오션뷰 (Ocean View)</h3>
+                        <p class="text-sm text-slate-500 mb-4 h-6">Cabin with a sea view window</p>
+                        <div class="flex justify-between items-end border-t border-slate-100 pt-4">
+                            <span class="text-2xl font-bold text-brand-blue">$729</span>
+                            <span class="text-xs text-slate-400 mb-1">/ person</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1000&auto=format&fit=crop" alt="Inside" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Economy</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-2xl text-brand-navy mb-1">인사이드 (Inside)</h3>
+                        <p class="text-sm text-slate-500 mb-4 h-6">Comfortable cabin without window</p>
+                        <div class="flex justify-between items-end border-t border-slate-100 pt-4">
+                            <span class="text-2xl font-bold text-brand-blue">$569</span>
+                            <span class="text-xs text-slate-400 mb-1">/ person</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -258,12 +323,11 @@
             const f = input.files[0]; 
             document.getElementById('file-name-display').innerText = f ? "Sel: " + f.name : "Click to upload PDF / ZIP"; 
             
-            // 용량 사전 체크 알림
             if (f && f.size > 500 * 1024) {
                 alert("⚠️ 용량 초과!\n파일 크기가 500KB를 넘습니다.\n아래 'External Link' 입력란에 구글 드라이브 링크를 제출해주세요.");
-                input.value = ""; // 선택 취소
+                input.value = ""; 
                 document.getElementById('file-name-display').innerText = "Click to upload PDF / ZIP"; 
-                document.getElementById('paper-link').focus(); // 링크 입력란으로 포커스 이동
+                document.getElementById('paper-link').focus(); 
             }
         }
         window.onclick = function(e) { if (e.target.classList.contains('modal-backdrop')) { e.target.classList.add('hidden'); e.target.classList.remove('flex'); } }
@@ -318,7 +382,6 @@
             e.preventDefault(); 
             if(!auth.currentUser) return alert("Please login.");
             
-            // 필수 정보 확인
             const title = document.getElementById('paper-title').value;
             const author = document.getElementById('author-name').value;
             if(!title || !author) return alert("필수 항목(*)을 입력해주세요.");
@@ -341,7 +404,7 @@
                     abstract: document.getElementById('paper-abstract').value,
                     fileName: file ? file.name : (linkInput ? "External Link" : "No File"), 
                     fileData: b64, 
-                    externalLink: linkInput || null, // 링크 저장
+                    externalLink: linkInput || null,
                     timestamp: serverTimestamp(), 
                     userId: auth.currentUser.uid, 
                     email: auth.currentUser.email, 
@@ -376,7 +439,6 @@
                 const data = d.data(); window.paperDataStore[d.id] = data; s.t++;
                 if(data.status==='Accepted') s.a++; else if(data.status==='Rejected') s.r++; else s.p++;
                 
-                // 파일 버튼 렌더링 로직 (링크 vs 파일)
                 let fBtn = `<span class="text-gray-400 text-xs">-</span>`;
                 if (data.externalLink) {
                     fBtn = `<a href="${data.externalLink}" target="_blank" class="text-brand-gold text-xs font-bold underline flex flex-col items-center"><i data-lucide="external-link" class="w-4 h-4 mb-1"></i>Open Link</a>`;
