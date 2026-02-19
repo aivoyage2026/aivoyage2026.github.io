@@ -8,9 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -28,33 +26,17 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-        
         .hero-bg {
             background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('msc.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-color: #0f172a; 
+            background-size: cover; background-position: center; background-attachment: fixed; background-color: #0f172a;
         }
-
         .page-section { display: none; opacity: 0; transform: translateY(10px); transition: all 0.4s ease-out; }
         .page-section.active { display: block; opacity: 1; transform: translateY(0); }
-        
         .spinner { border: 3px solid rgba(255,255,255,0.3); border-left-color: #ffffff; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; }
-        .spinner-dark { border: 3px solid rgba(0,0,0,0.1); border-left-color: #b49b67; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
         .modal-backdrop { background-color: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); z-index: 9999; }
-        
-        /* Program Card Hover Effect */
         .program-card { cursor: pointer; }
         .program-card:hover .card-bg { transform: scale(1.1); }
         .program-card:hover .card-overlay { opacity: 0.7; }
-        
-        .status-badge { @apply text-xs font-bold px-2 py-1 rounded inline-block text-center min-w-[80px]; }
-        .status-Under_Review { @apply bg-yellow-100 text-yellow-800; }
-        .status-Accepted { @apply bg-green-100 text-green-800; }
-        .status-Rejected { @apply bg-red-100 text-red-800; }
     </style>
 </head>
 <body class="bg-brand-light text-slate-700 flex flex-col min-h-screen">
@@ -74,38 +56,23 @@
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer group" onclick="showSection('home')">
-                <div class="p-2 bg-brand-navy rounded text-brand-gold group-hover:bg-brand-blue transition duration-300">
-                    <i data-lucide="anchor" class="w-6 h-6"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold text-brand-navy leading-none tracking-tight">AI Voyage 2026</h1>
-                    <p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mt-1">Shanghai - Okinawa</p>
-                </div>
+                <div class="p-2 bg-brand-navy rounded text-brand-gold group-hover:bg-brand-blue transition duration-300"><i data-lucide="anchor" class="w-6 h-6"></i></div>
+                <div><h1 class="text-xl font-bold text-brand-navy leading-none tracking-tight">AI Voyage 2026</h1><p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mt-1">Shanghai - Okinawa</p></div>
             </div>
-
             <nav class="hidden lg:flex gap-8 text-sm font-medium text-slate-600" id="desktop-nav">
-                <button onclick="showSection('home')" class="nav-link active hover:text-brand-blue transition border-b-2 border-brand-blue">Home</button>
-                <button onclick="showSection('about')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Overview</button>
-                <button onclick="showSection('program')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Program</button>
-                <button onclick="showSection('submission')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Submission</button>
-                <button onclick="showSection('venue')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Venue</button>
-                <button onclick="showSection('accommodation')" class="nav-link hover:text-brand-blue transition border-b-2 border-transparent">Accommodation</button>
-                <button onclick="showSection('admin'); loadAdminData()" id="nav-admin-btn" class="hidden text-red-600 font-bold hover:text-red-800 transition bg-red-50 px-3 py-1 rounded-full text-xs uppercase tracking-wider flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3"></i> ADMIN</button>
+                <button onclick="showSection('home')" class="nav-link active hover:text-brand-blue border-b-2 border-brand-blue">Home</button>
+                <button onclick="showSection('about')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Overview</button>
+                <button onclick="showSection('program')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Program</button>
+                <button onclick="showSection('submission')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Submission</button>
+                <button onclick="showSection('venue')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Venue</button>
+                <button onclick="showSection('accommodation')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Accommodation</button>
+                <button onclick="showSection('admin'); loadAdminData()" id="nav-admin-btn" class="hidden text-red-600 font-bold hover:text-red-800 bg-red-50 px-3 py-1 rounded-full text-xs uppercase flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3"></i> ADMIN</button>
             </nav>
-
-            <button class="lg:hidden text-brand-navy hover:text-brand-gold transition" onclick="toggleMobileMenu()">
-                <i data-lucide="menu" class="w-7 h-7"></i>
-            </button>
+            <button class="lg:hidden text-brand-navy hover:text-brand-gold transition" onclick="toggleMobileMenu()"><i data-lucide="menu" class="w-7 h-7"></i></button>
         </div>
-
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-20">
             <nav class="flex flex-col p-4 space-y-4 text-sm font-medium text-slate-600">
                 <button onclick="showSection('home'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Home</button>
-                <button onclick="showSection('about'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Overview</button>
-                <button onclick="showSection('program'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Program</button>
-                <button onclick="showSection('submission'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Submission</button>
-                <button onclick="showSection('venue'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Venue</button>
-                <button onclick="showSection('accommodation'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Accommodation</button>
                 <button onclick="showSection('admin'); toggleMobileMenu(); loadAdminData()" id="mobile-admin-btn" class="hidden text-left px-4 py-2 bg-red-50 text-red-600 font-bold rounded">ADMIN DASHBOARD</button>
             </nav>
         </div>
@@ -119,99 +86,47 @@
                     <span class="text-xs font-medium tracking-wider text-brand-gold uppercase">Aug 27 - 31, 2026</span>
                 </div>
                 <h2 class="text-5xl md:text-7xl font-bold leading-tight drop-shadow-2xl">AI Voyage 2026 <br/> <span class="italic font-serif text-brand-gold">Future Maritime</span></h2>
-                <p class="text-lg md:text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-lg">The 1st International Conference on AI Convergence & Future Maritime.<br>A high-efficiency convention combining Travel, Academics, and Tourism.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                     <button onclick="showSection('submission')" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:bg-white transition duration-300 transform hover:-translate-y-1">Submit Paper</button>
                     <button onclick="showSection('program')" class="px-8 py-4 border border-white text-white font-medium rounded hover:bg-white hover:text-brand-navy transition duration-300">View Schedule</button>
                 </div>
             </div>
         </section>
-        
-        <div class="bg-white border-b border-slate-200 shadow-sm relative z-10 -mt-0">
-            <div class="max-w-7xl mx-auto px-6 py-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                    <div class="flex items-center gap-4 px-4"><i data-lucide="calendar-days" class="w-10 h-10 text-brand-blue"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Date</p><p class="font-bold text-brand-navy text-lg">Aug 27 - 31, 2026</p></div></div>
-                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0"><i data-lucide="map-pin" class="w-10 h-10 text-brand-blue"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Route</p><p class="font-bold text-brand-navy text-lg">Shanghai - Naha - Shanghai</p></div></div>
-                    <div class="flex items-center gap-4 px-4 pt-4 md:pt-0"><i data-lucide="clock" class="w-10 h-10 text-red-500"></i><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Submission Deadline</p><p class="font-bold text-red-600 text-lg">June 30, 2026</p></div></div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div id="about" class="page-section">
         <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Conference Overview</h2><p class="text-slate-300">Innovation, Networking, and Experience</p></div>
-        <div class="max-w-5xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Purpose & Necessity</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li>High-efficiency, high-value convention combining Travel, Academics, and Tourism.</li><li>New academic networking opportunity.</li><li>Acquire insights through exchanges with local institutions.</li></ul></div><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Expected Effects</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li><strong>One-stop Service:</strong> Accommodation, meetings, and dining.</li><li><strong>High Engagement:</strong> Minimized movement leads to higher attendance.</li><li><strong>Networking:</strong> Enhanced interaction among approx. 200 members.</li></ul></div></div></div>
+        <div class="max-w-5xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Purpose & Necessity</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li>High-efficiency convention combining Travel, Academics, and Tourism.</li><li>New academic networking opportunity.</li></ul></div><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Expected Effects</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li><strong>One-stop Service:</strong> Accommodation, meetings, and dining.</li><li><strong>High Engagement:</strong> Minimized movement leads to higher attendance.</li></ul></div></div></div>
     </div>
 
     <div id="program" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center">
-            <h2 class="text-4xl font-bold mb-4">Conference Program</h2>
-            <p class="text-slate-300">Click on each day to view detailed schedule</p>
-        </div>
-        
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Conference Program</h2><p class="text-slate-300">Click on each day to view detailed schedule</p></div>
         <div class="max-w-7xl mx-auto px-6 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div onclick="openProgramDetail(1)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
                     <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?q=80&w=1000&auto=format&fit=crop');"></div>
                     <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-8 text-white w-full">
-                        <span class="bg-brand-gold text-brand-navy text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 1</span>
-                        <h3 class="text-3xl font-bold font-serif mb-1">Shanghai</h3>
-                        <p class="text-sm text-slate-300 mb-4 font-mono">Aug 27, 2026 (Thu)</p>
-                        <div class="space-y-2 text-sm border-t border-white/20 pt-4">
-                            <div class="flex gap-3"><i data-lucide="anchor" class="w-5 h-5 text-brand-gold"></i><span>Embarkation & Welcome</span></div>
-                        </div>
-                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white w-full"><span class="bg-brand-gold text-brand-navy text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 1</span><h3 class="text-3xl font-bold font-serif mb-1">Shanghai</h3><p class="text-sm text-slate-300 mb-4 font-mono">Aug 27, 2026 (Thu)</p></div>
                 </div>
                 <div onclick="openProgramDetail(2)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
                     <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1000&auto=format&fit=crop');"></div>
                     <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-8 text-white w-full">
-                        <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded mb-3 inline-block backdrop-blur-sm">Day 2</span>
-                        <h3 class="text-3xl font-bold font-serif mb-1">At Sea</h3>
-                        <p class="text-sm text-slate-300 mb-4 font-mono">Aug 28, 2026 (Fri)</p>
-                        <div class="space-y-2 text-sm border-t border-white/20 pt-4">
-                            <div class="flex gap-3"><i data-lucide="mic" class="w-5 h-5 text-brand-gold"></i><span>Academic Sessions</span></div>
-                        </div>
-                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white w-full"><span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded mb-3 inline-block backdrop-blur-sm">Day 2</span><h3 class="text-3xl font-bold font-serif mb-1">At Sea</h3><p class="text-sm text-slate-300 mb-4 font-mono">Aug 28, 2026 (Fri)</p></div>
                 </div>
                 <div onclick="openProgramDetail(3)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
                     <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1000&auto=format&fit=crop');"></div>
                     <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-8 text-white w-full">
-                        <span class="bg-brand-gold text-brand-navy text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 3</span>
-                        <h3 class="text-3xl font-bold font-serif mb-1">Okinawa</h3>
-                        <p class="text-sm text-slate-300 mb-4 font-mono">Aug 29, 2026 (Sat)</p>
-                        <div class="space-y-2 text-sm border-t border-white/20 pt-4">
-                            <div class="flex gap-3"><i data-lucide="map" class="w-5 h-5 text-brand-gold"></i><span>Shore Excursion</span></div>
-                        </div>
-                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white w-full"><span class="bg-brand-gold text-brand-navy text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 3</span><h3 class="text-3xl font-bold font-serif mb-1">Okinawa</h3><p class="text-sm text-slate-300 mb-4 font-mono">Aug 29, 2026 (Sat)</p></div>
                 </div>
                 <div onclick="openProgramDetail(4)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl">
                     <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop');"></div>
                     <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-8 text-white w-full">
-                        <span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded mb-3 inline-block backdrop-blur-sm">Day 4</span>
-                        <h3 class="text-3xl font-bold font-serif mb-1">At Sea</h3>
-                        <p class="text-sm text-slate-300 mb-4 font-mono">Aug 30, 2026 (Sun)</p>
-                        <div class="space-y-2 text-sm border-t border-white/20 pt-4">
-                            <div class="flex gap-3"><i data-lucide="book-open" class="w-5 h-5 text-brand-gold"></i><span>Workshops & Gala</span></div>
-                        </div>
-                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white w-full"><span class="bg-white/20 text-white text-xs font-bold px-2 py-1 rounded mb-3 inline-block backdrop-blur-sm">Day 4</span><h3 class="text-3xl font-bold font-serif mb-1">At Sea</h3><p class="text-sm text-slate-300 mb-4 font-mono">Aug 30, 2026 (Sun)</p></div>
                 </div>
                 <div onclick="openProgramDetail(5)" class="program-card group relative h-96 rounded-2xl overflow-hidden shadow-xl lg:col-span-2">
                     <div class="card-bg absolute inset-0 bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1558231592-36fbdf870428?q=80&w=1000&auto=format&fit=crop');"></div>
                     <div class="card-overlay absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-8 text-white w-full flex flex-col justify-end">
-                        <div>
-                            <span class="bg-brand-navy text-white border border-white/20 text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 5</span>
-                            <h3 class="text-3xl font-bold font-serif mb-1">Shanghai Return</h3>
-                            <p class="text-sm text-slate-300 mb-4 font-mono">Aug 31, 2026 (Mon)</p>
-                            <div class="space-y-2 text-sm border-t border-white/20 pt-4 max-w-md">
-                                <div class="flex gap-3"><i data-lucide="log-out" class="w-5 h-5 text-brand-gold"></i><span>Disembarkation</span></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white w-full"><span class="bg-brand-navy text-white border border-white/20 text-xs font-bold px-2 py-1 rounded mb-3 inline-block">Day 5</span><h3 class="text-3xl font-bold font-serif mb-1">Shanghai Return</h3><p class="text-sm text-slate-300 mb-4 font-mono">Aug 31, 2026 (Mon)</p></div>
                 </div>
             </div>
         </div>
@@ -220,17 +135,11 @@
     <div id="program-detail" class="page-section">
         <div class="bg-brand-navy text-white py-12 px-6">
             <div class="max-w-4xl mx-auto">
-                <button onclick="closeProgramDetail()" class="text-slate-400 hover:text-white flex items-center gap-2 mb-6">
-                    <i data-lucide="arrow-left" class="w-5 h-5"></i> Back to Program
-                </button>
-                <h2 id="detail-title" class="text-3xl font-bold font-serif"></h2>
-                <p id="detail-date" class="text-brand-gold mt-2"></p>
+                <button onclick="closeProgramDetail()" class="text-slate-400 hover:text-white flex items-center gap-2 mb-6"><i data-lucide="arrow-left" class="w-5 h-5"></i> Back to Program</button>
+                <h2 id="detail-title" class="text-3xl font-bold font-serif"></h2><p id="detail-date" class="text-brand-gold mt-2"></p>
             </div>
         </div>
-        <div class="max-w-4xl mx-auto px-6 py-12">
-            <div id="detail-content" class="space-y-6 relative border-l-2 border-slate-200 ml-3">
-                </div>
-        </div>
+        <div class="max-w-4xl mx-auto px-6 py-12"><div id="detail-content" class="space-y-6 relative border-l-2 border-slate-200 ml-3"></div></div>
     </div>
 
     <div id="submission" class="page-section">
@@ -245,7 +154,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-semibold text-slate-700 mb-2">Author</label><input type="text" id="author-name" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div><div><label class="block text-sm font-semibold text-slate-700 mb-2">Affiliation</label><input type="text" id="author-affil" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div></div>
                         <div><label class="block text-sm font-semibold text-slate-700 mb-2">Topic</label><select id="paper-topic" class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white"><option value="smart-ship">1. Smart Ship</option><option value="marine-ai">2. Marine AI</option><option value="tourism">3. Tourism</option></select></div>
                         <div><label class="block text-sm font-semibold text-slate-700 mb-2">Abstract</label><div class="flex justify-end mb-1"><button type="button" onclick="polishAbstract()" class="text-xs text-brand-gold font-bold border border-brand-gold px-2 py-1 rounded hover:bg-brand-gold hover:text-white transition"><i data-lucide="wand-2" class="inline w-3 h-3 mr-1"></i> AI Polish</button></div><textarea id="paper-abstract" rows="6" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></textarea><p id="polish-msg" class="text-xs text-brand-gold mt-1 hidden"></p></div>
-                        <div class="p-6 border-2 border-dashed border-slate-300 rounded-lg hover:bg-slate-50 transition text-center cursor-pointer relative group"><input type="file" id="paper-file" accept=".pdf" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(this)"><div class="space-y-2"><i data-lucide="upload" class="w-6 h-6 text-slate-400 mx-auto"></i><p class="text-sm text-brand-navy" id="file-name-display">Click to upload PDF</p></div></div>
+                        <div class="p-6 border-2 border-dashed border-slate-300 rounded-lg hover:bg-slate-50 transition text-center cursor-pointer relative group"><input type="file" id="paper-file" accept=".pdf,.zip" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(this)"><div class="space-y-2"><i data-lucide="upload" class="w-6 h-6 text-slate-400 mx-auto"></i><p class="text-sm text-brand-navy" id="file-name-display">Click to upload PDF or ZIP</p></div></div>
                         <button type="button" id="submit-btn" class="w-full bg-brand-navy text-white font-bold py-4 rounded-lg hover:bg-brand-blue transition flex items-center justify-center gap-2"><span id="submit-text">Submit Paper</span><span id="submit-spinner" class="spinner ml-2 hidden"></span></button>
                     </form>
                 </div>
@@ -265,85 +174,17 @@
     </div>
 
     <div id="accommodation" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center">
-            <h2 class="text-4xl font-bold mb-4">Accommodation</h2>
-            <p class="text-slate-300">Comfort and Luxury on MSC Bellissima</p>
-        </div>
-        
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Accommodation</h2><p class="text-slate-300">Comfort and Luxury on MSC Bellissima</p></div>
         <div class="max-w-7xl mx-auto px-6 py-16">
             <div class="mb-12 text-center space-y-4">
-                <div class="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-6 py-3 rounded-full font-semibold border border-blue-100">
-                    <i data-lucide="check-circle" class="w-5 h-5"></i>
-                    <span>All rates include: 4-night stay, All meals, and Conference Access.</span>
-                </div>
-                <div class="mt-4">
-                    <a href="https://www.msccruises.com/int/our-cruises/ships/msc-bellissima/cabins-suites" target="_blank" class="inline-flex items-center gap-2 text-brand-navy font-bold hover:text-brand-blue underline decoration-2 underline-offset-4 transition">
-                        View Detailed Cabin Info (MSC Official) <i data-lucide="external-link" class="w-4 h-4"></i>
-                    </a>
-                </div>
+                <div class="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-6 py-3 rounded-full font-semibold border border-blue-100"><i data-lucide="check-circle" class="w-5 h-5"></i><span>All rates include: 4-night stay, All meals, and Conference Access.</span></div>
+                <div class="mt-4"><a href="https://www.msccruises.com/int/our-cruises/ships/msc-bellissima/cabins-suites" target="_blank" class="inline-flex items-center gap-2 text-brand-navy font-bold hover:text-brand-blue underline decoration-2 underline-offset-4 transition">View Detailed Cabin Info (MSC Official) <i data-lucide="external-link" class="w-4 h-4"></i></a></div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1000&auto=format&fit=crop" alt="Interior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Economy</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-brand-navy mb-1">Interior</h3>
-                        <p class="text-xs text-slate-500 mb-4 h-8">Comfortable cabin without window</p>
-                        <div class="flex justify-between items-end border-t border-slate-100 pt-4">
-                            <span class="text-2xl font-bold text-brand-blue">$569</span>
-                            <span class="text-xs text-slate-400 mb-1">/ person</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1590490360182-c8729fcd720d?q=80&w=1000&auto=format&fit=crop" alt="Oceanview" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-brand-navy mb-1">Ocean View</h3>
-                        <p class="text-xs text-slate-500 mb-4 h-8">Cabin with a sea view window</p>
-                        <div class="flex justify-between items-end border-t border-slate-100 pt-4">
-                            <span class="text-2xl font-bold text-brand-blue">$729</span>
-                            <span class="text-xs text-slate-400 mb-1">/ person</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group border-2 border-brand-gold/30 relative">
-                    <div class="absolute top-0 right-0 bg-brand-gold text-white text-[10px] font-bold px-2 py-1 rounded-bl">POPULAR</div>
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?q=80&w=1000&auto=format&fit=crop" alt="Balcony" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 bg-yellow-50/30">
-                        <h3 class="font-bold text-xl text-brand-navy mb-1">Balcony</h3>
-                        <p class="text-xs text-slate-500 mb-4 h-8">Private balcony with sea view</p>
-                        <div class="flex justify-between items-end border-t border-slate-100 pt-4">
-                            <span class="text-2xl font-bold text-brand-gold">$799</span>
-                            <span class="text-xs text-slate-400 mb-1">/ person</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1000&auto=format&fit=crop" alt="Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        <div class="absolute top-3 left-3 bg-brand-navy text-white text-xs font-bold px-2 py-1 rounded">LUXURY</div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-brand-navy mb-1">Suite / Yacht Club</h3>
-                        <p class="text-xs text-slate-500 mb-4 h-8">Premium suite with exclusive access</p>
-                        <div class="flex justify-between items-end border-t border-slate-100 pt-4">
-                            <span class="text-2xl font-bold text-brand-navy">$1,109+</span>
-                            <span class="text-xs text-slate-400 mb-1">/ person</span>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-48 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Economy</div></div><div class="p-6"><h3 class="font-bold text-xl text-brand-navy mb-1">Interior</h3><p class="text-xs text-slate-500 mb-4 h-8">Comfortable cabin without window</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-2xl font-bold text-brand-blue">$569</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-48 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1590490360182-c8729fcd720d?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div><div class="p-6"><h3 class="font-bold text-xl text-brand-navy mb-1">Ocean View</h3><p class="text-xs text-slate-500 mb-4 h-8">Cabin with a sea view window</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-2xl font-bold text-brand-blue">$729</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group border-2 border-brand-gold/30 relative"><div class="absolute top-0 right-0 bg-brand-gold text-white text-[10px] font-bold px-2 py-1 rounded-bl">POPULAR</div><div class="h-48 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></div><div class="p-6 bg-yellow-50/30"><h3 class="font-bold text-xl text-brand-navy mb-1">Balcony</h3><p class="text-xs text-slate-500 mb-4 h-8">Private balcony with sea view</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-2xl font-bold text-brand-gold">$799</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group"><div class="h-48 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute top-3 left-3 bg-brand-navy text-white text-xs font-bold px-2 py-1 rounded">LUXURY</div></div><div class="p-6"><h3 class="font-bold text-xl text-brand-navy mb-1">Suite / Yacht Club</h3><p class="text-xs text-slate-500 mb-4 h-8">Premium suite with exclusive access</p><div class="flex justify-between items-end border-t border-slate-100 pt-4"><span class="text-2xl font-bold text-brand-navy">$1,109+</span><span class="text-xs text-slate-400 mb-1">/ person</span></div></div></div>
             </div>
         </div>
     </div>
@@ -352,297 +193,70 @@
         <div class="bg-slate-800 text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Admin Dashboard</h2></div>
         <div class="max-w-6xl mx-auto px-6 py-16">
             <div class="bg-white rounded-xl shadow p-6">
-                <div class="flex justify-between items-center mb-6 border-b pb-4">
-                    <h3 class="font-bold text-xl text-brand-navy">Submissions</h3>
-                    <div class="flex gap-2">
-                        <button onclick="exportToCSV()" class="text-sm bg-green-100 text-green-700 border border-green-200 px-3 py-1 rounded hover:bg-green-200 transition flex items-center gap-1">
-                            <i data-lucide="download" class="w-3 h-3"></i> Export Excel
-                        </button>
-                    </div>
-                </div>
-                <div class="grid grid-cols-4 gap-4 mb-6 text-center text-sm">
-                    <div class="bg-slate-50 p-2 rounded">Total: <span id="stat-total" class="font-bold">0</span></div>
-                    <div class="bg-yellow-50 p-2 rounded text-yellow-700">Pending: <span id="stat-pending" class="font-bold">0</span></div>
-                    <div class="bg-green-50 p-2 rounded text-green-700">Accepted: <span id="stat-accepted" class="font-bold">0</span></div>
-                    <div class="bg-red-50 p-2 rounded text-red-700">Rejected: <span id="stat-rejected" class="font-bold">0</span></div>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm" id="admin-table">
-                        <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-xs">
-                            <tr>
-                                <th class="p-3">Paper Info</th>
-                                <th class="p-3">Author</th>
-                                <th class="p-3">Status</th>
-                                <th class="p-3 text-center">File</th>
-                                <th class="p-3 text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-papers-list" class="divide-y divide-slate-100"></tbody>
-                    </table>
-                </div>
+                <div class="flex justify-between items-center mb-6 border-b pb-4"><h3 class="font-bold text-xl text-brand-navy">Submissions</h3><button onclick="exportToCSV()" class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded hover:bg-green-200"><i data-lucide="download" class="w-3 h-3 inline"></i> Export</button></div>
+                <div class="grid grid-cols-4 gap-4 mb-6 text-center text-sm"><div class="bg-slate-50 p-2 rounded">Total: <span id="stat-total" class="font-bold">0</span></div><div class="bg-yellow-50 p-2 rounded text-yellow-700">Pending: <span id="stat-pending" class="font-bold">0</span></div><div class="bg-green-50 p-2 rounded text-green-700">Accepted: <span id="stat-accepted" class="font-bold">0</span></div><div class="bg-red-50 p-2 rounded text-red-700">Rejected: <span id="stat-rejected" class="font-bold">0</span></div></div>
+                <div class="overflow-x-auto"><table class="w-full text-left text-sm" id="admin-table"><thead class="bg-slate-50"><tr><th class="p-3">Paper Info</th><th class="p-3">Author</th><th class="p-3">Status</th><th class="p-3 text-center">File</th><th class="p-3 text-center">Action</th></tr></thead><tbody id="admin-papers-list"></tbody></table></div>
             </div>
         </div>
     </div>
 
     <div id="mypage" class="page-section">
         <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">My Status</h2></div>
-        <div class="max-w-4xl mx-auto px-6 py-16">
-            <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
-                <div class="p-6 border-b border-slate-100 bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">My Submissions</h3></div>
-                <div class="p-6"><ul id="my-papers-list" class="space-y-4"></ul></div>
-            </div>
-        </div>
+        <div class="max-w-4xl mx-auto px-6 py-16"><div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden"><div class="p-6 border-b border-slate-100 bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">My Submissions</h3></div><div class="p-6"><ul id="my-papers-list" class="space-y-4"></ul></div></div></div>
     </div>
 
     <footer class="bg-brand-navy text-slate-400 py-12 border-t border-slate-800 mt-auto"><div class="max-w-7xl mx-auto px-6 text-center"><p class="mb-2">&copy; 2026 AI Voyage Conference</p></div></footer>
 
-    <div id="success-modal" class="modal fixed inset-0 z-[200] hidden items-center justify-center modal-backdrop">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-8 text-center"><h3 class="text-2xl font-bold text-brand-navy mb-2">Success!</h3><button onclick="closeModal('success-modal'); showSection('mypage')" class="w-full bg-brand-navy text-white font-bold py-3 rounded mt-4">Go to My Page</button></div>
-    </div>
-
-    <div id="login-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6">
-            <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Login</h3><button onclick="closeModal('login-modal')">X</button></div>
-            <div class="space-y-4">
-                <button id="btn-google-login" class="w-full border border-slate-300 py-2 rounded flex justify-center items-center gap-2">
-                    <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                    Sign in with Google
-                </button>
-                <div class="border-t pt-4"><input type="email" id="login-email" class="w-full border p-2 rounded" placeholder="Email"><input type="password" id="login-password" class="w-full border p-2 rounded mt-2" placeholder="Password"><button id="btn-login" class="w-full bg-brand-navy text-white py-2 rounded mt-2">Sign In</button></div>
-                <p id="login-error" class="text-red-500 text-sm hidden"></p>
-            </div>
-        </div>
-    </div>
-
-    <div id="signup-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6">
-            <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Sign Up</h3><button onclick="closeModal('signup-modal')">X</button></div>
-            <div class="space-y-4">
-                <input type="text" id="signup-name" class="w-full border p-2 rounded" placeholder="Name">
-                <input type="email" id="signup-email" class="w-full border p-2 rounded" placeholder="Email">
-                <input type="password" id="signup-password" class="w-full border p-2 rounded" placeholder="Password">
-                <button id="btn-signup" class="w-full bg-brand-gold text-white py-2 rounded">Create Account</button>
-                <p id="signup-error" class="text-red-500 text-sm hidden"></p>
-            </div>
-        </div>
-    </div>
-
-    <div id="edit-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">Edit Paper</h3><button onclick="closeModal('edit-modal')">X</button></div>
-            <div class="p-6 space-y-4">
-                <input type="hidden" id="edit-doc-id">
-                <div><label class="block text-sm font-bold">Title</label><input type="text" id="edit-title" class="w-full border p-2 rounded"></div>
-                <div><label class="block text-sm font-bold">Author</label><input type="text" id="edit-author" class="w-full border p-2 rounded"></div>
-                <div><label class="block text-sm font-bold">Affiliation</label><input type="text" id="edit-affil" class="w-full border p-2 rounded"></div>
-                <div><label class="block text-sm font-bold">Abstract</label><textarea id="edit-abstract" rows="4" class="w-full border p-2 rounded"></textarea></div>
-                <button id="btn-update-paper" class="w-full bg-brand-navy text-white font-bold py-3 rounded">Update Paper</button>
-            </div>
-        </div>
-    </div>
+    <div id="success-modal" class="modal fixed inset-0 z-[200] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-8 text-center"><h3 class="text-2xl font-bold text-brand-navy mb-2">Success!</h3><button onclick="closeModal('success-modal'); showSection('mypage')" class="w-full bg-brand-navy text-white font-bold py-3 rounded mt-4">Go to My Page</button></div></div>
+    <div id="login-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Login</h3><button onclick="closeModal('login-modal')">X</button></div><div class="space-y-4"><button id="btn-google-login" class="w-full border border-slate-300 py-2 rounded flex justify-center items-center gap-2"><img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5">Sign in with Google</button><div class="border-t pt-4"><input type="email" id="login-email" class="w-full border p-2 rounded" placeholder="Email"><input type="password" id="login-password" class="w-full border p-2 rounded mt-2" placeholder="Password"><button id="btn-login" class="w-full bg-brand-navy text-white py-2 rounded mt-2">Sign In</button></div><p id="login-error" class="text-red-500 text-sm hidden"></p></div></div></div>
+    <div id="signup-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Sign Up</h3><button onclick="closeModal('signup-modal')">X</button></div><div class="space-y-4"><input type="text" id="signup-name" class="w-full border p-2 rounded" placeholder="Name"><input type="email" id="signup-email" class="w-full border p-2 rounded" placeholder="Email"><input type="password" id="signup-password" class="w-full border p-2 rounded" placeholder="Password"><button id="btn-signup" class="w-full bg-brand-gold text-white py-2 rounded">Create Account</button><p id="signup-error" class="text-red-500 text-sm hidden"></p></div></div></div>
+    <div id="edit-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-lg mx-4 overflow-hidden"><div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">Edit Paper</h3><button onclick="closeModal('edit-modal')">X</button></div><div class="p-6 space-y-4"><input type="hidden" id="edit-doc-id"><div><label class="block text-sm font-bold">Title</label><input type="text" id="edit-title" class="w-full border p-2 rounded"></div><div><label class="block text-sm font-bold">Author</label><input type="text" id="edit-author" class="w-full border p-2 rounded"></div><div><label class="block text-sm font-bold">Affiliation</label><input type="text" id="edit-affil" class="w-full border p-2 rounded"></div><div><label class="block text-sm font-bold">Abstract</label><textarea id="edit-abstract" rows="4" class="w-full border p-2 rounded"></textarea></div><button id="btn-update-paper" class="w-full bg-brand-navy text-white font-bold py-3 rounded">Update Paper</button></div></div></div>
 
     <script>
         function showSection(id) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            document.querySelectorAll('.page-section').forEach(el => {
-                el.classList.remove('active');
-                el.style.display = ''; 
-            });
-
+            document.querySelectorAll('.page-section').forEach(el => { el.classList.remove('active'); el.style.display = ''; });
             if(id === 'program') {
                 const detail = document.getElementById('program-detail');
                 const list = document.getElementById('program');
                 if(detail) { detail.classList.remove('active'); detail.style.display = 'none'; }
                 if(list) { list.style.display = 'block'; }
             }
-
-            setTimeout(() => { 
-                const el = document.getElementById(id);
-                if(el) {
-                    el.style.display = 'block';
-                    setTimeout(() => el.classList.add('active'), 10);
-                }
-            }, 50);
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if(link.getAttribute('onclick')?.includes(`'${id}'`)) { 
-                    link.classList.add('active', 'border-brand-blue'); 
-                    link.classList.remove('border-transparent'); 
-                } else { 
-                    link.classList.remove('active', 'border-brand-blue'); 
-                    link.classList.add('border-transparent'); 
-                }
-            });
+            setTimeout(() => { const el = document.getElementById(id); if(el) { el.style.display = 'block'; setTimeout(() => el.classList.add('active'), 10); } }, 50);
+            document.querySelectorAll('.nav-link').forEach(link => { if(link.getAttribute('onclick')?.includes(`'${id}'`)) { link.classList.add('active', 'border-brand-blue'); link.classList.remove('border-transparent'); } else { link.classList.remove('active', 'border-brand-blue'); link.classList.add('border-transparent'); }});
         }
-
-        function openModal(id) { 
-            const m = document.getElementById(id); 
-            if(m) { m.classList.remove('hidden'); m.classList.add('flex'); } 
-        }
-        
-        function closeModal(id) { 
-            const m = document.getElementById(id); 
-            if(m) { m.classList.add('hidden'); m.classList.remove('flex'); } 
-        }
-        
-        function toggleMobileMenu() { 
-            document.getElementById('mobile-menu').classList.toggle('hidden'); 
-        }
-        
+        function openModal(id) { const m = document.getElementById(id); if(m) { m.classList.remove('hidden'); m.classList.add('flex'); } }
+        function closeModal(id) { const m = document.getElementById(id); if(m) { m.classList.add('hidden'); m.classList.remove('flex'); } }
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
         function updateFileName(input) { 
-            const file = input.files[0];
-            if (file) {
-                document.getElementById('file-name-display').innerText = "Sel: " + file.name;
-            } else {
-                document.getElementById('file-name-display').innerText = "Upload PDF";
+            const f = input.files[0]; 
+            document.getElementById('file-name-display').innerText = f ? "Sel: " + f.name : "Upload PDF/ZIP"; 
+        }
+        window.onclick = function(e) { if (e.target.classList.contains('modal-backdrop')) { e.target.classList.add('hidden'); e.target.classList.remove('flex'); } }
+        window.addEventListener('DOMContentLoaded', () => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+
+        const programData = { 1: { title: "Day 1: Shanghai & Embarkation", date: "Aug 27, 2026", events: [{time:"15:00", desc:"Embarkation"}, {time:"18:00", desc:"Welcome Dinner"}] }, 2: { title: "Day 2: At Sea", date: "Aug 28, 2026", events: [{time:"10:00", desc:"Opening Ceremony"}, {time:"13:00", desc:"Sessions"}] }, 3: { title: "Day 3: Okinawa", date: "Aug 29, 2026", events: [{time:"09:00", desc:"Shore Excursion"}, {time:"14:00", desc:"Shopping"}] }, 4: { title: "Day 4: At Sea", date: "Aug 30, 2026", events: [{time:"10:00", desc:"Workshops"}, {time:"19:00", desc:"Gala Dinner"}] }, 5: { title: "Day 5: Return", date: "Aug 31, 2026", events: [{time:"08:00", desc:"Disembarkation"}] } };
+        function openProgramDetail(day) { const d = programData[day]; if(!d) return; document.getElementById('detail-title').innerText = d.title; document.getElementById('detail-date').innerText = d.date; const c = document.getElementById('detail-content'); c.innerHTML = ''; d.events.forEach(e => c.innerHTML += `<div class="relative pl-8"><span class="absolute -left-[9px] top-2 w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></span><div class="bg-white p-4 rounded shadow-sm"><span class="font-bold text-brand-blue block">${e.time}</span><span>${e.desc}</span></div></div>`); document.getElementById('program').classList.remove('active'); document.getElementById('program').style.display='none'; const ds = document.getElementById('program-detail'); ds.style.display='block'; setTimeout(() => ds.classList.add('active'), 50); window.scrollTo(0,0); }
+        function closeProgramDetail() { showSection('program'); }
+        
+        function exportToCSV() { const d = Object.values(window.paperDataStore || {}); if(!d.length) return alert("No data"); let c = "Title,Author,Status\n"; d.forEach(r => c += `"${r.title}","${r.author}","${r.status}"\n`); const l = document.createElement("a"); l.href = "data:text/csv;charset=utf-8," + encodeURI(c); l.download = "papers.csv"; document.body.appendChild(l); l.click(); document.body.removeChild(l); }
+        
+        // Updated View Logic for ZIP
+        function viewPdf(id) { 
+            const d = window.paperDataStore[id]; 
+            if(!d || !d.fileData) return alert("No file");
+            
+            // Check if ZIP
+            if(d.fileName.toLowerCase().endsWith('.zip')) {
+                alert("ZIP files cannot be previewed.\nPlease download the file.");
+                return;
             }
+            
+            const w = window.open(); 
+            w.document.write(`<iframe src="${d.fileData}" style="width:100%;height:100%;border:0;"></iframe>`); 
         }
         
-        window.onclick = function(e) { 
-            if (e.target.classList.contains('modal-backdrop')) { 
-                e.target.classList.add('hidden'); 
-                e.target.classList.remove('flex'); 
-            } 
-        }
-        
-        // Init Icons safely
-        window.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        });
-
-        // 🚀 CSV Export Function
-        function exportToCSV() {
-            const data = Object.values(window.paperDataStore || {});
-            if (data.length === 0) return alert("No data to export.");
-
-            let csvContent = "data:text/csv;charset=utf-8,";
-            csvContent += "Title,Author,Affiliation,Topic,Status,Date\n"; 
-
-            data.forEach(row => {
-                const rowStr = [
-                    `"${(row.title || '').replace(/"/g, '""')}"`,
-                    `"${(row.author || '').replace(/"/g, '""')}"`,
-                    `"${(row.affiliation || '').replace(/"/g, '""')}"`,
-                    `"${(row.topic || '')}"`,
-                    `"${(row.status || '')}"`,
-                    `"${row.timestamp ? new Date(row.timestamp.toDate()).toLocaleDateString() : ''}"`
-                ].join(",");
-                csvContent += rowStr + "\n";
-            });
-
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "conference_papers.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        // 🚀 PDF Viewer with Download Option
-        function viewPdf(docId) {
-            const doc = window.paperDataStore[docId];
-            if(!doc || !doc.fileData) return alert("No file found.");
-            
-            // Open Base64 PDF
-            const win = window.open();
-            if(win) {
-                win.document.write(
-                    `<iframe src="${doc.fileData}" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>`
-                );
-            }
-        }
-        
-        function downloadPdf(docId) {
-            const doc = window.paperDataStore[docId];
-            if(!doc || !doc.fileData) return alert("No file found.");
-            
-            const link = document.createElement("a");
-            link.href = doc.fileData;
-            link.download = doc.fileName || "paper.pdf";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        // 🚀 Detail View Logic
-        const programData = {
-            1: { title: "Day 1: Shanghai & Embarkation", date: "Aug 27, 2026 (Thu)", events: [
-                { time: "12:00 - 15:00", desc: "Shuttle Service from Pudong Airport to Wusongkou Port" },
-                { time: "15:00 - 17:00", desc: "Check-in & Embarkation" },
-                { time: "18:00 - 19:30", desc: "Welcome Dinner (Main Dining Room)" },
-                { time: "20:00 - 21:00", desc: "Orientation & Safety Drill" }
-            ]},
-            2: { title: "Day 2: At Sea (Academic Sessions)", date: "Aug 28, 2026 (Fri)", events: [
-                { time: "09:00 - 10:00", desc: "Opening Ceremony & Keynote Speech 1" },
-                { time: "10:30 - 12:00", desc: "Session 1: AI in Maritime Logistics" },
-                { time: "12:00 - 13:30", desc: "Networking Lunch" },
-                { time: "13:30 - 15:00", desc: "Session 2: Autonomous Ships Technology" },
-                { time: "15:30 - 17:00", desc: "Poster Session & Coffee Break" }
-            ]},
-            3: { title: "Day 3: Okinawa (Shore Excursion)", date: "Aug 29, 2026 (Sat)", events: [
-                { time: "08:00 - 09:00", desc: "Arrival at Naha Port" },
-                { time: "09:30 - 12:00", desc: "Cultural Tour: Shuri Castle" },
-                { time: "12:00 - 13:30", desc: "Local Lunch (Okinawa Cuisine)" },
-                { time: "14:00 - 16:00", desc: "Free Time at Kokusai Street" },
-                { time: "17:00", desc: "Return to Ship" }
-            ]},
-            4: { title: "Day 4: At Sea (Workshops)", date: "Aug 30, 2026 (Sun)", events: [
-                { time: "09:30 - 11:30", desc: "Workshop: Sustainable Ocean Tourism" },
-                { time: "13:00 - 15:00", desc: "Panel Discussion: Future of AI" },
-                { time: "16:00 - 17:30", desc: "Closing Ceremony & Best Paper Awards" },
-                { time: "19:00 - 22:00", desc: "Farewell Gala Dinner" }
-            ]},
-            5: { title: "Day 5: Shanghai Return", date: "Aug 31, 2026 (Mon)", events: [
-                { time: "07:00", desc: "Arrival at Wusongkou Port" },
-                { time: "08:00 - 10:00", desc: "Disembarkation" },
-                { time: "10:30", desc: "Shuttle to Pudong Airport" }
-            ]}
-        };
-
-        function openProgramDetail(day) {
-            const data = programData[day];
-            if(!data) return;
-
-            document.getElementById('detail-title').innerText = data.title;
-            document.getElementById('detail-date').innerText = data.date;
-            
-            const content = document.getElementById('detail-content');
-            content.innerHTML = ''; // clear previous
-
-            data.events.forEach(ev => {
-                content.innerHTML += `
-                    <div class="relative pl-8">
-                        <span class="absolute -left-[9px] top-2 w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></span>
-                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition">
-                            <span class="font-mono text-sm text-brand-blue font-bold block mb-1">${ev.time}</span>
-                            <span class="text-slate-700 font-medium">${ev.desc}</span>
-                        </div>
-                    </div>
-                `;
-            });
-
-            // Hide Program List, Show Detail (Using Display Property to avoid conflict)
-            document.getElementById('program').classList.remove('active');
-            document.getElementById('program').style.display = 'none'; 
-            
-            const detailSection = document.getElementById('program-detail');
-            detailSection.style.display = 'block';
-            setTimeout(() => detailSection.classList.add('active'), 50);
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function closeProgramDetail() {
-            const detailSection = document.getElementById('program-detail');
-            detailSection.classList.remove('active');
-            setTimeout(() => detailSection.style.display = 'none', 400);
-
-            const programSection = document.getElementById('program');
-            programSection.style.display = 'block';
-            setTimeout(() => programSection.classList.add('active'), 50);
-        }
+        function downloadPdf(id) { const d = window.paperDataStore[id]; if(!d || !d.fileData) return alert("No file"); const l = document.createElement("a"); l.href = d.fileData; l.download = d.fileName; document.body.appendChild(l); l.click(); document.body.removeChild(l); }
     </script>
 
     <script type="module">
@@ -650,16 +264,7 @@
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, serverTimestamp, query, where, onSnapshot, getDocs, updateDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // CONFIG
-        const firebaseConfig = {
-            apiKey: "AIzaSyAENLGgNgnFeGXOYV2-sKI9QI4ElZLyOPE",
-            authDomain: "icc-2026.firebaseapp.com",
-            projectId: "icc-2026",
-            storageBucket: "icc-2026.firebasestorage.app",
-            messagingSenderId: "85385162390",
-            appId: "1:85385162390:web:af353393092c491a721cb7"
-        };
-        
+        const firebaseConfig = { apiKey: "AIzaSyAENLGgNgnFeGXOYV2-sKI9QI4ElZLyOPE", authDomain: "icc-2026.firebaseapp.com", projectId: "icc-2026", storageBucket: "icc-2026.firebasestorage.app", messagingSenderId: "85385162390", appId: "1:85385162390:web:af353393092c491a721cb7" };
         const GEMINI_API_KEY = "AIzaSyCZQo6ghKe1LaEFdoTHdbDsgKR00JNtWPQ";
         const ADMIN_EMAILS = ['admin@icc2026.org']; 
 
@@ -667,253 +272,82 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
-
-        // Global Data Store
         window.paperDataStore = {};
 
-        // --- GEMINI ---
         window.callGeminiAPI = async (prompt) => {
-            if (!GEMINI_API_KEY) return alert("API Key Missing");
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`;
-            try {
-                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) });
-                const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text;
-            } catch (e) { console.error(e); return null; }
+            try { const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${GEMINI_API_KEY}`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) }); const data = await res.json(); return data.candidates?.[0]?.content?.parts?.[0]?.text; } catch (e) { return null; }
         }
-
-        window.polishAbstract = async () => {
-            const input = document.getElementById('paper-abstract');
-            const msg = document.getElementById('polish-msg');
-            if(input.value.length < 10) return alert("Enter abstract first.");
-            msg.innerHTML = '<span class="spinner-dark"></span> Polishing...'; msg.classList.remove('hidden');
-            const res = await window.callGeminiAPI(`Rewrite strictly in academic English:\n"${input.value}"`);
-            if(res) { input.value = res; msg.innerText = "Polished!"; }
-        }
-
-        // --- GLOBAL ACTIONS ---
-        window.signOutAction = async () => {
-            await signOut(auth);
-            showSection('home');
-            alert("Logged out successfully.");
-        }; 
+        window.polishAbstract = async () => { const inp = document.getElementById('paper-abstract'); const msg = document.getElementById('polish-msg'); if(inp.value.length < 10) return alert("Enter abstract."); msg.classList.remove('hidden'); msg.innerText = "Polishing..."; const res = await window.callGeminiAPI(`Rewrite strictly in academic English:\n"${inp.value}"`); if(res) { inp.value = res; msg.innerText = "Polished!"; } }
         
-        // 🔥 Updated Delete Logic: Instant UI Removal
-        window.deletePaper = async (docId, btnElement) => {
-            if(!confirm("Delete this paper?")) return;
-            try { 
-                await deleteDoc(doc(db, "submissions", docId)); 
-                
-                // 1. Remove visual row immediately
-                if(btnElement) {
-                    const row = btnElement.closest('tr') || btnElement.closest('li');
-                    if(row) row.remove();
-                }
+        window.signOutAction = async () => { await signOut(auth); showSection('home'); alert("Logged out."); };
+        window.deletePaper = async (id, btn) => { if(!confirm("Delete?")) return; try { await deleteDoc(doc(db, "submissions", id)); if(btn) btn.closest('tr')?.remove() || btn.closest('li')?.remove(); if(document.getElementById('admin').classList.contains('active')) setTimeout(loadAdminData, 500); } catch(e) { alert(e.message); } }
+        window.openEditModalSafe = (id) => { const d = window.paperDataStore[id]; if(!d) return; document.getElementById('edit-doc-id').value = id; document.getElementById('edit-title').value = d.title; document.getElementById('edit-author').value = d.author; document.getElementById('edit-affil').value = d.affiliation; document.getElementById('edit-abstract').value = d.abstract; openModal('edit-modal'); }
+        window.updateStatus = async (id, st) => { try { await updateDoc(doc(db, "submissions", id), { status: st }); loadAdminData(); } catch(e) { alert(e.message); } }
 
-                // 2. Auto reload stats if on admin page (silent update)
-                if(document.getElementById('admin').classList.contains('active')) {
-                    setTimeout(() => loadAdminData(), 500); 
-                }
-            } catch(e) { alert("Error: " + e.message); }
-        }
+        document.getElementById('btn-google-login').onclick = async () => { try { await signInWithPopup(auth, googleProvider); closeModal('login-modal'); } catch(e) { alert(e.message); } };
+        document.getElementById('btn-login').onclick = async () => { try { await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); closeModal('login-modal'); } catch(e) { alert(e.message); } };
+        document.getElementById('btn-signup').onclick = async () => { try { const cred = await createUserWithEmailAndPassword(auth, document.getElementById('signup-email').value, document.getElementById('signup-password').value); await updateProfile(cred.user, { displayName: document.getElementById('signup-name').value }); closeModal('signup-modal'); } catch(e) { alert(e.message); } };
+        document.getElementById('btn-update-paper').onclick = async () => { try { await updateDoc(doc(db, "submissions", document.getElementById('edit-doc-id').value), { title: document.getElementById('edit-title').value, author: document.getElementById('edit-author').value, affiliation: document.getElementById('edit-affil').value, abstract: document.getElementById('edit-abstract').value }); alert("Updated!"); closeModal('edit-modal'); } catch(e) { alert(e.message); } };
 
-        window.openEditModalSafe = (id) => {
-            const d = window.paperDataStore[id];
-            if (!d) return alert("Error loading data. Try refreshing.");
-            document.getElementById('edit-doc-id').value = id;
-            document.getElementById('edit-title').value = d.title || "";
-            document.getElementById('edit-author').value = d.author || "";
-            document.getElementById('edit-affil').value = d.affiliation || "";
-            document.getElementById('edit-abstract').value = d.abstract || "";
-            openModal('edit-modal');
-        }
-
-        // --- EVENT LISTENERS ---
-        document.getElementById('btn-google-login').addEventListener('click', async () => { try { await signInWithPopup(auth, googleProvider); closeModal('login-modal'); } catch (e) { alert(e.message); } });
-        document.getElementById('btn-login').addEventListener('click', async () => { try { await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); closeModal('login-modal'); } catch (e) { alert(e.message); } });
-        document.getElementById('btn-signup').addEventListener('click', async () => { try { const cred = await createUserWithEmailAndPassword(auth, document.getElementById('signup-email').value, document.getElementById('signup-password').value); await updateProfile(cred.user, { displayName: document.getElementById('signup-name').value }); closeModal('signup-modal'); } catch (e) { alert(e.message); } });
-
-        // 🔥 Submit with Base64 Conversion & Size Limit Check
-        document.getElementById('submit-btn').addEventListener('click', async(e) => {
-            e.preventDefault(); 
-            if(!auth.currentUser) return alert("Please login.");
+        document.getElementById('submit-btn').onclick = async (e) => {
+            e.preventDefault(); if(!auth.currentUser) return alert("Please login.");
+            const file = document.getElementById('paper-file').files[0];
             
-            const fileInput = document.getElementById('paper-file');
-            const file = fileInput.files[0];
-            const btn = document.getElementById('submit-btn');
-            
-            // 🔥 FILE SIZE CHECK (800KB Limit)
-            let useFile = true;
-            if(file && file.size > 800 * 1024) {
-                if(!confirm("File is too large (>800KB) for quick preview.\nSubmit without file preview?")) return;
-                useFile = false; 
+            // Allow 500KB for PDF or ZIP
+            if(file && file.size > 500 * 1024) { 
+                alert("⚠️ File size exceeds 500KB limit.\n\nPlease compress your PDF or upload a smaller ZIP file.");
+                // Reset file input
+                document.getElementById('paper-file').value = "";
+                document.getElementById('file-name-display').innerText = "Click to upload PDF or ZIP";
+                return; // Stop execution
             }
 
-            btn.disabled = true; 
-            btn.innerHTML = '<span class="spinner"></span> Uploading...';
+            const btn = document.getElementById('submit-btn'); btn.disabled = true; btn.innerText = "Uploading...";
             
-            const submitData = (base64File) => {
+            const save = (b64) => {
                 addDoc(collection(db, "submissions"), {
-                    title: document.getElementById('paper-title').value,
-                    author: document.getElementById('author-name').value,
-                    affiliation: document.getElementById('author-affil').value,
-                    topic: document.getElementById('paper-topic').value,
-                    abstract: document.getElementById('paper-abstract').value,
-                    fileName: file ? file.name : "No File",
-                    fileData: base64File || null, // Store Base64 string
-                    timestamp: serverTimestamp(),
-                    userId: auth.currentUser.uid,
-                    email: auth.currentUser.email,
-                    status: 'Under Review'
-                }).then(() => {
-                    openModal('success-modal');
-                    document.getElementById('submission-form').reset();
-                    document.getElementById('file-name-display').innerText = "Click to upload PDF";
-                    btn.disabled = false;
-                    btn.innerHTML = '<span id="submit-text">Submit Paper</span><span id="submit-spinner" class="spinner ml-2 hidden"></span>';
-                }).catch(err => {
-                    alert("Error: " + err.message);
-                    btn.disabled = false;
-                    btn.innerText = "Submit Paper";
-                });
+                    title: document.getElementById('paper-title').value, author: document.getElementById('author-name').value, affiliation: document.getElementById('author-affil').value, topic: document.getElementById('paper-topic').value, abstract: document.getElementById('paper-abstract').value,
+                    fileName: file ? file.name : "No File", fileData: b64, timestamp: serverTimestamp(), userId: auth.currentUser.uid, email: auth.currentUser.email, status: 'Under Review'
+                }).then(() => { openModal('success-modal'); document.getElementById('submission-form').reset(); btn.disabled = false; btn.innerText = "Submit Paper"; }).catch(err => { alert(err.message); btn.disabled = false; });
             };
+            if(file) { const r = new FileReader(); r.onload = (ev) => save(ev.target.result); r.readAsDataURL(file); } else { save(null); }
+        };
 
-            if (file && useFile) {
-                const reader = new FileReader();
-                reader.onload = (e) => submitData(e.target.result);
-                reader.readAsDataURL(file);
-            } else {
-                submitData(null);
-            }
-        });
-
-        document.getElementById('btn-update-paper').addEventListener('click', async () => {
-            try {
-                await updateDoc(doc(db, "submissions", document.getElementById('edit-doc-id').value), {
-                    title: document.getElementById('edit-title').value,
-                    author: document.getElementById('edit-author').value,
-                    affiliation: document.getElementById('edit-affil').value,
-                    abstract: document.getElementById('edit-abstract').value
-                });
-                alert("Updated!"); closeModal('edit-modal');
-            } catch(e) { alert("Error: " + e.message); }
-        });
-
-        // --- AUTH STATE & LOADING DATA ---
         window.loadAdminData = async () => {
-            const list = document.getElementById('admin-papers-list');
-            list.innerHTML = '<tr><td colspan="5" class="p-4 text-center">Loading...</td></tr>';
-            const snap = await getDocs(collection(db, "submissions"));
-            list.innerHTML = '';
-            
-            let stats = { total: 0, pending: 0, accepted: 0, rejected: 0 };
-
-            snap.forEach(docSnap => {
-                const d = docSnap.data();
-                window.paperDataStore[docSnap.id] = d; 
-                
-                stats.total++;
-                if(d.status === 'Accepted') stats.accepted++;
-                else if(d.status === 'Rejected') stats.rejected++;
-                else stats.pending++;
-
-                // View/Download Buttons
-                let fileBtns = `<span class="text-gray-400 text-xs">-</span>`;
-                if(d.fileData) {
-                    fileBtns = `
-                        <div class="flex flex-col gap-1 items-center">
-                            <button onclick="viewPdf('${docSnap.id}')" class="text-blue-600 underline text-xs font-bold flex items-center gap-1"><i data-lucide="eye" class="w-3 h-3"></i> View</button>
-                            <button onclick="downloadPdf('${docSnap.id}')" class="text-slate-500 hover:text-brand-navy text-xs flex items-center gap-1"><i data-lucide="download" class="w-3 h-3"></i> Save</button>
-                        </div>
-                    `;
-                }
-
-                list.innerHTML += `
-                <tr class="border-b hover:bg-slate-50">
-                    <td class="p-3 align-top">
-                        <div class="font-bold text-brand-navy truncate w-48" title="${d.title}">${d.title}</div>
-                        <div class="text-xs text-slate-500">${d.topic}</div>
-                        <div class="text-xs text-slate-400 mt-1">${d.timestamp ? new Date(d.timestamp.toDate()).toLocaleDateString() : '-'}</div>
-                    </td>
-                    <td class="p-3 text-sm align-top">${d.author}</td>
-                    <td class="p-3 align-top">
-                        <select onchange="updateStatus('${docSnap.id}', this.value)" class="text-xs border rounded p-1 ${d.status === 'Accepted' ? 'bg-green-50 text-green-700 font-bold' : ''}">
-                            <option value="Under Review" ${d.status === 'Under Review' ? 'selected' : ''}>Pending</option>
-                            <option value="Accepted" ${d.status === 'Accepted' ? 'selected' : ''}>Accept</option>
-                            <option value="Rejected" ${d.status === 'Rejected' ? 'selected' : ''}>Reject</option>
-                        </select>
-                    </td>
-                    <td class="p-3 text-center align-top">${fileBtns}</td>
-                    <td class="p-3 align-top"><button onclick="deletePaper('${docSnap.id}', this)" class="text-red-500 hover:bg-red-50 px-2 py-1 rounded text-xs">Delete</button></td>
-                </tr>`;
+            const list = document.getElementById('admin-papers-list'); list.innerHTML = '<tr><td colspan="5" class="p-4 text-center">Loading...</td></tr>';
+            const snap = await getDocs(collection(db, "submissions")); list.innerHTML = '';
+            let s = { t:0, p:0, a:0, r:0 };
+            snap.forEach(d => {
+                const data = d.data(); window.paperDataStore[d.id] = data; s.t++;
+                if(data.status==='Accepted') s.a++; else if(data.status==='Rejected') s.r++; else s.p++;
+                const fBtn = data.fileData ? `<div class="flex flex-col gap-1 items-center"><button onclick="viewPdf('${d.id}')" class="text-blue-600 text-xs font-bold">View</button><button onclick="downloadPdf('${d.id}')" class="text-slate-500 text-xs">Save</button></div>` : '-';
+                list.innerHTML += `<tr class="border-b hover:bg-slate-50"><td class="p-3"><div class="font-bold truncate w-48">${data.title}</div><div class="text-xs text-slate-500">${data.topic}</div></td><td class="p-3 text-sm">${data.author}</td><td class="p-3"><select onchange="updateStatus('${d.id}', this.value)" class="text-xs border rounded p-1"><option value="Under Review" ${data.status==='Under Review'?'selected':''}>Pending</option><option value="Accepted" ${data.status==='Accepted'?'selected':''}>Accept</option><option value="Rejected" ${data.status==='Rejected'?'selected':''}>Reject</option></select></td><td class="p-3 text-center">${fBtn}</td><td class="p-3"><button onclick="deletePaper('${d.id}', this)" class="text-red-500 text-xs border border-red-200 px-2 py-1 rounded">Del</button></td></tr>`;
             });
-
-            // Re-render icons for dynamic content
             if(typeof lucide !== 'undefined') lucide.createIcons();
-
-            document.getElementById('stat-total').innerText = stats.total;
-            document.getElementById('stat-pending').innerText = stats.pending;
-            document.getElementById('stat-accepted').innerText = stats.accepted;
-            document.getElementById('stat-rejected').innerText = stats.rejected;
+            document.getElementById('stat-total').innerText = s.t; document.getElementById('stat-pending').innerText = s.p; document.getElementById('stat-accepted').innerText = s.a; document.getElementById('stat-rejected').innerText = s.r;
         }
 
-        // 🔥 REAL-TIME UPDATE (Reloads data after status change)
-        window.updateStatus = async (docId, newStatus) => {
-            try { 
-                await updateDoc(doc(db, "submissions", docId), { status: newStatus }); 
-                loadAdminData(); // Auto refresh
-            } catch(e) { alert("Error: " + e.message); }
-        }
-
-        onAuthStateChanged(auth, (user) => {
-            const menu = document.getElementById('auth-menu');
-            if(user) {
-                const isAdmin = ADMIN_EMAILS.includes(user.email);
-                if(isAdmin) { document.getElementById('nav-admin-btn').classList.remove('hidden'); document.getElementById('mobile-admin-btn').classList.remove('hidden'); }
+        onAuthStateChanged(auth, (u) => {
+            const m = document.getElementById('auth-menu');
+            if(u) {
+                if(ADMIN_EMAILS.includes(u.email)) { document.getElementById('nav-admin-btn').classList.remove('hidden'); document.getElementById('mobile-admin-btn').classList.remove('hidden'); }
+                m.innerHTML = `<span class="text-slate-300 text-xs mr-2 hidden sm:inline">Welcome, <b>${u.displayName||u.email.split('@')[0]}</b></span> <button onclick="showSection('mypage')" class="font-bold hover:text-white transition">My Page</button> <span class="mx-2">|</span> <button onclick="signOutAction()" class="hover:text-white transition">Logout</button>`;
+                document.getElementById('submission-lock').classList.add('hidden'); document.getElementById('submission-content').classList.remove('hidden');
                 
-                const displayName = user.displayName || user.email.split('@')[0];
-
-                menu.innerHTML = `<span class="text-slate-300 text-xs mr-2 hidden sm:inline">Welcome, <b>${displayName}</b></span> <button onclick="showSection('mypage')" class="font-bold hover:text-white transition">My Page</button> <span class="mx-2">|</span> <button onclick="signOutAction()" class="hover:text-white transition">Logout</button>`;
-                
-                document.getElementById('submission-lock').classList.add('hidden');
-                document.getElementById('submission-content').classList.remove('hidden');
-
-                const q = query(collection(db, "submissions"), where("userId", "==", user.uid));
+                const q = query(collection(db, "submissions"), where("userId", "==", u.uid));
                 onSnapshot(q, (snap) => {
-                    const list = document.getElementById('my-papers-list');
-                    list.innerHTML = snap.empty ? '<li>No papers.</li>' : '';
-                    snap.forEach(docSnap => {
-                        const d = docSnap.data();
-                        window.paperDataStore[docSnap.id] = d; 
-                        
-                        let statusColor = "text-slate-500";
-                        if(d.status === "Accepted") statusColor = "text-green-600 font-bold";
-                        if(d.status === "Rejected") statusColor = "text-red-500";
-
-                        list.innerHTML += `
-                        <li class="border-b pb-3 flex justify-between items-center">
-                            <div>
-                                <div class="font-bold text-brand-navy">${d.title}</div>
-                                <div class="text-xs ${statusColor} mt-1">${d.status}</div>
-                            </div>
-                            <div class="flex gap-2">
-                                <button onclick="openEditModalSafe('${docSnap.id}')" class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded hover:bg-blue-100">Edit</button>
-                                <button onclick="deletePaper('${docSnap.id}', this)" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100">Del</button>
-                            </div>
-                        </li>`;
+                    const list = document.getElementById('my-papers-list'); list.innerHTML = snap.empty ? '<li>No papers.</li>' : '';
+                    snap.forEach(d => {
+                        const data = d.data(); window.paperDataStore[d.id] = data; 
+                        let c = "text-slate-500"; if(data.status==="Accepted") c="text-green-600 font-bold"; if(data.status==="Rejected") c="text-red-500";
+                        list.innerHTML += `<li class="border-b pb-3 flex justify-between items-center"><div><div class="font-bold text-brand-navy">${data.title}</div><div class="text-xs ${c} mt-1">${data.status}</div></div><div class="flex gap-2"><button onclick="openEditModalSafe('${d.id}')" class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded hover:bg-blue-100">Edit</button><button onclick="deletePaper('${d.id}', this)" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100">Del</button></div></li>`;
                     });
                 });
             } else {
-                menu.innerHTML = `<button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button> <span>|</span> <button onclick="openModal('signup-modal')" class="hover:text-white transition">Sign Up</button>`;
-                document.getElementById('submission-lock').classList.remove('hidden');
-                document.getElementById('submission-content').classList.add('hidden');
-                document.getElementById('nav-admin-btn').classList.add('hidden');
-                document.getElementById('mobile-admin-btn').classList.add('hidden');
-
-                const currentSec = document.querySelector('.page-section.active');
-                if(currentSec && (currentSec.id === 'mypage' || currentSec.id === 'admin')) {
-                    showSection('home');
-                }
+                m.innerHTML = `<button onclick="openModal('login-modal')" class="hover:text-white transition">Login</button> <span>|</span> <button onclick="openModal('signup-modal')" class="hover:text-white transition">Sign Up</button>`;
+                document.getElementById('submission-lock').classList.remove('hidden'); document.getElementById('submission-content').classList.add('hidden');
+                document.getElementById('nav-admin-btn').classList.add('hidden'); document.getElementById('mobile-admin-btn').classList.add('hidden');
+                const cur = document.querySelector('.page-section.active'); if(cur && (cur.id==='mypage'||cur.id==='admin')) showSection('home');
             }
         });
     </script>
