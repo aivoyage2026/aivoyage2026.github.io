@@ -70,10 +70,16 @@
             </nav>
             <button class="lg:hidden text-brand-navy hover:text-brand-gold transition" onclick="toggleMobileMenu()"><i data-lucide="menu" class="w-7 h-7"></i></button>
         </div>
+        
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-20">
-            <nav class="flex flex-col p-4 space-y-4 text-sm font-medium text-slate-600">
-                <button onclick="showSection('home'); toggleMobileMenu()" class="text-left px-4 py-2 hover:bg-slate-50 rounded">Home</button>
-                <button onclick="showSection('admin'); toggleMobileMenu(); loadAdminData()" id="mobile-admin-btn" class="hidden text-left px-4 py-2 bg-red-50 text-red-600 font-bold rounded">ADMIN DASHBOARD</button>
+            <nav class="flex flex-col p-4 space-y-2 text-sm font-medium text-slate-600">
+                <button onclick="showSection('home'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Home</button>
+                <button onclick="showSection('about'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Overview</button>
+                <button onclick="showSection('program'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Program</button>
+                <button onclick="showSection('submission'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Submission</button>
+                <button onclick="showSection('venue'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Venue</button>
+                <button onclick="showSection('accommodation'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Accommodation</button>
+                <button onclick="showSection('admin'); toggleMobileMenu(); loadAdminData()" id="mobile-admin-btn" class="hidden text-left px-4 py-3 bg-red-50 text-red-600 font-bold rounded">ADMIN DASHBOARD</button>
             </nav>
         </div>
     </header>
