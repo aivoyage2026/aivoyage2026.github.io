@@ -16,7 +16,7 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
-                    colors: { brand: { navy: '#0f172a', blue: '#1e3a8a', gold: '#b49b67', light: '#f8fafc' } }
+                    colors: { brand: { navy: '#0f172a', blue: '#1e3a8a', gold: '#b49b67', light: '#f8fafc', accent: '#0284c7' } }
                 }
             }
         }
@@ -24,22 +24,23 @@
 
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        h1, h2, h3, h4, .title-font { font-family: 'Playfair Display', serif; }
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('msc.jpg');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)), url('msc.jpg');
             background-size: cover; background-position: center; background-attachment: fixed; background-color: #0f172a;
         }
         .page-section { display: none; opacity: 0; transform: translateY(10px); transition: all 0.4s ease-out; }
         .page-section.active { display: block; opacity: 1; transform: translateY(0); }
         .spinner { border: 3px solid rgba(255,255,255,0.3); border-left-color: #ffffff; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; }
         .modal-backdrop { background-color: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); z-index: 9999; }
-        .program-card { cursor: pointer; }
-        .program-card:hover .card-bg { transform: scale(1.1); }
-        .program-card:hover .card-overlay { opacity: 0.7; }
+        
+        /* Table Styles for Conference */
+        .conf-table th { @apply bg-slate-100 text-brand-navy font-bold p-4 border border-slate-200; }
+        .conf-table td { @apply p-4 border border-slate-200 text-slate-600; }
     </style>
 </head>
-<body class="bg-brand-light text-slate-700 flex flex-col min-h-screen">
+<body class="text-slate-700 flex flex-col min-h-screen">
 
     <div class="bg-brand-navy text-slate-400 text-xs py-2 border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -59,24 +60,28 @@
                 <div class="p-2 bg-brand-navy rounded text-brand-gold group-hover:bg-brand-blue transition duration-300"><i data-lucide="anchor" class="w-6 h-6"></i></div>
                 <div><h1 class="text-xl font-bold text-brand-navy leading-none tracking-tight">AI Voyage 2026</h1><p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase mt-1">Shanghai - Okinawa</p></div>
             </div>
-            <nav class="hidden lg:flex gap-8 text-sm font-medium text-slate-600" id="desktop-nav">
+            <nav class="hidden xl:flex gap-6 text-sm font-medium text-slate-600" id="desktop-nav">
                 <button onclick="showSection('home')" class="nav-link active hover:text-brand-blue border-b-2 border-brand-blue">Home</button>
                 <button onclick="showSection('about')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Overview</button>
+                <button onclick="showSection('committee')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Committee</button>
                 <button onclick="showSection('program')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Program</button>
-                <button onclick="showSection('submission')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Submission</button>
+                <button onclick="showSection('submission')" class="nav-link hover:text-brand-blue border-b-2 border-transparent text-brand-accent font-bold">Submission</button>
+                <button onclick="showSection('registration')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Registration</button>
                 <button onclick="showSection('venue')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Venue</button>
                 <button onclick="showSection('accommodation')" class="nav-link hover:text-brand-blue border-b-2 border-transparent">Accommodation</button>
                 <button onclick="showSection('admin'); loadAdminData()" id="nav-admin-btn" class="hidden text-red-600 font-bold hover:text-red-800 bg-red-50 px-3 py-1 rounded-full text-xs uppercase flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3"></i> ADMIN</button>
             </nav>
-            <button class="lg:hidden text-brand-navy hover:text-brand-gold transition" onclick="toggleMobileMenu()"><i data-lucide="menu" class="w-7 h-7"></i></button>
+            <button class="xl:hidden text-brand-navy hover:text-brand-gold transition" onclick="toggleMobileMenu()"><i data-lucide="menu" class="w-7 h-7"></i></button>
         </div>
         
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-20">
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-slate-200 shadow-lg absolute w-full left-0 top-20 max-h-[80vh] overflow-y-auto">
             <nav class="flex flex-col p-4 space-y-2 text-sm font-medium text-slate-600">
                 <button onclick="showSection('home'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Home</button>
                 <button onclick="showSection('about'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Overview</button>
+                <button onclick="showSection('committee'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Committee</button>
                 <button onclick="showSection('program'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Program</button>
-                <button onclick="showSection('submission'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Submission</button>
+                <button onclick="showSection('submission'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded text-brand-accent font-bold">Submission</button>
+                <button onclick="showSection('registration'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Registration</button>
                 <button onclick="showSection('venue'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Venue</button>
                 <button onclick="showSection('accommodation'); toggleMobileMenu()" class="text-left px-4 py-3 hover:bg-slate-50 rounded">Accommodation</button>
                 <button onclick="showSection('admin'); toggleMobileMenu(); loadAdminData()" id="mobile-admin-btn" class="hidden text-left px-4 py-3 bg-red-50 text-red-600 font-bold rounded">ADMIN DASHBOARD</button>
@@ -85,16 +90,84 @@
     </header>
 
     <div id="home" class="page-section active">
-        <section class="hero-bg h-[700px] flex items-center justify-center text-center text-white px-4">
+        <section class="hero-bg py-32 md:py-48 flex items-center justify-center text-center text-white px-4">
             <div class="max-w-5xl mx-auto space-y-8 animate-[fadeIn_0.8s_ease-out]">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/50 bg-brand-navy/50 backdrop-blur-sm">
                     <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
-                    <span class="text-xs font-medium tracking-wider text-brand-gold uppercase">Aug 27 - 31, 2026</span>
+                    <span class="text-xs font-medium tracking-wider text-brand-gold uppercase">August 27 - 31, 2026 • MSC Bellissima</span>
                 </div>
                 <h2 class="text-5xl md:text-7xl font-bold leading-tight drop-shadow-2xl">AI Voyage 2026 <br/> <span class="italic font-serif text-brand-gold">Future Maritime</span></h2>
+                <p class="text-lg text-slate-300 max-w-2xl mx-auto">The 1st International Conference on AI Convergence & Future Maritime</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                    <button onclick="showSection('submission')" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:bg-white transition duration-300 transform hover:-translate-y-1">Submit Paper</button>
-                    <button onclick="showSection('program')" class="px-8 py-4 border border-white text-white font-medium rounded hover:bg-white hover:text-brand-navy transition duration-300">View Schedule</button>
+                    <button onclick="showSection('submission')" class="px-8 py-4 bg-brand-accent text-white font-bold rounded shadow-lg hover:bg-blue-600 transition duration-300 transform hover:-translate-y-1">Call for Papers</button>
+                    <button onclick="showSection('registration')" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:bg-yellow-500 transition duration-300 transform hover:-translate-y-1">Registration</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2 space-y-6">
+                    <h3 class="text-2xl font-bold text-brand-navy border-b-2 border-brand-navy pb-2 flex items-center gap-2"><i data-lucide="bell" class="text-brand-gold"></i> What's New</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 p-4 bg-white rounded shadow-sm border border-slate-100 hover:border-brand-blue transition">
+                            <span class="bg-red-50 text-red-600 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">NEW</span>
+                            <div>
+                                <a href="#" onclick="showSection('submission')" class="font-bold text-brand-navy hover:text-brand-accent">Paper Submission System is now OPEN!</a>
+                                <p class="text-xs text-slate-500 mt-1">Feb 28, 2026</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 bg-white rounded shadow-sm border border-slate-100 hover:border-brand-blue transition">
+                            <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Notice</span>
+                            <div>
+                                <a href="#" onclick="showSection('registration')" class="font-bold text-brand-navy hover:text-brand-accent">Early Bird Registration starts from March 1st.</a>
+                                <p class="text-xs text-slate-500 mt-1">Feb 15, 2026</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 bg-white rounded shadow-sm border border-slate-100 hover:border-brand-blue transition">
+                            <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded whitespace-nowrap">Notice</span>
+                            <div>
+                                <a href="#" onclick="showSection('program')" class="font-bold text-brand-navy hover:text-brand-accent">Conference preliminary schedule has been announced.</a>
+                                <p class="text-xs text-slate-500 mt-1">Jan 20, 2026</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-brand-navy border-b-2 border-brand-navy pb-2 flex items-center gap-2"><i data-lucide="calendar" class="text-brand-gold"></i> Important Dates</h3>
+                    <div class="bg-slate-800 text-white rounded-xl p-6 shadow-lg">
+                        <div class="space-y-4">
+                            <div class="border-l-2 border-brand-gold pl-4">
+                                <p class="text-xs text-brand-gold font-bold uppercase mb-1">Paper Submission Deadline</p>
+                                <p class="text-lg font-bold">June 30, 2026</p>
+                            </div>
+                            <div class="border-l-2 border-brand-gold pl-4">
+                                <p class="text-xs text-brand-gold font-bold uppercase mb-1">Acceptance Notification</p>
+                                <p class="text-lg font-bold">July 15, 2026</p>
+                            </div>
+                            <div class="border-l-2 border-brand-gold pl-4">
+                                <p class="text-xs text-brand-gold font-bold uppercase mb-1">Early Bird Registration</p>
+                                <p class="text-lg font-bold">~ July 31, 2026</p>
+                            </div>
+                            <div class="border-l-2 border-brand-accent pl-4 mt-6">
+                                <p class="text-xs text-brand-accent font-bold uppercase mb-1">Conference Dates</p>
+                                <p class="text-lg font-bold">Aug 27 - 31, 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white border-t border-slate-200 py-12">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Supported & Organized By</h3>
+                <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                    <div class="text-2xl font-bold font-serif text-slate-800">Korea Maritime Institute</div>
+                    <div class="text-2xl font-bold font-serif text-slate-800">AI Convergence Society</div>
+                    <div class="text-2xl font-bold font-serif text-slate-800">MSC Cruises</div>
+                    <div class="text-2xl font-bold font-serif text-slate-800">Jeju National University</div>
                 </div>
             </div>
         </section>
@@ -103,6 +176,36 @@
     <div id="about" class="page-section">
         <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Conference Overview</h2><p class="text-slate-300">Innovation, Networking, and Experience</p></div>
         <div class="max-w-5xl mx-auto px-6 py-16"><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Purpose & Necessity</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li>High-efficiency convention combining Travel, Academics, and Tourism.</li><li>New academic networking opportunity.</li></ul></div><div><h3 class="text-2xl font-bold text-brand-navy mb-4">Expected Effects</h3><ul class="list-disc list-inside text-slate-600 space-y-2"><li><strong>One-stop Service:</strong> Accommodation, meetings, and dining.</li><li><strong>High Engagement:</strong> Minimized movement leads to higher attendance.</li></ul></div></div></div>
+    </div>
+
+    <div id="committee" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Committee</h2><p class="text-slate-300">AI Voyage 2026 Organizing Members</p></div>
+        <div class="max-w-4xl mx-auto px-6 py-16 space-y-12">
+            
+            <div>
+                <h3 class="text-2xl font-bold text-brand-navy border-b-2 border-brand-gold pb-2 mb-6">Honorary Chairs</h3>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-700">
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100"><span class="font-bold block">Prof. John Doe</span> Seoul National University, Korea</li>
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100"><span class="font-bold block">Dr. Jane Smith</span> MIT, USA</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-brand-navy border-b-2 border-brand-gold pb-2 mb-6">General Co-Chairs</h3>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-700">
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100"><span class="font-bold block">Prof. Minseok Kim</span> Jeju National University, Korea</li>
+                    <li class="bg-white p-4 rounded shadow-sm border border-slate-100"><span class="font-bold block">Prof. Alan Turing</span> Stanford University, USA</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-brand-navy border-b-2 border-brand-gold pb-2 mb-6">Program Committee</h3>
+                <div class="bg-white p-6 rounded shadow-sm border border-slate-100 text-slate-700 leading-relaxed">
+                    <p>David Lee (KAIST), Sarah Connor (Oxford), Michael Chang (University of Tokyo), Robert Brown (Maritime Institute), Alice Yoon (Korea University), <i>(More to be added...)</i></p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <div id="program" class="page-section">
@@ -149,17 +252,53 @@
     </div>
 
     <div id="submission" class="page-section">
-        <div class="bg-brand-navy text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Call for Papers</h2><p class="text-slate-300">Submit your research using AI assistance.</p></div>
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Call for Papers</h2>
+            <p class="text-slate-300">Online Submission System</p>
+        </div>
+        
         <div class="max-w-4xl mx-auto px-6 py-16">
-            <div id="submission-lock" class="text-center py-20 bg-white rounded-xl shadow-lg border border-slate-200"><div class="inline-flex items-center justify-center w-20 h-20 bg-slate-100 rounded-full mb-6"><i data-lucide="lock" class="w-10 h-10 text-slate-400"></i></div><h3 class="text-2xl font-bold text-brand-navy mb-2">Login Required</h3><div class="flex justify-center gap-4"><button onclick="openModal('login-modal')" class="bg-brand-navy text-white px-8 py-3 rounded-lg font-bold">Login</button></div></div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 mb-8">
+                <h3 class="text-xl font-bold text-brand-navy mb-4 flex items-center gap-2"><i data-lucide="file-text" class="text-brand-accent"></i> Submission Guidelines</h3>
+                <ul class="list-disc list-inside text-sm text-slate-600 space-y-2 mb-4">
+                    <li>All papers must be written in English and submitted via this system.</li>
+                    <li>Authors can choose between <strong>Oral Presentation</strong> or <strong>Poster Presentation</strong>.</li>
+                    <li>Files should be in PDF or ZIP format (Max 500KB). For larger files, please provide a Google Drive link.</li>
+                </ul>
+            </div>
+
+            <div id="submission-lock" class="text-center py-20 bg-white rounded-xl shadow-lg border border-slate-200"><div class="inline-flex items-center justify-center w-20 h-20 bg-slate-100 rounded-full mb-6"><i data-lucide="lock" class="w-10 h-10 text-slate-400"></i></div><h3 class="text-2xl font-bold text-brand-navy mb-2">Login Required</h3><div class="flex justify-center gap-4"><button onclick="openModal('login-modal')" class="bg-brand-navy text-white px-8 py-3 rounded-lg font-bold hover:bg-brand-blue transition">Login</button></div></div>
+            
             <div id="submission-content" class="hidden bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
-                <div class="p-8 border-b border-slate-100 bg-slate-50/50"><h3 class="text-2xl font-bold text-brand-navy">Paper Submission</h3></div>
+                <div class="p-8 border-b border-slate-100 bg-slate-50/50"><h3 class="text-2xl font-bold text-brand-navy">Submit Your Paper</h3></div>
                 <div class="p-8">
                     <form id="submission-form" class="space-y-8">
                         <div><label class="block text-sm font-semibold text-slate-700 mb-2">Paper Title *</label><input type="text" id="paper-title" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-semibold text-slate-700 mb-2">Author *</label><input type="text" id="author-name" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div><div><label class="block text-sm font-semibold text-slate-700 mb-2">Affiliation *</label><input type="text" id="author-affil" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div></div>
-                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Topic *</label><select id="paper-topic" required class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white"><option value="smart-ship">1. Smart Ship & Autonomous</option><option value="marine-ai">2. Marine AI</option><option value="tourism">3. Sustainable Tourism</option></select></div>
-                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Abstract *</label><div class="flex justify-end mb-1"><button type="button" onclick="polishAbstract()" class="text-xs text-brand-gold font-bold border border-brand-gold px-2 py-1 rounded hover:bg-brand-gold hover:text-white transition"><i data-lucide="wand-2" class="inline w-3 h-3 mr-1"></i> AI Polish</button></div><textarea id="paper-abstract" rows="6" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></textarea><p id="polish-msg" class="text-xs text-brand-gold mt-1 hidden"></p></div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div><label class="block text-sm font-semibold text-slate-700 mb-2">Author *</label><input type="text" id="author-name" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div>
+                            <div><label class="block text-sm font-semibold text-slate-700 mb-2">Affiliation *</label><input type="text" id="author-affil" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Research Topic *</label>
+                                <select id="paper-topic" required class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white">
+                                    <option value="smart-ship">1. Smart Ship & Autonomous</option>
+                                    <option value="marine-ai">2. Marine AI & Big Data</option>
+                                    <option value="tourism">3. Sustainable Ocean Tourism</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Presentation Type *</label>
+                                <select id="presentation-type" required class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white border-brand-accent ring-1 ring-brand-accent/20">
+                                    <option value="Oral">Oral Presentation (구두 발표)</option>
+                                    <option value="Poster">Poster Presentation (포스터 발표)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div><label class="block text-sm font-semibold text-slate-700 mb-2">Abstract *</label><div class="flex justify-end mb-1"><button type="button" onclick="polishAbstract()" class="text-xs text-brand-gold font-bold border border-brand-gold px-2 py-1 rounded hover:bg-brand-gold hover:text-white transition"><i data-lucide="wand-2" class="inline w-3 h-3 mr-1"></i> AI Polish</button></div><textarea id="paper-abstract" rows="5" required class="w-full border border-slate-300 rounded-lg px-4 py-3"></textarea><p id="polish-msg" class="text-xs text-brand-gold mt-1 hidden"></p></div>
                         
                         <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
                             <label class="block text-sm font-semibold text-slate-700 mb-4">File Upload</label>
@@ -182,10 +321,76 @@
                             </div>
                         </div>
 
-                        <button type="button" id="submit-btn" class="w-full bg-brand-navy text-white font-bold py-4 rounded-lg hover:bg-brand-blue transition flex items-center justify-center gap-2"><span id="submit-text">Submit Paper</span><span id="submit-spinner" class="spinner ml-2 hidden"></span></button>
+                        <button type="button" id="submit-btn" class="w-full bg-brand-accent text-white font-bold py-4 rounded-lg hover:bg-blue-600 transition flex items-center justify-center gap-2"><span id="submit-text">Submit Paper</span><span id="submit-spinner" class="spinner ml-2 hidden"></span></button>
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="registration" class="page-section">
+        <div class="bg-brand-navy text-white py-20 text-center">
+            <h2 class="text-4xl font-bold mb-4">Registration</h2>
+            <p class="text-slate-300">Registration Guidelines & Fees</p>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 py-16 space-y-12">
+            
+            <div>
+                <h3 class="text-2xl font-bold text-brand-navy border-b-2 border-brand-gold pb-2 mb-6">Registration Guideline</h3>
+                <p class="text-slate-600 mb-4">All participants must register online. The registration fee covers conference materials, access to all sessions, and official meals on the cruise.</p>
+                <ul class="list-disc list-inside text-sm text-slate-600 space-y-2">
+                    <li><strong>Early Bird Registration:</strong> ~ July 31, 2026</li>
+                    <li><strong>Regular Registration:</strong> Aug 1 ~ Aug 15, 2026</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-bold text-brand-navy border-b-2 border-brand-gold pb-2 mb-6">Registration Fees</h3>
+                <div class="overflow-x-auto rounded-lg border border-slate-200">
+                    <table class="w-full text-left border-collapse conf-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Early Bird (by Jul 31)</th>
+                                <th>Regular (after Aug 1)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white">
+                                <td class="font-bold">Regular (Author/Participant)</td>
+                                <td>$ 800</td>
+                                <td>$ 950</td>
+                            </tr>
+                            <tr class="bg-slate-50">
+                                <td class="font-bold">Student (ID required)</td>
+                                <td>$ 500</td>
+                                <td>$ 600</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="font-bold">Accompanying Person</td>
+                                <td>$ 400</td>
+                                <td>$ 500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-red-500 mt-2">* Note: Cruise cabin (Accommodation) fees are <strong>not</strong> included in the registration fee. Please book your cabin separately.</p>
+            </div>
+
+            <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                <h4 class="font-bold text-brand-navy mb-2 flex items-center gap-2"><i data-lucide="credit-card" class="w-5 h-5"></i> Payment Method (Bank Transfer)</h4>
+                <p class="text-sm text-slate-600 font-mono bg-white p-4 rounded border border-slate-200">
+                    Bank Name: Global Academic Bank<br>
+                    Account No: 123-456-7890<br>
+                    Account Name: AI Voyage 2026 Org.<br>
+                    Swift Code: GLAC KRXX
+                </p>
+            </div>
+
+            <div class="text-center pt-8">
+                <button onclick="alert('Online Payment Gateway will be integrated here.')" class="bg-brand-gold text-brand-navy font-bold text-lg px-12 py-4 rounded-full shadow-lg hover:bg-yellow-500 hover:scale-105 transition transform">Go to Online Registration</button>
+            </div>
+
         </div>
     </div>
 
@@ -194,9 +399,9 @@
         <div class="max-w-6xl mx-auto px-6 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                 <img src="mscinside.jpg" alt="MSC" class="rounded-xl shadow-lg h-80 object-cover">
-                <div class="space-y-6"><h3 class="text-3xl font-bold text-brand-navy">MSC Bellissima</h3><p class="text-slate-600">The MSC Bellissima features the iconic Galleria Bellissima.</p></div>
+                <div class="space-y-6"><h3 class="text-3xl font-bold text-brand-navy">MSC Bellissima</h3><p class="text-slate-600">The MSC Bellissima features the iconic Galleria Bellissima. Experience a groundbreaking conference on the ocean.</p></div>
             </div>
-            <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 mb-12 shadow-sm"><h3 class="text-xl font-bold text-brand-navy mb-4 flex items-center gap-2"><i data-lucide="bus" class="w-6 h-6 text-brand-gold"></i> Travel Info</h3><p class="text-sm text-slate-700"><strong>Meeting Point:</strong> Shanghai Pudong Int'l Airport (PVG) - Terminal 1</p></div>
+            <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 mb-12 shadow-sm"><h3 class="text-xl font-bold text-brand-navy mb-4 flex items-center gap-2"><i data-lucide="map-pin" class="w-6 h-6 text-brand-accent"></i> Departure Port</h3><p class="text-sm text-slate-700"><strong>Meeting Point:</strong> Shanghai Wusongkou International Cruise Terminal (Transfer from PVG Airport available)</p></div>
         </div>
     </div>
 
@@ -209,7 +414,7 @@
         <div class="max-w-5xl mx-auto px-6 py-16">
             <div class="mb-12 text-center space-y-4">
                 <div class="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-6 py-3 rounded-full font-semibold border border-blue-100">
-                    <i data-lucide="check-circle" class="w-5 h-5"></i><span>All rates include: 4-night stay, All meals, and Conference Access.</span>
+                    <i data-lucide="check-circle" class="w-5 h-5"></i><span>All rates include: 4-night stay and all standard meals.</span>
                 </div>
                 <div class="mt-4">
                     <a href="https://www.msccruises.com/int/our-cruises/ships/msc-bellissima/cabins-suites" target="_blank" class="inline-flex items-center gap-2 text-brand-navy font-bold hover:text-brand-blue underline decoration-2 underline-offset-4 transition">
@@ -219,29 +424,22 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group border-2 border-brand-gold/30 relative">
                     <div class="absolute top-0 right-0 bg-brand-gold text-white text-[10px] font-bold px-2 py-1 rounded-bl">VIP</div>
                     <div class="h-64 overflow-hidden relative">
                         <img src="suite.jpg" alt="Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute top-3 left-3 bg-brand-navy text-white text-xs font-bold px-2 py-1 rounded">Suite</div>
                     </div>
-                    <div class="p-6 bg-yellow-50/30">
-                        <h3 class="font-bold text-2xl text-brand-navy mb-2">Suite</h3>
-                        <p class="text-sm text-slate-500">Premium suite with exclusive access</p>
-                    </div>
+                    <div class="p-6 bg-yellow-50/30"><h3 class="font-bold text-2xl text-brand-navy mb-2">Suite</h3><p class="text-sm text-slate-500">Premium suite with exclusive access</p></div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group relative">
-                    <div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl">POPULAR</div>
+                    <div class="absolute top-0 right-0 bg-brand-accent text-white text-[10px] font-bold px-2 py-1 rounded-bl">POPULAR</div>
                     <div class="h-64 overflow-hidden relative">
                         <img src="balcony.jpg" alt="Balcony" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Balcony</div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-2xl text-brand-navy mb-2">Balcony</h3>
-                        <p class="text-sm text-slate-500">Private balcony with beautiful sea view</p>
-                    </div>
+                    <div class="p-6"><h3 class="font-bold text-2xl text-brand-navy mb-2">Balcony</h3><p class="text-sm text-slate-500">Private balcony with beautiful sea view</p></div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
@@ -249,10 +447,7 @@
                         <img src="oceanview.jpg" alt="Ocean View" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Ocean View</div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-2xl text-brand-navy mb-2">Ocean View</h3>
-                        <p class="text-sm text-slate-500">Comfortable cabin with a sea view window</p>
-                    </div>
+                    <div class="p-6"><h3 class="font-bold text-2xl text-brand-navy mb-2">Ocean View</h3><p class="text-sm text-slate-500">Comfortable cabin with a sea view window</p></div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
@@ -260,12 +455,8 @@
                         <img src="inside.jpg" alt="Inside" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute top-3 left-3 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded">Economy</div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-2xl text-brand-navy mb-2">Inside</h3>
-                        <p class="text-sm text-slate-500">Cozy and practical interior cabin</p>
-                    </div>
+                    <div class="p-6"><h3 class="font-bold text-2xl text-brand-navy mb-2">Inside</h3><p class="text-sm text-slate-500">Cozy and practical interior cabin</p></div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -274,9 +465,14 @@
         <div class="bg-slate-800 text-white py-20 text-center"><h2 class="text-4xl font-bold mb-4">Admin Dashboard</h2></div>
         <div class="max-w-6xl mx-auto px-6 py-16">
             <div class="bg-white rounded-xl shadow p-6">
-                <div class="flex justify-between items-center mb-6 border-b pb-4"><h3 class="font-bold text-xl text-brand-navy">Submissions</h3><button onclick="exportToCSV()" class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded hover:bg-green-200"><i data-lucide="download" class="w-3 h-3 inline"></i> Export</button></div>
+                <div class="flex justify-between items-center mb-6 border-b pb-4"><h3 class="font-bold text-xl text-brand-navy">Submissions</h3><button onclick="exportToCSV()" class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded hover:bg-green-200 flex items-center gap-1"><i data-lucide="download" class="w-4 h-4"></i> Export CSV</button></div>
                 <div class="grid grid-cols-4 gap-4 mb-6 text-center text-sm"><div class="bg-slate-50 p-2 rounded">Total: <span id="stat-total" class="font-bold">0</span></div><div class="bg-yellow-50 p-2 rounded text-yellow-700">Pending: <span id="stat-pending" class="font-bold">0</span></div><div class="bg-green-50 p-2 rounded text-green-700">Accepted: <span id="stat-accepted" class="font-bold">0</span></div><div class="bg-red-50 p-2 rounded text-red-700">Rejected: <span id="stat-rejected" class="font-bold">0</span></div></div>
-                <div class="overflow-x-auto"><table class="w-full text-left text-sm" id="admin-table"><thead class="bg-slate-50"><tr><th class="p-3">Paper Info</th><th class="p-3">Author</th><th class="p-3">Status</th><th class="p-3 text-center">File / Link</th><th class="p-3 text-center">Action</th></tr></thead><tbody id="admin-papers-list"></tbody></table></div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm conf-table" id="admin-table">
+                        <thead><tr><th>Paper Info</th><th>Type</th><th>Author</th><th>Status</th><th class="text-center">File/Link</th><th class="text-center">Action</th></tr></thead>
+                        <tbody id="admin-papers-list"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -286,13 +482,12 @@
         <div class="max-w-4xl mx-auto px-6 py-16"><div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden"><div class="p-6 border-b border-slate-100 bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">My Submissions</h3></div><div class="p-6"><ul id="my-papers-list" class="space-y-4"></ul></div></div></div>
     </div>
 
-    <footer class="bg-brand-navy text-slate-400 py-12 border-t border-slate-800 mt-auto"><div class="max-w-7xl mx-auto px-6 text-center"><p class="mb-2">&copy; 2026 AI Voyage Conference</p></div></footer>
+    <footer class="bg-brand-navy text-slate-400 py-12 border-t border-slate-800 mt-auto"><div class="max-w-7xl mx-auto px-6 text-center"><p class="mb-2">&copy; 2026 AI Voyage Conference Organization</p></div></footer>
 
     <div id="success-modal" class="modal fixed inset-0 z-[200] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-8 text-center"><h3 class="text-2xl font-bold text-brand-navy mb-2">Success!</h3><button onclick="closeModal('success-modal'); showSection('mypage')" class="w-full bg-brand-navy text-white font-bold py-3 rounded mt-4">Go to My Page</button></div></div>
     <div id="login-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Login</h3><button onclick="closeModal('login-modal')">X</button></div><div class="space-y-4"><button id="btn-google-login" class="w-full border border-slate-300 py-2 rounded flex justify-center items-center gap-2"><svg class="w-5 h-5 mr-2" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Sign in with Google</button><div class="border-t pt-4"><input type="email" id="login-email" class="w-full border p-2 rounded" placeholder="Email"><input type="password" id="login-password" class="w-full border p-2 rounded mt-2" placeholder="Password"><button id="btn-login" class="w-full bg-brand-navy text-white py-2 rounded mt-2">Sign In</button></div><p id="login-error" class="text-red-500 text-sm hidden"></p></div></div></div>
     <div id="signup-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-sm mx-4 p-6"><div class="flex justify-between items-center mb-4"><h3 class="font-bold text-lg text-brand-navy">Sign Up</h3><button onclick="closeModal('signup-modal')">X</button></div><div class="space-y-4"><input type="text" id="signup-name" class="w-full border p-2 rounded" placeholder="Name"><input type="email" id="signup-email" class="w-full border p-2 rounded" placeholder="Email"><input type="password" id="signup-password" class="w-full border p-2 rounded" placeholder="Password"><button id="btn-signup" class="w-full bg-brand-gold text-white py-2 rounded">Create Account</button><p id="signup-error" class="text-red-500 text-sm hidden"></p></div></div></div>
-    <div id="edit-modal" class="modal fixed inset-0 z-[100] hidden items-center justify-center modal-backdrop"><div class="bg-white rounded-lg shadow-2xl w-full max-w-lg mx-4 overflow-hidden"><div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50"><h3 class="font-bold text-lg text-brand-navy">Edit Paper</h3><button onclick="closeModal('edit-modal')">X</button></div><div class="p-6 space-y-4"><input type="hidden" id="edit-doc-id"><div><label class="block text-sm font-bold">Title</label><input type="text" id="edit-title" class="w-full border p-2 rounded"></div><div><label class="block text-sm font-bold">Author</label><input type="text" id="edit-author" class="w-full border p-2 rounded"></div><div><label class="block text-sm font-bold">Affiliation</label><input type="text" id="edit-affil" class="w-full border p-2 rounded"></div><div><label class="block text-sm font-bold">Abstract</label><textarea id="edit-abstract" rows="4" class="w-full border p-2 rounded"></textarea></div><button id="btn-update-paper" class="w-full bg-brand-navy text-white font-bold py-3 rounded">Update Paper</button></div></div></div>
-
+    
     <script>
         function showSection(id) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -312,7 +507,6 @@
         function updateFileName(input) { 
             const f = input.files[0]; 
             document.getElementById('file-name-display').innerText = f ? "Sel: " + f.name : "Click to upload PDF / ZIP"; 
-            
             if (f && f.size > 500 * 1024) {
                 alert("⚠️ 용량 초과!\n파일 크기가 500KB를 넘습니다.\n아래 'External Link' 입력란에 구글 드라이브 링크를 제출해주세요.");
                 input.value = ""; 
@@ -327,14 +521,10 @@
         function openProgramDetail(day) { const d = programData[day]; if(!d) return; document.getElementById('detail-title').innerText = d.title; document.getElementById('detail-date').innerText = d.date; const c = document.getElementById('detail-content'); c.innerHTML = ''; d.events.forEach(e => c.innerHTML += `<div class="relative pl-8"><span class="absolute -left-[9px] top-2 w-4 h-4 bg-brand-gold rounded-full border-4 border-white"></span><div class="bg-white p-4 rounded shadow-sm"><span class="font-bold text-brand-blue block">${e.time}</span><span>${e.desc}</span></div></div>`); document.getElementById('program').classList.remove('active'); document.getElementById('program').style.display='none'; const ds = document.getElementById('program-detail'); ds.style.display='block'; setTimeout(() => ds.classList.add('active'), 50); window.scrollTo(0,0); }
         function closeProgramDetail() { showSection('program'); }
         
-        function exportToCSV() { const d = Object.values(window.paperDataStore || {}); if(!d.length) return alert("No data"); let c = "Title,Author,Status\n"; d.forEach(r => c += `"${r.title}","${r.author}","${r.status}"\n`); const l = document.createElement("a"); l.href = "data:text/csv;charset=utf-8," + encodeURI(c); l.download = "papers.csv"; document.body.appendChild(l); l.click(); document.body.removeChild(l); }
+        // CSV 엑셀 추출 업데이트 (Oral/Poster 타입 추가)
+        function exportToCSV() { const d = Object.values(window.paperDataStore || {}); if(!d.length) return alert("No data"); let c = "Title,Type,Author,Affiliation,Status\n"; d.forEach(r => c += `"${r.title}","${r.presentationType||'N/A'}","${r.author}","${r.affiliation}","${r.status}"\n`); const l = document.createElement("a"); l.href = "data:text/csv;charset=utf-8," + encodeURI(c); l.download = "papers.csv"; document.body.appendChild(l); l.click(); document.body.removeChild(l); }
         
-        function viewPdf(id) { 
-            const d = window.paperDataStore[id]; 
-            if(!d || !d.fileData) return alert("No file");
-            if(d.fileName.toLowerCase().endsWith('.zip')) return alert("ZIP files cannot be previewed.\nPlease save the file.");
-            const w = window.open(); w.document.write(`<iframe src="${d.fileData}" style="width:100%;height:100%;border:0;"></iframe>`); 
-        }
+        function viewPdf(id) { const d = window.paperDataStore[id]; if(!d || !d.fileData) return alert("No file"); if(d.fileName.toLowerCase().endsWith('.zip')) return alert("ZIP files cannot be previewed.\nPlease save the file."); const w = window.open(); w.document.write(`<iframe src="${d.fileData}" style="width:100%;height:100%;border:0;"></iframe>`); }
         function downloadPdf(id) { const d = window.paperDataStore[id]; if(!d || !d.fileData) return alert("No file"); const l = document.createElement("a"); l.href = d.fileData; l.download = d.fileName; document.body.appendChild(l); l.click(); document.body.removeChild(l); }
     </script>
 
@@ -360,17 +550,15 @@
         
         window.signOutAction = async () => { await signOut(auth); showSection('home'); alert("Logged out."); };
         window.deletePaper = async (id, btn) => { if(!confirm("Delete?")) return; try { await deleteDoc(doc(db, "submissions", id)); if(btn) btn.closest('tr')?.remove() || btn.closest('li')?.remove(); if(document.getElementById('admin').classList.contains('active')) setTimeout(loadAdminData, 500); } catch(e) { alert(e.message); } }
-        window.openEditModalSafe = (id) => { const d = window.paperDataStore[id]; if(!d) return; document.getElementById('edit-doc-id').value = id; document.getElementById('edit-title').value = d.title; document.getElementById('edit-author').value = d.author; document.getElementById('edit-affil').value = d.affiliation; document.getElementById('edit-abstract').value = d.abstract; openModal('edit-modal'); }
         window.updateStatus = async (id, st) => { try { await updateDoc(doc(db, "submissions", id), { status: st }); loadAdminData(); } catch(e) { alert(e.message); } }
 
         document.getElementById('btn-google-login').onclick = async () => { try { await signInWithPopup(auth, googleProvider); closeModal('login-modal'); } catch(e) { alert(e.message); } };
         document.getElementById('btn-login').onclick = async () => { try { await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); closeModal('login-modal'); } catch(e) { alert(e.message); } };
         document.getElementById('btn-signup').onclick = async () => { try { const cred = await createUserWithEmailAndPassword(auth, document.getElementById('signup-email').value, document.getElementById('signup-password').value); await updateProfile(cred.user, { displayName: document.getElementById('signup-name').value }); closeModal('signup-modal'); } catch(e) { alert(e.message); } };
-        document.getElementById('btn-update-paper').onclick = async () => { try { await updateDoc(doc(db, "submissions", document.getElementById('edit-doc-id').value), { title: document.getElementById('edit-title').value, author: document.getElementById('edit-author').value, affiliation: document.getElementById('edit-affil').value, abstract: document.getElementById('edit-abstract').value }); alert("Updated!"); closeModal('edit-modal'); } catch(e) { alert(e.message); } };
 
         document.getElementById('submit-btn').onclick = async (e) => {
             e.preventDefault(); 
-            if(!auth.currentUser) return alert("Please login.");
+            if(!auth.currentUser) return alert("Please login to submit.");
             
             const title = document.getElementById('paper-title').value;
             const author = document.getElementById('author-name').value;
@@ -378,51 +566,33 @@
 
             const file = document.getElementById('paper-file').files[0];
             const linkInput = document.getElementById('paper-link').value.trim();
-
-            if(!file && !linkInput) return alert("파일을 업로드하거나 외부 링크(Google Drive 등)를 입력해주세요.");
+            if(!file && !linkInput) return alert("파일을 업로드하거나 외부 링크를 입력해주세요.");
 
             const btn = document.getElementById('submit-btn'); 
-            btn.disabled = true; 
-            btn.innerHTML = '<span class="spinner"></span> Uploading...';
+            btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Uploading...';
             
             const save = (b64) => {
                 addDoc(collection(db, "submissions"), {
-                    title: title, 
-                    author: author, 
+                    title: title, author: author, 
                     affiliation: document.getElementById('author-affil').value, 
                     topic: document.getElementById('paper-topic').value, 
+                    presentationType: document.getElementById('presentation-type').value, // 💡 Oral/Poster 저장
                     abstract: document.getElementById('paper-abstract').value,
                     fileName: file ? file.name : (linkInput ? "External Link" : "No File"), 
-                    fileData: b64, 
-                    externalLink: linkInput || null,
-                    timestamp: serverTimestamp(), 
-                    userId: auth.currentUser.uid, 
-                    email: auth.currentUser.email, 
-                    status: 'Under Review'
+                    fileData: b64, externalLink: linkInput || null,
+                    timestamp: serverTimestamp(), userId: auth.currentUser.uid, email: auth.currentUser.email, status: 'Under Review'
                 }).then(() => { 
-                    openModal('success-modal'); 
-                    document.getElementById('submission-form').reset(); 
+                    openModal('success-modal'); document.getElementById('submission-form').reset(); 
                     document.getElementById('file-name-display').innerText = "Click to upload PDF / ZIP";
-                    btn.disabled = false; 
-                    btn.innerHTML = 'Submit Paper'; 
-                }).catch(err => { 
-                    alert(err.message); 
-                    btn.disabled = false; 
-                    btn.innerHTML = 'Submit Paper';
-                });
+                    btn.disabled = false; btn.innerHTML = 'Submit Paper'; 
+                }).catch(err => { alert(err.message); btn.disabled = false; btn.innerHTML = 'Submit Paper'; });
             };
 
-            if(file) { 
-                const r = new FileReader(); 
-                r.onload = (ev) => save(ev.target.result); 
-                r.readAsDataURL(file); 
-            } else { 
-                save(null); 
-            }
+            if(file) { const r = new FileReader(); r.onload = (ev) => save(ev.target.result); r.readAsDataURL(file); } else { save(null); }
         };
 
         window.loadAdminData = async () => {
-            const list = document.getElementById('admin-papers-list'); list.innerHTML = '<tr><td colspan="5" class="p-4 text-center">Loading...</td></tr>';
+            const list = document.getElementById('admin-papers-list'); list.innerHTML = '<tr><td colspan="6" class="p-4 text-center">Loading...</td></tr>';
             const snap = await getDocs(collection(db, "submissions")); list.innerHTML = '';
             let s = { t:0, p:0, a:0, r:0 };
             snap.forEach(d => {
@@ -430,13 +600,12 @@
                 if(data.status==='Accepted') s.a++; else if(data.status==='Rejected') s.r++; else s.p++;
                 
                 let fBtn = `<span class="text-gray-400 text-xs">-</span>`;
-                if (data.externalLink) {
-                    fBtn = `<a href="${data.externalLink}" target="_blank" class="text-brand-gold text-xs font-bold underline flex flex-col items-center"><i data-lucide="external-link" class="w-4 h-4 mb-1"></i>Open Link</a>`;
-                } else if(data.fileData) {
-                    fBtn = `<div class="flex flex-col gap-1 items-center"><button onclick="viewPdf('${d.id}')" class="text-blue-600 text-xs font-bold">View</button><button onclick="downloadPdf('${d.id}')" class="text-slate-500 text-xs">Save</button></div>`;
-                }
+                if (data.externalLink) fBtn = `<a href="${data.externalLink}" target="_blank" class="text-brand-gold text-xs font-bold underline flex flex-col items-center"><i data-lucide="external-link" class="w-4 h-4 mb-1"></i>Link</a>`;
+                else if(data.fileData) fBtn = `<div class="flex flex-col gap-1 items-center"><button onclick="viewPdf('${d.id}')" class="text-blue-600 text-xs font-bold">View</button></div>`;
 
-                list.innerHTML += `<tr class="border-b hover:bg-slate-50"><td class="p-3"><div class="font-bold truncate w-48">${data.title}</div><div class="text-xs text-slate-500">${data.topic}</div></td><td class="p-3 text-sm">${data.author}</td><td class="p-3"><select onchange="updateStatus('${d.id}', this.value)" class="text-xs border rounded p-1"><option value="Under Review" ${data.status==='Under Review'?'selected':''}>Pending</option><option value="Accepted" ${data.status==='Accepted'?'selected':''}>Accept</option><option value="Rejected" ${data.status==='Rejected'?'selected':''}>Reject</option></select></td><td class="p-3 text-center">${fBtn}</td><td class="p-3"><button onclick="deletePaper('${d.id}', this)" class="text-red-500 text-xs border border-red-200 px-2 py-1 rounded">Del</button></td></tr>`;
+                let pType = data.presentationType === 'Oral' ? `<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">Oral</span>` : `<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs font-bold">Poster</span>`;
+
+                list.innerHTML += `<tr class="bg-white"><td class="p-3"><div class="font-bold truncate w-40">${data.title}</div><div class="text-xs text-slate-500">${data.topic}</div></td><td class="p-3">${pType}</td><td class="p-3 text-sm">${data.author}</td><td class="p-3"><select onchange="updateStatus('${d.id}', this.value)" class="text-xs border rounded p-1"><option value="Under Review" ${data.status==='Under Review'?'selected':''}>Pending</option><option value="Accepted" ${data.status==='Accepted'?'selected':''}>Accept</option><option value="Rejected" ${data.status==='Rejected'?'selected':''}>Reject</option></select></td><td class="p-3 text-center">${fBtn}</td><td class="p-3 text-center"><button onclick="deletePaper('${d.id}', this)" class="text-red-500 text-xs border border-red-200 px-2 py-1 rounded hover:bg-red-50">Del</button></td></tr>`;
             });
             if(typeof lucide !== 'undefined') lucide.createIcons();
             document.getElementById('stat-total').innerText = s.t; document.getElementById('stat-pending').innerText = s.p; document.getElementById('stat-accepted').innerText = s.a; document.getElementById('stat-rejected').innerText = s.r;
@@ -451,11 +620,12 @@
                 
                 const q = query(collection(db, "submissions"), where("userId", "==", u.uid));
                 onSnapshot(q, (snap) => {
-                    const list = document.getElementById('my-papers-list'); list.innerHTML = snap.empty ? '<li>No papers.</li>' : '';
+                    const list = document.getElementById('my-papers-list'); list.innerHTML = snap.empty ? '<li>No papers submitted.</li>' : '';
                     snap.forEach(d => {
                         const data = d.data(); window.paperDataStore[d.id] = data; 
                         let c = "text-slate-500"; if(data.status==="Accepted") c="text-green-600 font-bold"; if(data.status==="Rejected") c="text-red-500";
-                        list.innerHTML += `<li class="border-b pb-3 flex justify-between items-center"><div><div class="font-bold text-brand-navy">${data.title}</div><div class="text-xs ${c} mt-1">${data.status}</div></div><div class="flex gap-2"><button onclick="openEditModalSafe('${d.id}')" class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded hover:bg-blue-100">Edit</button><button onclick="deletePaper('${d.id}', this)" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100">Del</button></div></li>`;
+                        let typeBadge = data.presentationType ? `[${data.presentationType}] ` : '';
+                        list.innerHTML += `<li class="border-b pb-3 flex justify-between items-center"><div><div class="font-bold text-brand-navy">${typeBadge}${data.title}</div><div class="text-xs ${c} mt-1">Status: ${data.status}</div></div><div class="flex gap-2"><button onclick="deletePaper('${d.id}', this)" class="text-xs bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100">Delete</button></div></li>`;
                     });
                 });
             } else {
